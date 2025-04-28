@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/bootstrap.min.css" th:href="@{/bootstrap.min.css}" />
+    <title>Agregar Habitación</title>
+</head>
+<body>
+    <form action="addRoom">
+        <div>
+            <label for="name">Nombre de la habitación</label>
+            <input type="text" name="name" id="name">
+        </div>
+        <div>
+            <label for="description">Descripción</label>
+            <input type="text" name="description" id="description">
+        </div>
+        <div>
+            <label for="price">Precio</label>
+            <input type="number" name="price" id="price">
+        </div>
+        <div>
+            <label for="category">Categoría</label>
+            <div th:each="categoria : ${categorias}">
+                <input type="radio" th:id="${categoria}"
+                       th:name="categoria"  
+                       th:value="${categoria}"
+                       th:text="' ' + ${categoria}"> 
+                <label class="" th:for="${categoria}"></label>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
