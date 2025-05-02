@@ -1,4 +1,4 @@
-package com.salesianostriana.dam;
+package com.salesianostriana.dam.perezmarquezgabriel;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
