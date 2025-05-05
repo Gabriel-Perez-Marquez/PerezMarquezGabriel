@@ -518,3 +518,583 @@ INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, n
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
 Table "HABITACIONES" not found; SQL statement:
 INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) [42102-232]
+2025-05-05 09:09:25.722534+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "CREATE TABLE habitaciones ([*]"; se esperaba "identifier"
+Syntax error in SQL statement "CREATE TABLE habitaciones ([*]"; expected "identifier"; SQL statement:
+CREATE TABLE habitaciones ( [42001-232]
+2025-05-05 09:09:25.730512+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]id BIGINT AUTO_INCREMENT PRIMARY KEY,"; se esperaba "INSERT"
+Syntax error in SQL statement "[*]id BIGINT AUTO_INCREMENT PRIMARY KEY,"; expected "INSERT"; SQL statement:
+id BIGINT AUTO_INCREMENT PRIMARY KEY, [42001-232]
+2025-05-05 09:09:25.731509+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]num_habitacion INT NOT NULL,"
+Syntax error in SQL statement "[*]num_habitacion INT NOT NULL,"; SQL statement:
+num_habitacion INT NOT NULL, [42000-232]
+2025-05-05 09:09:25.734501+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]descripcion VARCHAR(255),"; se esperaba "DELETE, DROP"
+Syntax error in SQL statement "[*]descripcion VARCHAR(255),"; expected "DELETE, DROP"; SQL statement:
+descripcion VARCHAR(255), [42001-232]
+2025-05-05 09:09:25.737494+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]nombre_cliente VARCHAR(100),"
+Syntax error in SQL statement "[*]nombre_cliente VARCHAR(100),"; SQL statement:
+nombre_cliente VARCHAR(100), [42000-232]
+2025-05-05 09:09:25.740485+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]precio DOUBLE,"; se esperaba "PREPARE"
+Syntax error in SQL statement "[*]precio DOUBLE,"; expected "PREPARE"; SQL statement:
+precio DOUBLE, [42001-232]
+2025-05-05 09:09:25.742479+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]num_clientes INT,"
+Syntax error in SQL statement "[*]num_clientes INT,"; SQL statement:
+num_clientes INT, [42000-232]
+2025-05-05 09:09:25.744476+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]fecha_entrada DATE,"
+Syntax error in SQL statement "[*]fecha_entrada DATE,"; SQL statement:
+fecha_entrada DATE, [42000-232]
+2025-05-05 09:09:25.747465+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]fecha_salida DATE,"
+Syntax error in SQL statement "[*]fecha_salida DATE,"; SQL statement:
+fecha_salida DATE, [42000-232]
+2025-05-05 09:09:25.750458+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]limpia BOOLEAN,"
+Syntax error in SQL statement "[*]limpia BOOLEAN,"; SQL statement:
+limpia BOOLEAN, [42000-232]
+2025-05-05 09:09:25.754447+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]url_image VARCHAR(255)"; se esperaba "UPDATE"
+Syntax error in SQL statement "[*]url_image VARCHAR(255)"; expected "UPDATE"; SQL statement:
+url_image VARCHAR(255) [42001-232]
+2025-05-05 09:09:25.756441+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*])"
+Syntax error in SQL statement "[*])"; SQL statement:
+) [42000-232]
+2025-05-05 09:09:25.759433+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (101, 'Habitación sencilla con vista al jardín', 'Ana Torres', 50.0, 1, '2025-05-01', '2025-05-03', TRUE, 'url1.jpg') [42102-232]
+2025-05-05 09:09:25.764419+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (102, 'Habitación doble, baño privado', 'Luis Gómez', 80.0, 2, '2025-05-02', '2025-05-05', FALSE, 'url2.jpg') [42102-232]
+2025-05-05 09:09:25.766413+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (103, 'Suite con jacuzzi', 'María Pérez', 150.0, 2, '2025-05-05', '2025-05-10', TRUE, 'url3.jpg') [42102-232]
+2025-05-05 09:09:25.767410+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (104, 'Habitación estándar', 'Carlos Díaz', 60.0, 1, '2025-05-03', '2025-05-06', FALSE, 'url4.jpg') [42102-232]
+2025-05-05 09:09:25.771399+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (105, 'Habitación familiar', 'Laura Sánchez', 120.0, 4, '2025-05-04', '2025-05-07', TRUE, 'url5.jpg') [42102-232]
+2025-05-05 09:09:25.773393+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (106, 'Doble con terraza', 'Pedro Ramírez', 90.0, 2, '2025-05-06', '2025-05-09', TRUE, 'url6.jpg') [42102-232]
+2025-05-05 09:09:25.775388+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (107, 'Suite presidencial', 'Claudia López', 200.0, 2, '2025-05-07', '2025-05-11', FALSE, 'url7.jpg') [42102-232]
+2025-05-05 09:09:25.777384+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (108, 'Habitación básica', 'Esteban Martínez', 45.0, 1, '2025-05-02', '2025-05-04', TRUE, 'url8.jpg') [42102-232]
+2025-05-05 09:09:25.780374+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (109, 'Vista al mar', 'Sara Núñez', 130.0, 2, '2025-05-03', '2025-05-06', FALSE, 'url9.jpg') [42102-232]
+2025-05-05 09:09:25.782369+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (110, 'Habitación con escritorio', 'Miguel Herrera', 70.0, 1, '2025-05-01', '2025-05-02', TRUE, 'url10.jpg') [42102-232]
+2025-05-05 09:09:25.783366+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (201, 'Doble con balcón', 'Lucía Ortega', 95.0, 2, '2025-05-08', '2025-05-11', TRUE, 'url11.jpg') [42102-232]
+2025-05-05 09:09:25.784395+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (202, 'Habitación matrimonial', 'Javier Moreno', 85.0, 2, '2025-05-09', '2025-05-12', FALSE, 'url12.jpg') [42102-232]
+2025-05-05 09:09:25.786358+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (203, 'Habitación de lujo', 'Beatriz Torres', 180.0, 2, '2025-05-10', '2025-05-14', TRUE, 'url13.jpg') [42102-232]
+2025-05-05 09:09:25.788352+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (204, 'Habitación con cocina', 'Iván Cruz', 100.0, 3, '2025-05-12', '2025-05-15', FALSE, 'url14.jpg') [42102-232]
+2025-05-05 09:09:25.789350+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (205, 'Doble con TV', 'Rosa Aguirre', 75.0, 2, '2025-05-03', '2025-05-05', TRUE, 'url15.jpg') [42102-232]
+2025-05-05 09:09:25.791345+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (206, 'Suite moderna', 'Tomás Ríos', 160.0, 2, '2025-05-04', '2025-05-07', TRUE, 'url16.jpg') [42102-232]
+2025-05-05 09:09:25.794338+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (207, 'Triple con baño privado', 'Natalia Blanco', 110.0, 3, '2025-05-06', '2025-05-08', FALSE, 'url17.jpg') [42102-232]
+2025-05-05 09:09:25.796331+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (208, 'Habitación con escritorio y wifi', 'Adrián Vidal', 65.0, 1, '2025-05-02', '2025-05-03', TRUE, 'url18.jpg') [42102-232]
+2025-05-05 09:09:25.798325+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (209, 'Habitación económica', 'Eva Silva', 40.0, 1, '2025-05-01', '2025-05-02', FALSE, 'url19.jpg') [42102-232]
+2025-05-05 09:09:25.799323+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (210, 'Vista panorámica', 'Jorge Navarro', 140.0, 2, '2025-05-05', '2025-05-09', TRUE, 'url20.jpg') [42102-232]
+2025-05-05 09:24:56.215654+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "CREATE TABLE habitaciones ([*]"; se esperaba "identifier"
+Syntax error in SQL statement "CREATE TABLE habitaciones ([*]"; expected "identifier"; SQL statement:
+CREATE TABLE habitaciones ( [42001-232]
+2025-05-05 09:24:56.222642+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]id BIGINT AUTO_INCREMENT PRIMARY KEY,"; se esperaba "INSERT"
+Syntax error in SQL statement "[*]id BIGINT AUTO_INCREMENT PRIMARY KEY,"; expected "INSERT"; SQL statement:
+id BIGINT AUTO_INCREMENT PRIMARY KEY, [42001-232]
+2025-05-05 09:24:56.224630+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]num_habitacion INT NOT NULL,"
+Syntax error in SQL statement "[*]num_habitacion INT NOT NULL,"; SQL statement:
+num_habitacion INT NOT NULL, [42000-232]
+2025-05-05 09:24:56.227622+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]descripcion VARCHAR(255),"; se esperaba "DELETE, DROP"
+Syntax error in SQL statement "[*]descripcion VARCHAR(255),"; expected "DELETE, DROP"; SQL statement:
+descripcion VARCHAR(255), [42001-232]
+2025-05-05 09:24:56.228619+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]nombre_cliente VARCHAR(100),"
+Syntax error in SQL statement "[*]nombre_cliente VARCHAR(100),"; SQL statement:
+nombre_cliente VARCHAR(100), [42000-232]
+2025-05-05 09:24:56.231610+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]precio DOUBLE,"; se esperaba "PREPARE"
+Syntax error in SQL statement "[*]precio DOUBLE,"; expected "PREPARE"; SQL statement:
+precio DOUBLE, [42001-232]
+2025-05-05 09:24:56.232608+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]num_clientes INT,"
+Syntax error in SQL statement "[*]num_clientes INT,"; SQL statement:
+num_clientes INT, [42000-232]
+2025-05-05 09:24:56.233606+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]fecha_entrada DATE,"
+Syntax error in SQL statement "[*]fecha_entrada DATE,"; SQL statement:
+fecha_entrada DATE, [42000-232]
+2025-05-05 09:24:56.235600+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]fecha_salida DATE,"
+Syntax error in SQL statement "[*]fecha_salida DATE,"; SQL statement:
+fecha_salida DATE, [42000-232]
+2025-05-05 09:24:56.236597+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]limpia BOOLEAN,"
+Syntax error in SQL statement "[*]limpia BOOLEAN,"; SQL statement:
+limpia BOOLEAN, [42000-232]
+2025-05-05 09:24:56.237594+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]url_image VARCHAR(255)"; se esperaba "UPDATE"
+Syntax error in SQL statement "[*]url_image VARCHAR(255)"; expected "UPDATE"; SQL statement:
+url_image VARCHAR(255) [42001-232]
+2025-05-05 09:24:56.240586+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*])"
+Syntax error in SQL statement "[*])"; SQL statement:
+) [42000-232]
+2025-05-05 09:24:56.241585+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (101, 'Habitación sencilla con vista al jardín', 'Ana Torres', 50.0, 1, '2025-05-01', '2025-05-03', TRUE, 'url1.jpg') [42102-232]
+2025-05-05 09:24:56.243578+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (102, 'Habitación doble, baño privado', 'Luis Gómez', 80.0, 2, '2025-05-02', '2025-05-05', FALSE, 'url2.jpg') [42102-232]
+2025-05-05 09:24:56.245573+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (103, 'Suite con jacuzzi', 'María Pérez', 150.0, 2, '2025-05-05', '2025-05-10', TRUE, 'url3.jpg') [42102-232]
+2025-05-05 09:24:56.246570+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (104, 'Habitación estándar', 'Carlos Díaz', 60.0, 1, '2025-05-03', '2025-05-06', FALSE, 'url4.jpg') [42102-232]
+2025-05-05 09:24:56.247567+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (105, 'Habitación familiar', 'Laura Sánchez', 120.0, 4, '2025-05-04', '2025-05-07', TRUE, 'url5.jpg') [42102-232]
+2025-05-05 09:24:56.249561+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (106, 'Doble con terraza', 'Pedro Ramírez', 90.0, 2, '2025-05-06', '2025-05-09', TRUE, 'url6.jpg') [42102-232]
+2025-05-05 09:24:56.250559+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (107, 'Suite presidencial', 'Claudia López', 200.0, 2, '2025-05-07', '2025-05-11', FALSE, 'url7.jpg') [42102-232]
+2025-05-05 09:24:56.251563+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (108, 'Habitación básica', 'Esteban Martínez', 45.0, 1, '2025-05-02', '2025-05-04', TRUE, 'url8.jpg') [42102-232]
+2025-05-05 09:24:56.252553+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (109, 'Vista al mar', 'Sara Núñez', 130.0, 2, '2025-05-03', '2025-05-06', FALSE, 'url9.jpg') [42102-232]
+2025-05-05 09:24:56.253559+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (110, 'Habitación con escritorio', 'Miguel Herrera', 70.0, 1, '2025-05-01', '2025-05-02', TRUE, 'url10.jpg') [42102-232]
+2025-05-05 09:24:56.254548+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (201, 'Doble con balcón', 'Lucía Ortega', 95.0, 2, '2025-05-08', '2025-05-11', TRUE, 'url11.jpg') [42102-232]
+2025-05-05 09:24:56.256559+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (202, 'Habitación matrimonial', 'Javier Moreno', 85.0, 2, '2025-05-09', '2025-05-12', FALSE, 'url12.jpg') [42102-232]
+2025-05-05 09:24:56.257539+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (203, 'Habitación de lujo', 'Beatriz Torres', 180.0, 2, '2025-05-10', '2025-05-14', TRUE, 'url13.jpg') [42102-232]
+2025-05-05 09:24:56.260532+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (204, 'Habitación con cocina', 'Iván Cruz', 100.0, 3, '2025-05-12', '2025-05-15', FALSE, 'url14.jpg') [42102-232]
+2025-05-05 09:24:56.261529+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (205, 'Doble con TV', 'Rosa Aguirre', 75.0, 2, '2025-05-03', '2025-05-05', TRUE, 'url15.jpg') [42102-232]
+2025-05-05 09:24:56.262547+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (206, 'Suite moderna', 'Tomás Ríos', 160.0, 2, '2025-05-04', '2025-05-07', TRUE, 'url16.jpg') [42102-232]
+2025-05-05 09:24:56.263530+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (207, 'Triple con baño privado', 'Natalia Blanco', 110.0, 3, '2025-05-06', '2025-05-08', FALSE, 'url17.jpg') [42102-232]
+2025-05-05 09:24:56.265520+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (208, 'Habitación con escritorio y wifi', 'Adrián Vidal', 65.0, 1, '2025-05-02', '2025-05-03', TRUE, 'url18.jpg') [42102-232]
+2025-05-05 09:24:56.266515+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (209, 'Habitación económica', 'Eva Silva', 40.0, 1, '2025-05-01', '2025-05-02', FALSE, 'url19.jpg') [42102-232]
+2025-05-05 09:24:56.267512+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (210, 'Vista panorámica', 'Jorge Navarro', 140.0, 2, '2025-05-05', '2025-05-09', TRUE, 'url20.jpg') [42102-232]
+2025-05-05 09:27:08.761738+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "CREATE TABLE habitaciones ([*]"; se esperaba "identifier"
+Syntax error in SQL statement "CREATE TABLE habitaciones ([*]"; expected "identifier"; SQL statement:
+CREATE TABLE habitaciones ( [42001-232]
+2025-05-05 09:27:08.769693+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]id BIGINT AUTO_INCREMENT PRIMARY KEY,"; se esperaba "INSERT"
+Syntax error in SQL statement "[*]id BIGINT AUTO_INCREMENT PRIMARY KEY,"; expected "INSERT"; SQL statement:
+id BIGINT AUTO_INCREMENT PRIMARY KEY, [42001-232]
+2025-05-05 09:27:08.770686+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]num_habitacion INT NOT NULL,"
+Syntax error in SQL statement "[*]num_habitacion INT NOT NULL,"; SQL statement:
+num_habitacion INT NOT NULL, [42000-232]
+2025-05-05 09:27:08.772680+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]descripcion VARCHAR(255),"; se esperaba "DELETE, DROP"
+Syntax error in SQL statement "[*]descripcion VARCHAR(255),"; expected "DELETE, DROP"; SQL statement:
+descripcion VARCHAR(255), [42001-232]
+2025-05-05 09:27:08.773677+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]nombre_cliente VARCHAR(100),"
+Syntax error in SQL statement "[*]nombre_cliente VARCHAR(100),"; SQL statement:
+nombre_cliente VARCHAR(100), [42000-232]
+2025-05-05 09:27:08.775672+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]precio DOUBLE,"; se esperaba "PREPARE"
+Syntax error in SQL statement "[*]precio DOUBLE,"; expected "PREPARE"; SQL statement:
+precio DOUBLE, [42001-232]
+2025-05-05 09:27:08.777667+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]num_clientes INT,"
+Syntax error in SQL statement "[*]num_clientes INT,"; SQL statement:
+num_clientes INT, [42000-232]
+2025-05-05 09:27:08.778664+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]fecha_entrada DATE,"
+Syntax error in SQL statement "[*]fecha_entrada DATE,"; SQL statement:
+fecha_entrada DATE, [42000-232]
+2025-05-05 09:27:08.780671+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]fecha_salida DATE,"
+Syntax error in SQL statement "[*]fecha_salida DATE,"; SQL statement:
+fecha_salida DATE, [42000-232]
+2025-05-05 09:27:08.782653+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]limpia BOOLEAN,"
+Syntax error in SQL statement "[*]limpia BOOLEAN,"; SQL statement:
+limpia BOOLEAN, [42000-232]
+2025-05-05 09:27:08.784647+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]url_image VARCHAR(255)"; se esperaba "UPDATE"
+Syntax error in SQL statement "[*]url_image VARCHAR(255)"; expected "UPDATE"; SQL statement:
+url_image VARCHAR(255) [42001-232]
+2025-05-05 09:27:08.785646+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*])"
+Syntax error in SQL statement "[*])"; SQL statement:
+) [42000-232]
+2025-05-05 09:27:08.787653+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (101, 'Habitación sencilla con vista al jardín', 'Ana Torres', 50.0, 1, '2025-05-01', '2025-05-03', TRUE, 'url1.jpg') [42102-232]
+2025-05-05 09:27:08.788666+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (102, 'Habitación doble, baño privado', 'Luis Gómez', 80.0, 2, '2025-05-02', '2025-05-05', FALSE, 'url2.jpg') [42102-232]
+2025-05-05 09:27:08.790631+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (103, 'Suite con jacuzzi', 'María Pérez', 150.0, 2, '2025-05-05', '2025-05-10', TRUE, 'url3.jpg') [42102-232]
+2025-05-05 09:27:08.791628+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (104, 'Habitación estándar', 'Carlos Díaz', 60.0, 1, '2025-05-03', '2025-05-06', FALSE, 'url4.jpg') [42102-232]
+2025-05-05 09:27:08.793623+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (105, 'Habitación familiar', 'Laura Sánchez', 120.0, 4, '2025-05-04', '2025-05-07', TRUE, 'url5.jpg') [42102-232]
+2025-05-05 09:27:08.794621+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (106, 'Doble con terraza', 'Pedro Ramírez', 90.0, 2, '2025-05-06', '2025-05-09', TRUE, 'url6.jpg') [42102-232]
+2025-05-05 09:27:08.795618+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (107, 'Suite presidencial', 'Claudia López', 200.0, 2, '2025-05-07', '2025-05-11', FALSE, 'url7.jpg') [42102-232]
+2025-05-05 09:27:08.796615+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (108, 'Habitación básica', 'Esteban Martínez', 45.0, 1, '2025-05-02', '2025-05-04', TRUE, 'url8.jpg') [42102-232]
+2025-05-05 09:27:08.797641+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (109, 'Vista al mar', 'Sara Núñez', 130.0, 2, '2025-05-03', '2025-05-06', FALSE, 'url9.jpg') [42102-232]
+2025-05-05 09:27:08.799606+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (110, 'Habitación con escritorio', 'Miguel Herrera', 70.0, 1, '2025-05-01', '2025-05-02', TRUE, 'url10.jpg') [42102-232]
+2025-05-05 09:27:08.800604+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (201, 'Doble con balcón', 'Lucía Ortega', 95.0, 2, '2025-05-08', '2025-05-11', TRUE, 'url11.jpg') [42102-232]
+2025-05-05 09:27:08.801601+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (202, 'Habitación matrimonial', 'Javier Moreno', 85.0, 2, '2025-05-09', '2025-05-12', FALSE, 'url12.jpg') [42102-232]
+2025-05-05 09:27:08.803596+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (203, 'Habitación de lujo', 'Beatriz Torres', 180.0, 2, '2025-05-10', '2025-05-14', TRUE, 'url13.jpg') [42102-232]
+2025-05-05 09:27:08.811574+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (204, 'Habitación con cocina', 'Iván Cruz', 100.0, 3, '2025-05-12', '2025-05-15', FALSE, 'url14.jpg') [42102-232]
+2025-05-05 09:27:08.812571+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (205, 'Doble con TV', 'Rosa Aguirre', 75.0, 2, '2025-05-03', '2025-05-05', TRUE, 'url15.jpg') [42102-232]
+2025-05-05 09:27:08.814565+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (206, 'Suite moderna', 'Tomás Ríos', 160.0, 2, '2025-05-04', '2025-05-07', TRUE, 'url16.jpg') [42102-232]
+2025-05-05 09:27:08.815563+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (207, 'Triple con baño privado', 'Natalia Blanco', 110.0, 3, '2025-05-06', '2025-05-08', FALSE, 'url17.jpg') [42102-232]
+2025-05-05 09:27:08.816560+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (208, 'Habitación con escritorio y wifi', 'Adrián Vidal', 65.0, 1, '2025-05-02', '2025-05-03', TRUE, 'url18.jpg') [42102-232]
+2025-05-05 09:27:08.817557+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (209, 'Habitación económica', 'Eva Silva', 40.0, 1, '2025-05-01', '2025-05-02', FALSE, 'url19.jpg') [42102-232]
+2025-05-05 09:27:08.819552+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (210, 'Vista panorámica', 'Jorge Navarro', 140.0, 2, '2025-05-05', '2025-05-09', TRUE, 'url20.jpg') [42102-232]
+2025-05-05 09:27:08.820549+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]*/"
+Syntax error in SQL statement "[*]*/"; SQL statement:
+*/ [42000-232]
+2025-05-05 09:28:11.367147+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "CREATE TABLE habitaciones ([*]"; se esperaba "identifier"
+Syntax error in SQL statement "CREATE TABLE habitaciones ([*]"; expected "identifier"; SQL statement:
+CREATE TABLE habitaciones ( [42001-232]
+2025-05-05 09:28:11.374128+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]id BIGINT AUTO_INCREMENT PRIMARY KEY,"; se esperaba "INSERT"
+Syntax error in SQL statement "[*]id BIGINT AUTO_INCREMENT PRIMARY KEY,"; expected "INSERT"; SQL statement:
+id BIGINT AUTO_INCREMENT PRIMARY KEY, [42001-232]
+2025-05-05 09:28:11.375126+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]num_habitacion INT NOT NULL,"
+Syntax error in SQL statement "[*]num_habitacion INT NOT NULL,"; SQL statement:
+num_habitacion INT NOT NULL, [42000-232]
+2025-05-05 09:28:11.377120+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]descripcion VARCHAR(255),"; se esperaba "DELETE, DROP"
+Syntax error in SQL statement "[*]descripcion VARCHAR(255),"; expected "DELETE, DROP"; SQL statement:
+descripcion VARCHAR(255), [42001-232]
+2025-05-05 09:28:11.378117+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]nombre_cliente VARCHAR(100),"
+Syntax error in SQL statement "[*]nombre_cliente VARCHAR(100),"; SQL statement:
+nombre_cliente VARCHAR(100), [42000-232]
+2025-05-05 09:28:11.380112+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]precio DOUBLE,"; se esperaba "PREPARE"
+Syntax error in SQL statement "[*]precio DOUBLE,"; expected "PREPARE"; SQL statement:
+precio DOUBLE, [42001-232]
+2025-05-05 09:28:11.381117+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]num_clientes INT,"
+Syntax error in SQL statement "[*]num_clientes INT,"; SQL statement:
+num_clientes INT, [42000-232]
+2025-05-05 09:28:11.382106+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]fecha_entrada DATE,"
+Syntax error in SQL statement "[*]fecha_entrada DATE,"; SQL statement:
+fecha_entrada DATE, [42000-232]
+2025-05-05 09:28:11.383104+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]fecha_salida DATE,"
+Syntax error in SQL statement "[*]fecha_salida DATE,"; SQL statement:
+fecha_salida DATE, [42000-232]
+2025-05-05 09:28:11.383104+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]limpia BOOLEAN,"
+Syntax error in SQL statement "[*]limpia BOOLEAN,"; SQL statement:
+limpia BOOLEAN, [42000-232]
+2025-05-05 09:28:11.385097+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]url_image VARCHAR(255)"; se esperaba "UPDATE"
+Syntax error in SQL statement "[*]url_image VARCHAR(255)"; expected "UPDATE"; SQL statement:
+url_image VARCHAR(255) [42001-232]
+2025-05-05 09:28:11.386101+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*])"
+Syntax error in SQL statement "[*])"; SQL statement:
+) [42000-232]
+2025-05-05 09:28:11.388090+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (101, 'Habitación sencilla con vista al jardín', 'Ana Torres', 50.0, 1, '2025-05-01', '2025-05-03', TRUE, 'url1.jpg') [42102-232]
+2025-05-05 09:28:11.389088+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (102, 'Habitación doble, baño privado', 'Luis Gómez', 80.0, 2, '2025-05-02', '2025-05-05', FALSE, 'url2.jpg') [42102-232]
+2025-05-05 09:30:00.865234+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "CREATE TABLE habitaciones ([*]"; se esperaba "identifier"
+Syntax error in SQL statement "CREATE TABLE habitaciones ([*]"; expected "identifier"; SQL statement:
+CREATE TABLE habitaciones ( [42001-232]
+2025-05-05 09:30:00.872243+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]id BIGINT AUTO_INCREMENT PRIMARY KEY,"; se esperaba "INSERT"
+Syntax error in SQL statement "[*]id BIGINT AUTO_INCREMENT PRIMARY KEY,"; expected "INSERT"; SQL statement:
+id BIGINT AUTO_INCREMENT PRIMARY KEY, [42001-232]
+2025-05-05 09:30:00.874221+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]num_habitacion INT NOT NULL,"
+Syntax error in SQL statement "[*]num_habitacion INT NOT NULL,"; SQL statement:
+num_habitacion INT NOT NULL, [42000-232]
+2025-05-05 09:30:00.876205+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]descripcion VARCHAR(255),"; se esperaba "DELETE, DROP"
+Syntax error in SQL statement "[*]descripcion VARCHAR(255),"; expected "DELETE, DROP"; SQL statement:
+descripcion VARCHAR(255), [42001-232]
+2025-05-05 09:30:00.877201+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]nombre_cliente VARCHAR(100),"
+Syntax error in SQL statement "[*]nombre_cliente VARCHAR(100),"; SQL statement:
+nombre_cliente VARCHAR(100), [42000-232]
+2025-05-05 09:30:00.879196+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]precio DOUBLE PRECISION,"; se esperaba "PREPARE"
+Syntax error in SQL statement "[*]precio DOUBLE PRECISION,"; expected "PREPARE"; SQL statement:
+precio DOUBLE PRECISION, [42001-232]
+2025-05-05 09:30:00.880194+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]num_clientes INT,"
+Syntax error in SQL statement "[*]num_clientes INT,"; SQL statement:
+num_clientes INT, [42000-232]
+2025-05-05 09:30:00.881191+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]fecha_entrada DATE,"
+Syntax error in SQL statement "[*]fecha_entrada DATE,"; SQL statement:
+fecha_entrada DATE, [42000-232]
+2025-05-05 09:30:00.882196+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]fecha_salida DATE,"
+Syntax error in SQL statement "[*]fecha_salida DATE,"; SQL statement:
+fecha_salida DATE, [42000-232]
+2025-05-05 09:30:00.883185+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]limpia BOOLEAN,"
+Syntax error in SQL statement "[*]limpia BOOLEAN,"; SQL statement:
+limpia BOOLEAN, [42000-232]
+2025-05-05 09:30:00.885181+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]url_image VARCHAR(255)"; se esperaba "UPDATE"
+Syntax error in SQL statement "[*]url_image VARCHAR(255)"; expected "UPDATE"; SQL statement:
+url_image VARCHAR(255) [42001-232]
+2025-05-05 09:30:00.886177+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*])"
+Syntax error in SQL statement "[*])"; SQL statement:
+) [42000-232]
+2025-05-05 09:30:00.888171+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (101, 'Habitación sencilla con vista al jardín', 'Ana Torres', 50.0, 1, '2025-05-01', '2025-05-03', TRUE, 'url1.jpg') [42102-232]
+2025-05-05 09:30:00.889175+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (102, 'Habitación doble, baño privado', 'Luis Gómez', 80.0, 2, '2025-05-02', '2025-05-05', FALSE, 'url2.jpg') [42102-232]
+2025-05-05 09:31:49.097405+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (101, 'Habitación sencilla con vista al jardín', 'Ana Torres', 50.0, 1, '2025-05-01', '2025-05-03', TRUE, 'url1.jpg') [42102-232]
+2025-05-05 09:31:49.104386+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (102, 'Habitación doble, baño privado', 'Luis Gómez', 80.0, 2, '2025-05-02', '2025-05-05', FALSE, 'url2.jpg') [42102-232]
+2025-05-05 11:54:06.961140+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (101, 'Habitación sencilla con vista al jardín', 'Ana Torres', 50.0, 1, '2025-05-01', '2025-05-03', TRUE, 'url1.jpg') [42102-232]
+2025-05-05 11:54:06.968113+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (102, 'Habitación doble, baño privado', 'Luis Gómez', 80.0, 2, '2025-05-02', '2025-05-05', FALSE, 'url2.jpg') [42102-232]
+2025-05-05 12:00:02.306831+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+SELECT * FROM habitaciones [42102-232]
+2025-05-05 12:01:29.453909+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+SELECT * FROM habitaciones [42102-232]
+2025-05-05 12:01:29.693134+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+SELECT * FROM habitaciones [42102-232]
+2025-05-05 12:01:29.867765+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+SELECT * FROM habitaciones [42102-232]
+2025-05-05 12:01:30.035084+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+SELECT * FROM habitaciones [42102-232]
+2025-05-05 12:01:40.767502+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+SELECT * FROM habitaciones [42102-232]
+2025-05-05 12:01:41.028765+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+SELECT * FROM habitaciones [42102-232]
+2025-05-05 12:01:41.220061+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+SELECT * FROM habitaciones [42102-232]
+2025-05-05 12:01:41.389210+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+SELECT * FROM habitaciones [42102-232]
+2025-05-05 12:01:41.564128+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+SELECT * FROM habitaciones [42102-232]
+2025-05-05 12:01:41.724088+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+SELECT * FROM habitaciones [42102-232]
+2025-05-05 12:01:41.884050+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+SELECT * FROM habitaciones [42102-232]
+2025-05-05 12:01:42.069075+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+SELECT * FROM habitaciones [42102-232]
+2025-05-05 12:01:42.219811+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+SELECT * FROM habitaciones [42102-232]
+2025-05-05 12:05:21.270910+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (101, 'Habitación sencilla con vista al jardín', 'Ana Torres', 50.0, 1, '2025-05-01', '2025-05-03', TRUE, 'url1.jpg') [42102-232]
+2025-05-05 12:05:21.276893+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "HABITACIONES" no encontrada
+Table "HABITACIONES" not found; SQL statement:
+INSERT INTO habitaciones (num_habitacion, descripcion, nombre_cliente, precio, num_clientes, fecha_entrada, fecha_salida, limpia, url_image) VALUES (102, 'Habitación doble, baño privado', 'Luis Gómez', 80.0, 2, '2025-05-02', '2025-05-05', FALSE, 'url2.jpg') [42102-232]
