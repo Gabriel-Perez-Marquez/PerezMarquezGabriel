@@ -41,22 +41,47 @@
 
         <div class="col-10">
             <div class="container-fluid row justify-content-end">
-                <div class="input-group w-25">
-                  <input type="text" name="buscar" id="buscar" class="form-control" placeholder="Buscar...">
-                  <button class="btn btn-primary" type="button">Buscar</button>
+              <form class="w-25" th:action="@{/buscar}" method="get">
+                <div class="input-group mb-3">
+                  <input type="text" name="nombre" id="buscar" class="form-control" placeholder="Buscar...">
+                  <button class="btn btn-primary" type="submit">Buscar</button>
                 </div>
+              </form>
 
 
-                <div class="container d-flex">
-                  <div class="d-flex w-25"  th:each="habitacion : ${habitaciones}">
+                <div class="container d-flex flex-wrap">
+                  <!-- <div class="col-mb-3 mb-3">
+                    <div th:each="habitacion : ${habitaciones}" class="card h-100 d-flex flex-column">
+                      <img th:src="${habitacion.urlImage}" class="card-img-top" alt="Imagen de la habitación">
+                      <div class="card-body">
+                        <h5 class="card-title" th:text="${habitacion.nombre}">Nombre de la habitación</h5>
+                        <p class="card-text" th:text="${habitacion.descripcion}">Descripción de la habitación</p>
+                        <p class="card-text"><strong th:text="${habitacion.precio}">Precio</strong> €/noche</p>
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Reservar</button>
+                      </div>
+                      <div class="card-footer d-flex justify-content-between">
+                      
+                        <button class="btn btn-warning ms-2 me-2">
+                          <i class="bi bi-pencil"></i>
+                        </button>
+                        <button class="btn btn-danger">
+                          <i class="bi bi-trash"></i> 
+                        </button>
+
+                      </div>
+                    </div>
+
+                  </div> -->
+
+                  <div class="d-flex w-25 "  th:each="habitacion : ${habitaciones}">
 
                     <div class="card m-3 d-flex flex-column justify-content-between">
-                      <!-- <img th:src="${habitacion.ur}" class="card-img-top" alt="Imagen de la habitación"> -->
+                      <img th:src="${habitacion.urlImage}" class="card-img-top" alt="Imagen de la habitación">
                       <div class="card-body">
-                      <h5 class="card-title" th:text="${habitacion.numHabitacion}">Nombre de la habitación</h5>
-                      <p class="card-text" th:text="${habitacion.descripcion}">Descripción de la habitación</p>
-                      <p class="card-text"><strong th:text="${habitacion.precio}">Precio</strong> €/noche</p>
-                      <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Reservar</button>
+                        <h5 class="card-title" th:text="${habitacion.nombre}">Nombre de la habitación</h5>
+                        <p class="card-text" th:text="${habitacion.descripcion}">Descripción de la habitación</p>
+                        <p class="card-text"><strong th:text="${habitacion.precio}">Precio</strong> €/noche</p>
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Reservar</button>
                       </div>
                       <div class="card-footer d-flex justify-content-between">
                       
@@ -69,9 +94,6 @@
                       </div>
                     </div>
                   </div>
-
-        
-
                 </div>
                 
             </div>

@@ -17,6 +17,17 @@ public class CatalogoService {
 	public List<Habitacion> buscarTodos(){
 		return habitacionRepositorio.findAll();
 	}
+
+	
+	public List<Habitacion> buscarPorNombre (String nombre){
+		return habitacionRepositorio.buscarPorNombre(nombre);
+	}
+	
+	public Habitacion buscarPorNumHabitacion(int num){
+		return habitacionRepositorio.findByNumHabitacion(num);
+	}
+	
+	
 	
 	
 }
