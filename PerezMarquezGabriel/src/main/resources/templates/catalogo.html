@@ -50,50 +50,35 @@
 
 
                 <div class="container d-flex flex-wrap">
-                  <!-- <div class="col-mb-3 mb-3">
-                    <div th:each="habitacion : ${habitaciones}" class="card h-100 d-flex flex-column">
-                      <img th:src="${habitacion.urlImage}" class="card-img-top" alt="Imagen de la habitación">
-                      <div class="card-body">
-                        <h5 class="card-title" th:text="${habitacion.nombre}">Nombre de la habitación</h5>
-                        <p class="card-text" th:text="${habitacion.descripcion}">Descripción de la habitación</p>
-                        <p class="card-text"><strong th:text="${habitacion.precio}">Precio</strong> €/noche</p>
-                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Reservar</button>
-                      </div>
-                      <div class="card-footer d-flex justify-content-between">
-                      
-                        <button class="btn btn-warning ms-2 me-2">
-                          <i class="bi bi-pencil"></i>
-                        </button>
-                        <button class="btn btn-danger">
-                          <i class="bi bi-trash"></i> 
-                        </button>
-
-                      </div>
-                    </div>
-
-                  </div> -->
 
                   <div class="d-flex w-25 "  th:each="habitacion : ${habitaciones}">
 
                     <div class="card m-3 d-flex flex-column justify-content-between">
                       <img th:src="${habitacion.urlImage}" class="card-img-top" alt="Imagen de la habitación">
+
                       <div class="card-body">
                         <h5 class="card-title" th:text="${habitacion.nombre}">Nombre de la habitación</h5>
                         <p class="card-text" th:text="${habitacion.descripcion}">Descripción de la habitación</p>
                         <p class="card-text"><strong th:text="${habitacion.precio}">Precio</strong> €/noche</p>
                         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Reservar</button>
                       </div>
+
                       <div class="card-footer d-flex justify-content-between">
                       
-                      <button class="btn btn-warning ms-2 me-2">
-                        <i class="bi bi-pencil"></i>
-                      </button>
-                      <button class="btn btn-danger">
-                        <i class="bi bi-trash"></i> 
-                      </button>
+                        <a th:href="@{edit/}+${habitacion.id}"><button class="btn btn-warning ms-2 me-2">
+                          <i class="bi bi-pencil"></i>
+                        </button></a>
+
+                        <a th:href="@{delete/}+${habitacion.id}"><button class="btn btn-danger">
+                          <i class="bi bi-trash"></i>
+                        </button></a>
+                        
                       </div>
+
                     </div>
+
                   </div>
+
                 </div>
                 
             </div>

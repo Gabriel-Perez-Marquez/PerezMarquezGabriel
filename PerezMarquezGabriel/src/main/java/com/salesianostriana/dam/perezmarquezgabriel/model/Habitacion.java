@@ -8,10 +8,11 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data @NoArgsConstructor 
+@Data @NoArgsConstructor
 @Entity
 public class Habitacion {
 
@@ -33,11 +34,10 @@ public class Habitacion {
 	private String urlImage;
 	
 	
-	public Habitacion(Long id, int numHabitacion, String descripcion, String nombreCliente,
+	public Habitacion(int numHabitacion, String descripcion, String nombreCliente,
 			Categoria categoria, double precio, int numClientes, LocalDate fechaEntrada, LocalDate fechaSalida,
 			boolean limpia, String urlImage) {
 		super();
-		this.id = id;
 		this.numHabitacion = numHabitacion;
 		this.nombre = "Habitacion" + categoria + ' ' + numHabitacion;
 		this.descripcion = descripcion;
