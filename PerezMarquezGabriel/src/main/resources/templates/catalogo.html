@@ -60,7 +60,7 @@
                         <h5 class="card-title" th:text="${habitacion.nombre}">Nombre de la habitación</h5>
                         <p class="card-text" th:text="${habitacion.descripcion}">Descripción de la habitación</p>
                         <p class="card-text"><strong th:text="${habitacion.precio}">Precio</strong> €/noche</p>
-                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Reservar</button>
+                        <a th:href="@{/reserve}"><button class="btn btn-primary">Reservar</button></a>
                       </div>
 
                       <div class="card-footer d-flex justify-content-between">
@@ -93,30 +93,7 @@
     <footer th:replace="~{/fragmentos/footer :: footer}"></footer>
 
 
-    <!-- Modal -->
-    <div class="modal" id="myModal">
-      <div class="modal-dialog">
-        <div class="modal-content">
-
-          <!-- Modal Header -->
-          <div class="modal-header">
-            <h4 class="modal-title">Reserva</h4>
-            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-          </div>
-
-          <!-- Modal body -->
-          <div class="modal-body">
-            ¡Reserva hecha con exito!
-          </div>
-
-          <!-- Modal footer -->
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-          </div>
-
-        </div>
-      </div>
-    </div>
+    
   </body>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
 </html>

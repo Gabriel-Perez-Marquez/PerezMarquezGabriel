@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/bootstrap.min.css" th:href="@{/bootstrap.min.css}" />
+    <title>Agregar Habitación</title>
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+    <!-- Menú de navegación -->
+    <nav th:replace="~{/fragmentos/menu :: menu}" class="navbar navbar-expand-lg navbar-light bg-light"></nav>
+
+    <main class="container my-5">
+        <h1 class="text-center mb-4">Agregar Habitación</h1>
+        <form th:action="@{/save}" th:object="${habitacion}" method="post" class="row g-3">
+            <div class="col-md-6">
+                <input type="hidden" name="id" id="id" th:value="${habitacion.id}">
+                <label for="numHabitacion" class="form-label">Número de Habitación</label>
+                <input type="number" name="numHabitacion" id="numHabitacion" class="form-control" th:value="${habitacion.numHabitacion}" required>
+            </div>
+            <div class="col-md-6">
+                <label for="descripcion" class="form-label">Descripción</label>
+                <input type="text" name="descripcion" id="descripcion" class="form-control" th:value="${habitacion.descripcion}" required>
+            </div>
+            <div class="col-md-6">
+                <label for="nombreCliente" class="form-label">Nombre del Cliente</label>
+                <input type="text" name="nombreCliente" id="nombreCliente" class="form-control" th:value="${habitacion.nombreCliente}" required>
+            </div>
+
+            <div class="col-md-6">
+                <label for="categoria" class="form-label">Categoria</label>
+                <select name="categoria" id="categoria" class="form-select" required>
+                    <option th:value="${habitacion.categoria.id}" th:text="${habitacion.categoria.nombre}" selected></option>
+                    <option th:each="categoria : ${categorias}" th:value="${categoria.id}" th:text="${categoria.nombre}"></option>
+                </select>
+            </div>
+
+            <div class="col-md-6">
+                <label for="precio" class="form-label">Precio</label>
+                <input type="number" step="1.00" name="precio" id="precio" class="form-control" th:value="${habitacion.precio}" required>
+            </div>
+
+            <div class="col-md-6">
+                <label for="numClientes" class="form-label">Número de Clientes</label>
+                <input type="number" name="numClientes" id="numClientes" class="form-control" th:value="${habitacion.numClientes}" required>
+            </div>
+
+            <div class="col-md-6">
+                <label for="fechaEntrada" class="form-label">Fecha de Entrada</label> 
+                <input type="date" name="fechaEntrada" id="fechaEntrada" class="form-control" th:value="${habitacion.fechaEntrada}" required>
+            </div>
+
+            <div class="col-md-6">
+                <label for="fechaSalida" class="form-label">Fecha de Salida</label>
+                <input type="date" name="fechaSalida" id="fechaSalida" class="form-control" th:value="${habitacion.fechaSalida}" required>
+            </div>
+
+            <div class="col-md-6">
+                <label for="limpia" class="form-label">¿Está limpia?</label>
+                <div class="form-check mt-2">
+                    <input type="checkbox" name="limpia" id="limpia" class="form-check-input" th:checked="${habitacion.limpia}">
+                    <label for="limpia" class="form-check-label">Sí</label>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <label for="urlImage" class="form-label">URL de la Imagen</label>
+                <input type="url" name="urlImage" id="urlImage" class="form-control" th:value="${habitacion.urlImage}" required>
+            </div>
+
+            <div class="col-12 text-center">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+        </form>
+    </main>
+
+    <!-- Pie de página -->
+    <footer th:replace="~{/fragmentos/footer :: footer}" class="bg-light text-center py-3 mt-auto">
+        <p class="mb-0">© 2025 Tu Empresa. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>

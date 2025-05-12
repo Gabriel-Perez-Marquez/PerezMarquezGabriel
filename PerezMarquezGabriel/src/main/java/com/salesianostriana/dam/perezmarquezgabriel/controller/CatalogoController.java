@@ -77,5 +77,14 @@ public class CatalogoController {
 		return "redirect:/catalogo"; 
 	 }
 	
+	 
+	 @GetMapping("/reserve")
+		public String reservar(Model model) {
+			Habitacion h= new Habitacion();
+			
+			model.addAttribute("habitacion", h);
+			model.addAttribute("categorias", catalogoService.getCategorias());
+			return "new-room-form";
+		}
 	
 }
