@@ -61,7 +61,7 @@ public class CatalogoController {
 	 
 	 @GetMapping("/edit/{id}")
 	 public String editar(@PathVariable("id") Long id , Model model) {
-		Habitacion h=catalogoService.buscarPorId(id);
+		Habitacion h=catalogoService.buscarPorId(id).orElseThrow();
 		
 		model.addAttribute("habitacion", h);
 		model.addAttribute("categorias", catalogoService.getCategorias());

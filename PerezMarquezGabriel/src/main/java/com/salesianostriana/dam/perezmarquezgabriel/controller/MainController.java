@@ -12,4 +12,9 @@ public class MainController {
 	}
 	
 	
+	@GetMapping("/error")
+	public String error() {
+		return "error";
+	}
+	
 }
