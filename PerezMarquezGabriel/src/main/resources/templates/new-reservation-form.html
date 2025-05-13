@@ -13,25 +13,21 @@
 
     <main class="container my-5">
         <h1 class="text-center mb-4">Reservar Habitación</h1>
-        <form th:action="@{/save}" th:object="${habitacion}" method="post" class="row g-3">
-			<div class="col-md-6">
-				<label for="precio" class="form-label">Precio</label>
-			  	<input type="number" step="1.00" name="precio" id="precio" class="form-control" th:value="${habitacion.precio}" required>
-			</div>
+        <form th:action="@{/save}" th:object="${reserva}" method="post" class="row g-3">
 
 			<div class="col-md-6">
 				<label for="numClientes" class="form-label">Número de Clientes</label>
-				<input type="number" name="numClientes" id="numClientes" class="form-control" th:value="${habitacion.numClientes}" required>
+				<input type="number" name="numClientes" id="numClientes" class="form-control" th:value="${reserva.numClientes}" required>
 			</div>
 
 			<div class="col-md-6">
 				<label for="fechaEntrada" class="form-label">Fecha de Entrada</label> 
-			    <input type="date" name="fechaEntrada" id="fechaEntrada" class="form-control" th:value="${habitacion.fechaEntrada}" required>
+			    <input type="date" name="fechaEntrada" id="fechaEntrada" class="form-control" th:value="${reserva.fechaEntrada}" required>
 			</div>
 
 			<div class="col-md-6">
 				<label for="fechaSalida" class="form-label">Fecha de Salida</label>
-			    <input type="date" name="fechaSalida" id="fechaSalida" class="form-control" th:value="${habitacion.fechaSalida}" required>
+			    <input type="date" name="fechaSalida" id="fechaSalida" class="form-control" th:value="${reserva.fechaSalida}" required>
 			</div>
 
             <div class="col-12 text-center">

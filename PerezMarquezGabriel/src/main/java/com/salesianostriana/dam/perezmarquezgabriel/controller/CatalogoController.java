@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.salesianostriana.dam.perezmarquezgabriel.model.Habitacion;
+import com.salesianostriana.dam.perezmarquezgabriel.model.Reserva;
 import com.salesianostriana.dam.perezmarquezgabriel.service.CatalogoService;
 import com.salesianostriana.dam.perezmarquezgabriel.service.CategoriaService;
 import com.salesianostriana.dam.perezmarquezgabriel.service.HabitacionService;
@@ -89,8 +90,10 @@ public class CatalogoController {
 	 @GetMapping("/reserve")
 		public String reservar(Model model) {
 			Habitacion h= new Habitacion();
+			Reserva r= new Reserva();
 			
 			model.addAttribute("habitacion", h);
+			model.addAttribute("reserva", r);
 			model.addAttribute("categorias", catalogoService.getCategorias());
 			return "new-reservation-form";
 		}
