@@ -10,9 +10,10 @@ import com.salesianostriana.dam.perezmarquezgabriel.model.Categoria;
 import com.salesianostriana.dam.perezmarquezgabriel.model.Habitacion;
 import com.salesianostriana.dam.perezmarquezgabriel.repository.CategoriaRepositorio;
 import com.salesianostriana.dam.perezmarquezgabriel.repository.HabitacionRepositorio;
+import com.salesianostriana.dam.perezmarquezgabriel.service.base.BaseServiceImpl;
 
 @Service
-public class CatalogoService {
+public class CatalogoService extends BaseServiceImpl<Habitacion, Long, HabitacionRepositorio> {
 
 	@Autowired
 	private HabitacionRepositorio habitacionRepositorio;
@@ -48,6 +49,8 @@ public class CatalogoService {
 	public Habitacion buscarPorNumHabitacion(int num){
 		return habitacionRepositorio.findByNumHabitacion(num);
 	}
+	
+	
 
 	
 	

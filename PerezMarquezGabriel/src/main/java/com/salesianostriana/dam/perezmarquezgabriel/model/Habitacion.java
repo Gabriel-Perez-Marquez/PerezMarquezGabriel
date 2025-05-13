@@ -42,6 +42,16 @@ public class Habitacion {
 	}
 	
 	
+	//metodos helper
+	public void agregarACategoria(Categoria c) {
+		this.categoria = c;
+		c.getListHabitaciones().add(this);
+	}
+	
+	public void eliminarDeCategoria(Categoria c) {
+		c.getListHabitaciones().remove(this);
+		this.categoria = null;		
+	}
 	
 	
 	

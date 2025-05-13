@@ -15,7 +15,7 @@
         <h1 class="text-center mb-4">Agregar Habitación</h1>
         <form th:action="@{/save}" th:object="${habitacion}" method="post" class="row g-3">
             <div class="col-md-6">
-                <input type="hidden" name="id" id="id" th:value="${habitacion.id}">
+                <input type="hidden" th:if="${habitacion.id  != null}" name="id" id="id" th:value="${habitacion.id}">
                 <label for="numHabitacion" class="form-label">Número de Habitación</label>
                 <input type="number" name="numHabitacion" id="numHabitacion" class="form-control" th:value="${habitacion.numHabitacion}" required>
             </div>
@@ -23,15 +23,11 @@
                 <label for="descripcion" class="form-label">Descripción</label>
                 <input type="text" name="descripcion" id="descripcion" class="form-control" th:value="${habitacion.descripcion}" required>
             </div>
-            <div class="col-md-6">
-                <label for="nombreCliente" class="form-label">Nombre del Cliente</label>
-                <input type="text" name="nombreCliente" id="nombreCliente" class="form-control" th:value="${habitacion.nombreCliente}" required>
-            </div>
 
             <div class="col-md-6">
                 <label for="categoria" class="form-label">Categoria</label>
                 <select name="categoria" id="categoria" class="form-select" required>
-                    <option th:value="${habitacion.categoria.id}" th:text="${habitacion.categoria.nombre}" selected></option>
+                    <option th:if="${habitacion.categoria  != null}" th:value="${habitacion.categoria.id}" th:text="${habitacion.categoria.nombre}" selected></option>
                     <option th:each="categoria : ${categorias}" th:value="${categoria.id}" th:text="${categoria.nombre}"></option>
                 </select>
             </div>
@@ -42,21 +38,6 @@
             </div>
 
             <div class="col-md-6">
-                <label for="numClientes" class="form-label">Número de Clientes</label>
-                <input type="number" name="numClientes" id="numClientes" class="form-control" th:value="${habitacion.numClientes}" required>
-            </div>
-
-            <div class="col-md-6">
-                <label for="fechaEntrada" class="form-label">Fecha de Entrada</label> 
-                <input type="date" name="fechaEntrada" id="fechaEntrada" class="form-control" th:value="${habitacion.fechaEntrada}" required>
-            </div>
-
-            <div class="col-md-6">
-                <label for="fechaSalida" class="form-label">Fecha de Salida</label>
-                <input type="date" name="fechaSalida" id="fechaSalida" class="form-control" th:value="${habitacion.fechaSalida}" required>
-            </div>
-
-            <div class="col-md-6">
                 <label for="limpia" class="form-label">¿Está limpia?</label>
                 <div class="form-check mt-2">
                     <input type="checkbox" name="limpia" id="limpia" class="form-check-input" th:checked="${habitacion.limpia}">
@@ -64,7 +45,7 @@
                 </div>
             </div>
 
-            <div class="col-md-12">
+            <div class="col-md-6 mb-5">
                 <label for="urlImage" class="form-label">URL de la Imagen</label>
                 <input type="url" name="urlImage" id="urlImage" class="form-control" th:value="${habitacion.urlImage}" required>
             </div>

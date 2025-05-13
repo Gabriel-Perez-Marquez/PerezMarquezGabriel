@@ -1,7 +1,5 @@
 package com.salesianostriana.dam.perezmarquezgabriel.controller;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.salesianostriana.dam.perezmarquezgabriel.model.Habitacion;
 import com.salesianostriana.dam.perezmarquezgabriel.service.CatalogoService;
+import com.salesianostriana.dam.perezmarquezgabriel.service.CategoriaService;
+import com.salesianostriana.dam.perezmarquezgabriel.service.HabitacionService;
 
 
 @Controller
@@ -21,11 +21,18 @@ public class CatalogoController {
 	@Autowired
 	private CatalogoService catalogoService;
 	
+	@Autowired
+	private HabitacionService habitacionService;
 
+	
+	@Autowired
+	private CategoriaService categoriaService;
+	
+	
 	@GetMapping("/catalogo")
 	public String goToCatalogo(Model model) {
 		
-		model.addAttribute("habitaciones", catalogoService.buscarTodos());
+		model.addAttribute("habitaciones", habitacionService.findAll());
 		
 		return "catalogo";
 	}
@@ -54,6 +61,7 @@ public class CatalogoController {
 		 h.setNombre(nombreAuto);
 		 
 		 catalogoService.agregar(h);
+		 
 		 
 		 return "redirect:/catalogo";
 	 }
@@ -84,7 +92,7 @@ public class CatalogoController {
 			
 			model.addAttribute("habitacion", h);
 			model.addAttribute("categorias", catalogoService.getCategorias());
-			return "new-room-form";
+			return "new-reservation-form";
 		}
 	
 }
