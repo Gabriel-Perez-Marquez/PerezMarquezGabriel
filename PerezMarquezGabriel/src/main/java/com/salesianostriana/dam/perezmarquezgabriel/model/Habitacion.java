@@ -5,7 +5,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -18,16 +20,20 @@ public class Habitacion {
 	private Long id;
 	private int numHabitacion;
 	private String nombre;
+	
+	@Lob
 	private String descripcion;
 
 	@ManyToOne
 	@JoinColumn(name = "categoria_id")
 	private Categoria categoria;
 	private double precio;
-	
-
 	private boolean limpia;
 	private String urlImage;
+	
+	@OneToOne
+	@JoinColumn(name="reserva_id")
+	private Reserva reserva;
 	
 	
 	public Habitacion(int numHabitacion, String descripcion, Categoria categoria, double precio, boolean limpia, String urlImage) {

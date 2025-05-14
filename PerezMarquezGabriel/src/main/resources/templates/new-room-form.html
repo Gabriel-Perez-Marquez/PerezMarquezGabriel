@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/bootstrap.min.css" th:href="@{/bootstrap.min.css}" />
-    <title>Agregar Habitación</title>
+    <title>Datos Habitación</title>
 </head>
 <body class="d-flex flex-column min-vh-100">
 
@@ -12,7 +12,7 @@
     <nav th:replace="~{/fragmentos/menu :: menu}" class="navbar navbar-expand-lg navbar-light bg-light"></nav>
 
     <main class="container my-5">
-        <h1 class="text-center mb-4">Agregar Habitación</h1>
+        <h1 class="text-center mb-4">Datos Habitación</h1>
         <form th:action="@{/save}" th:object="${habitacion}" method="post" class="row g-3">
             <div class="col-md-6">
                 <input type="hidden" th:if="${habitacion.id  != null}" name="id" id="id" th:value="${habitacion.id}">

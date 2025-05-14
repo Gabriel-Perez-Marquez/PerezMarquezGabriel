@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import com.salesianostriana.dam.perezmarquezgabriel.model.Categoria;
 import com.salesianostriana.dam.perezmarquezgabriel.model.Habitacion;
 
 public interface HabitacionRepositorio extends JpaRepository<Habitacion, Long> {
@@ -15,5 +16,6 @@ public interface HabitacionRepositorio extends JpaRepository<Habitacion, Long> {
 	
 	
 	Habitacion findByNumHabitacion(int numHabitacion);
-
+	
+	List<Habitacion> findByCategoria(List<Long> idsCategorias);
 }

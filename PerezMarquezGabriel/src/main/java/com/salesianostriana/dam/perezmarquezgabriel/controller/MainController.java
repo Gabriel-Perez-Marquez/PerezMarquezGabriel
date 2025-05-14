@@ -17,4 +17,9 @@ public class MainController {
 		return "error";
 	}
 	
+	@GetMapping("/QuienesSomos")
+	public String quienesSomos() {
+		return "quienessomos";
+	}
+	
 }

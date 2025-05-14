@@ -1,5 +1,7 @@
 package com.salesianostriana.dam.perezmarquezgabriel.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,10 +33,18 @@ public class CatalogoController {
 	
 	
 	@GetMapping("/catalogo")
-	public String goToCatalogo(Model model) {
+	public String goToCatalogo(@RequestParam(value = "categoria", required = false) List<Long> idsCategorias, Model model) {
 		
-		model.addAttribute("habitaciones", habitacionService.findAll());
+		System.out.println("Categorías seleccionadas: " + idsCategorias);
 		
+		if(idsCategorias != null) {
+			model.addAttribute("habitaciones", habitacionService.getRepository().findByCategoria(idsCategorias));
+		} else {
+			model.addAttribute("habitaciones", habitacionService.findAll());
+		}
+		
+		model.addAttribute("categorias", catalogoService.getCategorias());
+		model.addAttribute("categoriasSeleccionadas", idsCategorias);
 		return "catalogo";
 	}
 	

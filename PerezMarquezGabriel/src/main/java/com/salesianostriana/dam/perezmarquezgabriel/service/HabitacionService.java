@@ -11,6 +11,4 @@ import com.salesianostriana.dam.perezmarquezgabriel.service.base.BaseServiceImpl
 public class HabitacionService extends BaseServiceImpl<Habitacion, Long, HabitacionRepositorio>{
 
 	
-	
-	
 }
