@@ -47,9 +47,6 @@ public abstract class
 		repository.deleteById(id);		
 	}
 
-	public R getRepository() {
-		return repository;
-	}
 	
 	
 

@@ -50,6 +50,10 @@ public class CatalogoService extends BaseServiceImpl<Habitacion, Long, Habitacio
 		return habitacionRepositorio.findByNumHabitacion(num);
 	}
 	
+	public List<Habitacion> buscarPorCategoria(List<Long> ids){
+		return  habitacionRepositorio.findByCategoria(ids);
+	}
+	
 	
 
 	

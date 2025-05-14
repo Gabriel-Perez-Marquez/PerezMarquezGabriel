@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.salesianostriana.dam.perezmarquezgabriel.model.Categoria;
 import com.salesianostriana.dam.perezmarquezgabriel.model.Habitacion;
 import com.salesianostriana.dam.perezmarquezgabriel.model.Reserva;
+import com.salesianostriana.dam.perezmarquezgabriel.repository.HabitacionRepositorio;
 import com.salesianostriana.dam.perezmarquezgabriel.service.CatalogoService;
 import com.salesianostriana.dam.perezmarquezgabriel.service.CategoriaService;
 import com.salesianostriana.dam.perezmarquezgabriel.service.HabitacionService;
@@ -26,25 +28,22 @@ public class CatalogoController {
 	
 	@Autowired
 	private HabitacionService habitacionService;
-
 	
 	@Autowired
 	private CategoriaService categoriaService;
 	
 	
 	@GetMapping("/catalogo")
-	public String goToCatalogo(@RequestParam(value = "categoria", required = false) List<Long> idsCategorias, Model model) {
+	public String goToCatalogo(@RequestParam(value = "categoria", required = false) List<Long> ids, Model model) {
 		
-		System.out.println("Categorías seleccionadas: " + idsCategorias);
-		
-		if(idsCategorias != null) {
-			model.addAttribute("habitaciones", habitacionService.getRepository().findByCategoria(idsCategorias));
+		if(ids != null) {
+			model.addAttribute("habitaciones", habitacionService.buscarPorCategoria(ids));
 		} else {
 			model.addAttribute("habitaciones", habitacionService.findAll());
 		}
 		
-		model.addAttribute("categorias", catalogoService.getCategorias());
-		model.addAttribute("categoriasSeleccionadas", idsCategorias);
+		model.addAttribute("categorias", categoriaService.findAll());
+		model.addAttribute("categoriasSeleccionadas", ids);
 		return "catalogo";
 	}
 	
@@ -53,14 +52,14 @@ public class CatalogoController {
 		Habitacion h= new Habitacion();
 		
 		model.addAttribute("habitacion", h);
-		model.addAttribute("categorias", catalogoService.getCategorias());
+		model.addAttribute("categorias", categoriaService.findAll());
 		return "new-room-form";
 	}
 	
 	 @GetMapping("/buscar")
 	    public String buscarPorNombre(@RequestParam("nombre") String nombre, Model model) {
 		 	model.addAttribute("nombre", nombre);
-	        model.addAttribute("habitaciones", catalogoService.buscarPorNombre(nombre));
+	        model.addAttribute("habitaciones", habitacionService.buscarPorNombre(nombre));
 	        return "catalogo"; 
 	    }
 	
@@ -71,7 +70,7 @@ public class CatalogoController {
 		 String nombreAuto = "Habitacion " + h.getCategoria().getNombre() + " " + h.getNumHabitacion();
 		 h.setNombre(nombreAuto);
 		 
-		 catalogoService.agregar(h);
+		 habitacionService.save(h);
 		 
 		 
 		 return "redirect:/catalogo";
