@@ -6,7 +6,8 @@
     <title>Menú</title>
 </head>
 <body>
-    <nav th:fragment="menu"
+  <header th:fragment="menu">
+    <nav
       class="navbar navbar-expand-lg navbar-light bg-primary p-3"
       data-bs-theme="dark"
     >
@@ -31,11 +32,20 @@
               <a class="nav-link" th:href="@{/catalogo}">Catálogo</a>
             </li> 
             <li class="nav-item">
-              <a class="nav-link" th:href="@{/QuienesSomos}">Quienes Somos</a>
+              <a class="nav-link" th:href="@{/habitaciones}">Gestion Habitaciones</a>
             </li>
+			<li class="nav-item">
+			  <a class="nav-link" th:href="@{/categorias}">Gestión Categorias</a>
+            </li>
+			<li class="nav-item">
+			  <a class="nav-link" th:href="@{/QuienesSomos}">Quienes Somos</a>
+			</li>
+			
           </ul>
         </div>
       </div>
     </nav>
+  </header>
+    
 </body>
 </html>
