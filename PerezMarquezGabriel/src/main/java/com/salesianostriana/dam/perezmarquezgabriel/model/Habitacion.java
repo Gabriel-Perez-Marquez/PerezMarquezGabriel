@@ -1,6 +1,7 @@
 package com.salesianostriana.dam.perezmarquezgabriel.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -31,7 +32,7 @@ public class Habitacion {
 	private boolean limpia;
 	private String urlImage;
 	
-	@OneToOne
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="reserva_id")
 	private Reserva reserva;
 	
@@ -59,6 +60,20 @@ public class Habitacion {
 		this.categoria = null;		
 	}
 	
+	
+
+	public void agregarReserva(Reserva r) {
+	    this.reserva = r;
+	    r.setH(this); 
+	}
+
+	public void eliminarReserva() {
+	    if (this.reserva != null) {
+	        this.reserva.setH(null);
+	        this.reserva = null;
+	    }
+	}
+
 	
 	
 }

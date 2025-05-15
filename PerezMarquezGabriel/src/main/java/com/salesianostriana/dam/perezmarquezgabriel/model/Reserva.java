@@ -6,11 +6,13 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 
 
-@Data
+@Data @NoArgsConstructor @AllArgsConstructor
 @Entity
 public class Reserva {
 
@@ -27,6 +29,5 @@ public class Reserva {
 	private int numNiños;
 	private LocalDate fechaEntrada;
 	private LocalDate fechaSalida;
-	
 	
 }

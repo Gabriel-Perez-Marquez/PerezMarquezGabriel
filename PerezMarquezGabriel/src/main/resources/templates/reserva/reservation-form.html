@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/bootstrap.min.css" th:href="@{/bootstrap.min.css}" />
+    <title>Reservar Habitación</title>
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+    <!-- Menú de navegación -->
+    <header th:replace="~{/fragmentos/menu :: menu}"></header>
+
+    <main class="container my-5">
+        <h1 class="text-center mb-4">Reservar Habitación</h1>
+        <form th:action="@{/reservas/save}" th:object="${reserva}" method="post" class="row g-3">
+
+            <!-- Mostrar info de la habitación -->
+            <div class="col-12">
+                <p class="fw-bold">Habitación seleccionada:</p>
+                <p th:text="${habitacion.nombre}">Habitación A</p>
+            </div>
+
+            <!-- Campo oculto para enviar el ID de la habitación -->
+            <input type="hidden" th:field="*{h.id}" />
+
+            <div class="col-md-6">
+                <label for="nombreTitular" class="form-label">Nombre del Titular</label>
+                <input type="text" th:field="*{nombreTitular}" class="form-control" required />
+            </div>
+
+            <div class="col-md-6">
+                <label for="apellidosTitular" class="form-label">Apellidos</label>
+                <input type="text" th:field="*{apellidosTitular}" class="form-control" required />
+            </div>
+
+            <div class="col-md-6">
+                <label for="telefono" class="form-label">Teléfono</label>
+                <input type="number" th:field="*{telefono}" class="form-control" required />
+            </div>
+
+            <div class="col-md-4">
+                <label for="numClientes" class="form-label">Número de Clientes</label>
+                <input type="number" th:field="*{numClientes}" class="form-control" required />
+            </div>
+
+            <div class="col-md-4">
+                <label for="numAdultos" class="form-label">Adultos</label>
+                <input type="number" th:field="*{numAdultos}" class="form-control" required />
+            </div>
+
+            <div class="col-md-4">
+                <label for="numNiños" class="form-label">Niños</label>
+                <input type="number" th:field="*{numNiños}" class="form-control" required />
+            </div>
+
+            <div class="col-md-6">
+                <label for="fechaEntrada" class="form-label">Fecha de Entrada</label>
+                <input type="date" th:field="*{fechaEntrada}" class="form-control" required />
+            </div>
+
+            <div class="col-md-6">
+                <label for="fechaSalida" class="form-label">Fecha de Salida</label>
+                <input type="date" th:field="*{fechaSalida}" class="form-control" required />
+            </div>
+
+            <div class="col-12 text-center">
+                <button type="submit" class="btn btn-primary">Guardar Reserva</button>
+            </div>
+        </form>
+
+    </main>
+
+    <!-- Pie de página -->
+    <footer th:replace="~{/fragmentos/footer :: footer}" class="bg-light text-center py-3 mt-auto">
+        <p class="mb-0">© 2025 Tu Empresa. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>

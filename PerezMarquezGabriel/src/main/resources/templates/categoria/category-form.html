@@ -16,12 +16,12 @@
         <form th:action="@{/saveCategory}" th:object="${categoria}" method="post" class="row g-3">
             <div class="col-md-6">
                 <input type="hidden" th:if="${categoria.id  != null}" name="id" id="id" th:value="${categoria.id}">
-                <label for="numHabitacion" class="form-label">Nombre</label>
+                <label for="numHabitacion" class="form-label">Nombre <span class="text-danger">*</span></label>
                 <input type="text" name="nombre" id="nombre" class="form-control" th:value="${categoria.nombre}" required>
             </div>
 
             <div class="col-md-6">
-                <label for="descripcion" class="form-label">Número de personas que acepta la habitacion</label>
+                <label for="descripcion" class="form-label">Número de personas que acepta la habitacion <span class="text-danger">*</span></label>
                 <input type="number" name="numPersonas" id="numPersonas" class="form-control" th:value="${categoria.numPersonas}" required>
             </div>
 

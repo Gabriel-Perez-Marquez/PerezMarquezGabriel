@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.salesianostriana.dam.perezmarquezgabriel.service.CategoriaService;
 import com.salesianostriana.dam.perezmarquezgabriel.service.HabitacionService;
+import com.salesianostriana.dam.perezmarquezgabriel.service.ReservaService;
 
 @Controller
 public class MainController {
@@ -21,6 +22,9 @@ public class MainController {
 	@Autowired
 	private CategoriaService categoriaService;
 	
+	
+	@Autowired
+	private ReservaService reservaService;
 	
 	
 	@GetMapping("/")
@@ -39,7 +43,7 @@ public class MainController {
 		
 		model.addAttribute("categorias", categoriaService.findAll());
 		model.addAttribute("categoriasSeleccionadas", ids);
-		return "catalogo";
+		return "habitacion/catalogo";
 	}
 	
 	
@@ -49,7 +53,7 @@ public class MainController {
 		model.addAttribute("habitaciones", habitacionService.findAll());
 		model.addAttribute("categorias", categoriaService.findAll());
 		
-		return "habitaciones";
+		return "habitacion/habitaciones";
 	}
 	
 	
@@ -58,7 +62,14 @@ public class MainController {
 		
 		model.addAttribute("categorias", categoriaService.findAll());
 		
-		return "categorias";
+		return "categoria/categorias";
+	}
+	
+	
+	@GetMapping("/reservas")
+	public String gestionReservas(Model model) {
+		model.addAttribute("reservas", reservaService.findAll());
+		return "reserva/reservas";
 	}
 	
 	
@@ -67,6 +78,8 @@ public class MainController {
 	public String error() {
 		return "error";
 	}
+	
+	
 	
 	@GetMapping("/QuienesSomos")
 	public String quienesSomos() {

@@ -1,5 +1,8 @@
 package com.salesianostriana.dam.perezmarquezgabriel.controller;
 
+import java.time.LocalDate;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,7 +34,7 @@ public class HabitacionController {
 
 		model.addAttribute("habitacion", h);
 		model.addAttribute("categorias", categoriaService.findAll());
-		return "new-room-form";
+		return "habitacion/room-form";
 	}
 
 	@PostMapping("/save")
@@ -42,7 +45,7 @@ public class HabitacionController {
 
 		habitacionService.save(h);
 
-		return "redirect:/habitaciones";
+		return "redirect:habitacion/habitaciones";
 	}
 
 	@GetMapping("/edit/{id}")
@@ -52,7 +55,7 @@ public class HabitacionController {
 		model.addAttribute("habitacion", h);
 		model.addAttribute("categorias", categoriaService.findAll());
 
-		return "new-room-form";
+		return "habitacion/room-form";
 	}
 
 	@GetMapping("/delete/{id}")
@@ -60,26 +63,32 @@ public class HabitacionController {
 
 		habitacionService.delete(habitacionService.findById(id).orElseThrow());
 
-		return "redirect:/habitaciones";
+		return "redirect:habitacion//habitaciones";
 	}
 
-	@GetMapping("/reserve")
-	public String reservar(Model model) {
-		Habitacion h = new Habitacion();
-		Reserva r = new Reserva();
-
-		model.addAttribute("habitacion", h);
-		model.addAttribute("reserva", r);
-		model.addAttribute("categorias", categoriaService.findAll());
-		return "new-reservation-form";
-	}
 
 	@GetMapping("/buscar")
 	public String buscarPorNombre(@RequestParam("nombre") String nombre, Model model) {
 		model.addAttribute("nombre", nombre);
 		model.addAttribute("habitaciones", habitacionService.buscarPorNombre(nombre));
 		model.addAttribute("categorias", categoriaService.findAll());
-		return "catalogo";
+		return "habitacion/catalogo";
 	}
+	
+	
+	@GetMapping("/view/{id}")
+	public String verDetalleHabitacion(@PathVariable Long id, Model model) {
+		String today;
+	    Optional<Habitacion> habitacionOpt = habitacionService.findById(id);
+	    if (habitacionOpt.isPresent()) {
+	        model.addAttribute("habitacion", habitacionOpt.get());
+	        today = LocalDate.now().toString();
+	        model.addAttribute("today", today);
+	        return "habitacion/verDetalles"; 
+	    } else {
+	        return "redirect:habitacion/habitaciones"; 
+	    }
+	}
+
 
 }

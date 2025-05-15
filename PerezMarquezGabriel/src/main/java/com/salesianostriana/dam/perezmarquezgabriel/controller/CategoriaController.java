@@ -29,15 +29,15 @@ public class CategoriaController {
 		
 		model.addAttribute("categoria", new Categoria());
 		
-		return "new-category-form";
+		return "categoria/category-form";
 	}
 
 	@PostMapping("/save")
-	public String guardarHab(@ModelAttribute Categoria c) {
+	public String guardarCategoria(@ModelAttribute Categoria c) {
 
 		categoriaService.save(c);
 
-		return "redirect:/habitaciones";
+		return "redirect:categoria/categorias";
 	}
 
 	@GetMapping("/edit/{id}")
@@ -46,7 +46,7 @@ public class CategoriaController {
 
 		model.addAttribute("categoria", c);
 
-		return "new-category-room";
+		return "categoria/category-form";
 	}
 
 	@GetMapping("/delete/{id}")
@@ -58,11 +58,11 @@ public class CategoriaController {
 	    if (!categoria.getListHabitaciones().isEmpty()) {
 	        model.addAttribute("mensajeError", "Esta categoría tiene habitaciones asignadas");
 	        model.addAttribute("categorias", categoriaService.findAll());
-	        return "categorias";
+	        return "categoria/categorias";
 	    }
 
 	    categoriaService.delete(categoria);
-	    return "redirect:/categorias";
+	    return "redirect:categoria/categorias";
 	}
 
 
