@@ -52,6 +52,17 @@ public class MainController {
 		return "habitaciones";
 	}
 	
+	
+	@GetMapping("/categorias")
+	public String gestionCategorias(Model model) {
+		
+		model.addAttribute("categorias", categoriaService.findAll());
+		
+		return "categorias";
+	}
+	
+	
+	
 	@GetMapping("/error")
 	public String error() {
 		return "error";

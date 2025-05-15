@@ -78,6 +78,7 @@ public class HabitacionController {
 	public String buscarPorNombre(@RequestParam("nombre") String nombre, Model model) {
 		model.addAttribute("nombre", nombre);
 		model.addAttribute("habitaciones", habitacionService.buscarPorNombre(nombre));
+		model.addAttribute("categorias", categoriaService.findAll());
 		return "catalogo";
 	}
 

@@ -23,6 +23,6 @@ public class Categoria {
 	private Long id;
 	private String nombre;
 	private int numPersonas;
-	@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "categoria")
 	private List<Habitacion> listHabitaciones;
 }

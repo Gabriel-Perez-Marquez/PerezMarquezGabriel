@@ -57,7 +57,7 @@
               </form>
             </div>
             <div class="col-12 col-md-6 justify-content-md-end d-flex">
-              <form th:action="@{/buscar}" class="w-50 mt-4" method="get">
+              <form th:action="@{/habitaciones/buscar}" class="w-50 mt-4" method="get">
                 <div class="input-group mt-3 mt-md-0">
                   <input type="text" name="nombre" id="buscar" class="form-control" placeholder="Buscar...">
                   <button class="btn btn-primary" type="submit">Buscar</button>
@@ -76,10 +76,6 @@
                   <p class="card-text" th:text="${habitacion.descripcion}">Descripción</p>
                   <p class="card-text"><strong th:text="${habitacion.precio}">Precio</strong> €/noche</p>
                   <a th:href="@{/reserve}" class="btn btn-primary w-100">Reservar</a>
-                </div>
-                <div class="card-footer d-flex justify-content-between">
-                  <a th:href="@{edit/}+${habitacion.id}" class="btn btn-warning ms-2 me-2"><i class="bi bi-pencil"></i></a>
-                  <a th:href="@{delete/}+${habitacion.id}" class="btn btn-danger"><i class="bi bi-trash"></i></a>
                 </div>
               </div>
             </div>
