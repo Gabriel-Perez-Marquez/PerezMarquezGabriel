@@ -62,7 +62,7 @@ public class HabitacionController {
 		
 		Habitacion h= habitacionService.findById(id).orElseThrow();
 		
-		if (h.getReserva() != null) {
+		if (h.getReservas() != null) {
 	        model.addAttribute("mensajeError", "Esta habitación tiene reserva asignada");
 	        model.addAttribute("categorias", categoriaService.findAll());
 	        model.addAttribute("habitaciones", habitacionService.findAll());

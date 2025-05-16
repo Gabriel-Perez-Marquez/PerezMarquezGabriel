@@ -3,9 +3,11 @@ package com.salesianostriana.dam.perezmarquezgabriel.model;
 import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,8 +21,9 @@ public class Reserva {
 	@Id
 	@GeneratedValue
 	private Long id;
-	@OneToOne
-	private Habitacion h;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "habitacion_id")
+	private Habitacion habitacion;
 	private String nombreTitular;
 	private String apellidosTitular;
 	private int telefono;

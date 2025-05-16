@@ -1,14 +1,15 @@
 package com.salesianostriana.dam.perezmarquezgabriel.model;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.OneToMany;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -32,9 +33,8 @@ public class Habitacion {
 	private boolean limpia;
 	private String urlImage;
 	
-	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name="reserva_id")
-	private Reserva reserva;
+	@OneToMany(mappedBy = "habitacion")
+	private List<Reserva> reservas;
 	
 	
 	public Habitacion(int numHabitacion, String descripcion, Categoria categoria, double precio, boolean limpia, String urlImage) {
@@ -62,17 +62,16 @@ public class Habitacion {
 	
 	
 
-	public void agregarReserva(Reserva r) {
-	    this.reserva = r;
-	    r.setH(this); 
+	public void agregarReserva(Reserva reserva) {
+	    reservas.add(reserva);
+	    reserva.setHabitacion(this);
 	}
 
-	public void eliminarReserva() {
-	    if (this.reserva != null) {
-	        this.reserva.setH(null);
-	        this.reserva = null;
-	    }
+	public void eliminarReserva(Reserva reserva) {
+	    reservas.remove(reserva);
+	    reserva.setHabitacion(null);
 	}
+
 
 	
 	

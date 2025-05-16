@@ -25,6 +25,13 @@
       <i class="bi bi-plus-circle"></i> Agregar reserva
     </button>
   </div>
+  <div
+      th:if="${error}"
+      class="alert alert-danger text-center w-50"
+      role="alert"
+  >
+	<span th:text="${error}">Mensaje de error</span>
+  </div>
 
   <div class="table-responsive rounded min-vh-100">
     <table class="table table-hover align-middle">
@@ -45,7 +52,7 @@
       <tbody class="text-center">
         <tr th:each="reserva : ${reservas}">
           <td th:text="${reserva.id}">1</td>
-          <td th:text="${reserva.h.nombre}">Habitación A</td>
+          <td th:text="${reserva.habitacion.nombre}">Habitación A</td>
           <td th:text="${reserva.nombreTitular} + ' ' + ${reserva.apellidosTitular}">Juan Pérez</td>
           <td th:text="${reserva.telefono}">123456789</td>
           <td th:text="${reserva.numClientes}">2</td>

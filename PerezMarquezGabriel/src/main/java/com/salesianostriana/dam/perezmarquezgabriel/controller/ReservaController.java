@@ -54,7 +54,7 @@ public class ReservaController {
 		Reserva reserva = new Reserva();
 	    Optional<Habitacion> optionalHabitacion = habitacionService.findById(idHabitacion);
 	    if (optionalHabitacion.isPresent()) {
-	    	reserva.setH(optionalHabitacion.get()); 
+	    	reserva.setHabitacion(optionalHabitacion.get()); 
 		    model.addAttribute("reserva", reserva);
 		    model.addAttribute("habitacion", optionalHabitacion.get());
 		    model.addAttribute("categorias", categoriaService.findAll());
@@ -72,8 +72,8 @@ public class ReservaController {
 		String today;
 		Reserva reserva = new Reserva();
 	    Optional<Habitacion> optionalHabitacion = habitacionService.findByNumHabitacion(numHabitacion);
-	    if (optionalHabitacion.isPresent()) {
-	    	reserva.setH(optionalHabitacion.get()); 
+	    if (optionalHabitacion.isPresent() && optionalHabitacion.get() != null) {
+	    	reserva.setHabitacion(optionalHabitacion.get()); 
 		    model.addAttribute("reserva", reserva);
 		    model.addAttribute("habitacion", optionalHabitacion.get());
 		    model.addAttribute("categorias", categoriaService.findAll());
@@ -81,7 +81,9 @@ public class ReservaController {
 	        model.addAttribute("today", today);
 		    return "reserva/reservation-form";
 	    } else {
-	    	return "redirect:/reservas";
+	    	model.addAttribute("reservas", reservaService.findAll());
+	    	model.addAttribute("error", "La habitación con ese número no existe ");
+	    	return "reserva/reservas";
 	    }
 	}
 	
@@ -90,16 +92,16 @@ public class ReservaController {
 
 	@PostMapping("/save")
 	public String guardarReserva(@ModelAttribute("reserva") Reserva reserva, Model model) {
-	    Long idHabitacion = reserva.getH().getId();
+	    Long idHabitacion = reserva.getHabitacion().getId();
 	    Optional<Habitacion> habitacionOpt = habitacionService.findById(idHabitacion);
 	    if (!habitacionOpt.isPresent()) {
 	        model.addAttribute("error", "Habitación no válida");
 	        return "reserva/reservation-form";
 	    }
 
-	    reserva.setH(habitacionOpt.get());
+	    reserva.setHabitacion(habitacionOpt.get());
 	    
-	    habitacionOpt.get().setReserva(reserva);
+	    habitacionOpt.get().getReservas().add(reserva);
 
 	    reservaService.save(reserva);
 
@@ -110,16 +112,24 @@ public class ReservaController {
 	@GetMapping("/edit/{id}")
 	public String editar(@PathVariable("id") Long id, Model model) {
 		Reserva r = reservaService.findById(id).orElseThrow();
-
-		model.addAttribute("reserva", r);
-		model.addAttribute("categorias", categoriaService.findAll());
-
-		return "reservation-form";
+		Optional<Habitacion> habitacionOptional = habitacionService.findById(id);
+		
+		if(habitacionOptional.isPresent()) {
+			model.addAttribute("reserva", r);
+			model.addAttribute("categorias", categoriaService.findAll());
+			model.addAttribute("habitacion", habitacionOptional.get());
+			return "reserva/reservation-form";
+		} else {
+			model.addAttribute("error", "Esa reserva no es válida");
+	    	model.addAttribute("reservas", reservaService.findAll());
+			return "reserva/reservas";
+		}
+		
 	}
 
 	@GetMapping("/delete/{id}")
 	public String borrar(@PathVariable("id") Long id) {
-
+		System.out.println(id);
 		reservaService.delete(reservaService.findById(id).get());
 
 		return "redirect:/reservas";

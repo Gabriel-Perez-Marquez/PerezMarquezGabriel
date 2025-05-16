@@ -46,7 +46,7 @@
             <td th:text="${habitacion.descripcion}">Una descripción corta</td>
             <td><span th:text="${habitacion.precio}">100</span> €</td>
             <td th:text="${habitacion.categoria.nombre}">Doble</td>
-            <td th:text="${habitacion.reserva} == null ? 'No' : 'Sí'">No</td>
+			<td th:text="${#lists.isEmpty(habitacion.reservas)} ? 'No' : 'Sí'">No</td>
             <td>
               <img th:src="${habitacion.urlImage}" alt="Imagen" style="width: 80px; height: auto;">
             </td>

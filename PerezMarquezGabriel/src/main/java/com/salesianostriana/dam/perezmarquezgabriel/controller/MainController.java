@@ -51,8 +51,7 @@ public class MainController {
 	    if (minPrecio != null && maxPrecio != null) {    	
 	    		habitaciones=habitacionService.filtrarPorPrecio(habitaciones, minPrecio, maxPrecio);
 	    }
-
-	    // Paginación opcional (si estás usándola)
+	    
 	    model.addAttribute("habitaciones", habitaciones);
 	    model.addAttribute("categorias", categoriaService.findAll());
 	    model.addAttribute("categoriasSeleccionadas", categoria);
