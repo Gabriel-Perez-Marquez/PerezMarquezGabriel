@@ -1,10 +1,6 @@
 package com.salesianostriana.dam.perezmarquezgabriel.controller;
 
-import java.lang.foreign.Linker.Option;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -62,7 +58,7 @@ public class CategoriaController {
 	    }
 
 	    categoriaService.delete(categoria);
-	    return "redirect:categoria/categorias";
+	    return "redirect:/categorias";
 	}
 
 

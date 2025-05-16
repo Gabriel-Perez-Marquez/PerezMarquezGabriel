@@ -1,6 +1,7 @@
 package com.salesianostriana.dam.perezmarquezgabriel.controller;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.salesianostriana.dam.perezmarquezgabriel.model.Habitacion;
 import com.salesianostriana.dam.perezmarquezgabriel.service.CategoriaService;
 import com.salesianostriana.dam.perezmarquezgabriel.service.HabitacionService;
 import com.salesianostriana.dam.perezmarquezgabriel.service.ReservaService;
@@ -33,18 +35,33 @@ public class MainController {
 	}
 	
 	@GetMapping("/catalogo")
-	public String goToCatalogo(@RequestParam(value = "categoria", required = false) List<Long> ids, Model model) {
-		
-		if(ids != null) {
-			model.addAttribute("habitaciones", habitacionService.buscarPorCategoria(ids));
-		} else {
-			model.addAttribute("habitaciones", habitacionService.findAll());
-		}
-		
-		model.addAttribute("categorias", categoriaService.findAll());
-		model.addAttribute("categoriasSeleccionadas", ids);
-		return "habitacion/catalogo";
+	public String catalogo(@RequestParam(required = false) List<Long> categoria,
+	                       @RequestParam(required = false, defaultValue = "0") Integer minPrecio,
+	                       @RequestParam(required = false) Integer maxPrecio,
+	                       Model model) {
+
+	    List<Habitacion> habitaciones = habitacionService.findAll();
+
+	    // Filtrar por categoría
+	    if (categoria != null && !categoria.isEmpty()) {
+	    	habitaciones=habitacionService.filtrarPorCategoria(habitaciones, categoria);
+	    }
+
+	    // Filtrar por precio
+	    if (minPrecio != null && maxPrecio != null) {    	
+	    		habitaciones=habitacionService.filtrarPorPrecio(habitaciones, minPrecio, maxPrecio);
+	    }
+
+	    // Paginación opcional (si estás usándola)
+	    model.addAttribute("habitaciones", habitaciones);
+	    model.addAttribute("categorias", categoriaService.findAll());
+	    model.addAttribute("categoriasSeleccionadas", categoria);
+	    model.addAttribute("minPrecio", minPrecio);
+	    model.addAttribute("maxPrecio", maxPrecio);
+
+	    return "habitacion/catalogo";
 	}
+
 	
 	
 	@GetMapping("/habitaciones")

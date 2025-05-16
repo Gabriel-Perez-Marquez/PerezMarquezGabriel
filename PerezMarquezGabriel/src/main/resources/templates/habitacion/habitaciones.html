@@ -18,6 +18,13 @@
     <div class="col-12 col-md-9 d-flex mb-3">
       <a th:href="@{/habitaciones/add-new-room}" class="btn btn-primary btn-lg"><i class="bi bi-plus-circle"></i> Agregar habitación</a>
     </div>
+    <div
+        th:if="${mensajeError}"
+        class="alert alert-danger text-center w-50"
+        role="alert"
+      >
+        <span th:text="${mensajeError}">Mensaje de error</span>
+    </div>
     <div class="table-responsive rounded min-vh-100">
       <table class="table table-hover align-middle">
         <thead class="table-dark text-center">

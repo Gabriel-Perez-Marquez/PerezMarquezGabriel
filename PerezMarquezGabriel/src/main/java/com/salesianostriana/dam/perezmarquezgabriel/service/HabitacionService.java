@@ -1,10 +1,10 @@
 package com.salesianostriana.dam.perezmarquezgabriel.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.salesianostriana.dam.perezmarquezgabriel.model.Habitacion;
 import com.salesianostriana.dam.perezmarquezgabriel.repository.HabitacionRepositorio;
 import com.salesianostriana.dam.perezmarquezgabriel.service.base.BaseServiceImpl;
@@ -13,8 +13,10 @@ import com.salesianostriana.dam.perezmarquezgabriel.service.base.BaseServiceImpl
 @Service
 public class HabitacionService extends BaseServiceImpl<Habitacion, Long, HabitacionRepositorio>{
 
+
 	@Autowired
 	private HabitacionRepositorio habitacionRepositorio;
+
 	
 	public List<Habitacion> buscarPorCategoria(List<Long> ids){
 		return  habitacionRepositorio.findByCategoria(ids);
@@ -30,4 +32,22 @@ public class HabitacionService extends BaseServiceImpl<Habitacion, Long, Habitac
 		return habitacionRepositorio.buscarPorNombre(nombre);
 	}
 	
+	public List<Habitacion> filtrarPorPrecio(List<Habitacion> habitaciones, Integer minPrecio, 
+			Integer maxPrecio) {
+		habitaciones = habitaciones.stream()
+			    .filter(h -> h.getPrecio() >= minPrecio && h.getPrecio() <= maxPrecio)
+			    .collect(Collectors.toList());
+	    return habitaciones;
+	}
+	
+	
+	public List<Habitacion> filtrarPorCategoria(List<Habitacion> habitaciones, List<Long> categorias){
+		habitaciones = habitaciones.stream()
+                .filter(h -> h.getCategoria() != null && categorias.contains(h.getCategoria().getId()))
+                .collect(Collectors.toList());
+		
+		
+		
+		return habitaciones;
+	}
 }

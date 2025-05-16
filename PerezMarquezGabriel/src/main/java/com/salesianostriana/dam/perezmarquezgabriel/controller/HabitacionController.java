@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.salesianostriana.dam.perezmarquezgabriel.model.Habitacion;
-import com.salesianostriana.dam.perezmarquezgabriel.model.Reserva;
 import com.salesianostriana.dam.perezmarquezgabriel.service.CategoriaService;
 import com.salesianostriana.dam.perezmarquezgabriel.service.HabitacionService;
 
@@ -59,11 +58,21 @@ public class HabitacionController {
 	}
 
 	@GetMapping("/delete/{id}")
-	public String borrar(@PathVariable("id") Long id) {
-
+	public String borrar(@PathVariable("id") Long id, Model model) {
+		
+		Habitacion h= habitacionService.findById(id).orElseThrow();
+		
+		if (h.getReserva() != null) {
+	        model.addAttribute("mensajeError", "Esta habitación tiene reserva asignada");
+	        model.addAttribute("categorias", categoriaService.findAll());
+	        model.addAttribute("habitaciones", habitacionService.findAll());
+	        return "habitacion/habitaciones";
+	    }
+		
+		
 		habitacionService.delete(habitacionService.findById(id).orElseThrow());
 
-		return "redirect:habitacion//habitaciones";
+		return "redirect:/habitaciones";
 	}
 
 

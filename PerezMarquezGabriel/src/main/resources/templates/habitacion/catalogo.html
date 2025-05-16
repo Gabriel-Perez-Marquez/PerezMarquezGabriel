@@ -36,9 +36,24 @@
                        onchange="this.form.submit()" />
                 <label class="form-check-label" th:for="'categoria-' + ${categoria.id}" th:text="${categoria.nombre}">Categoría</label>
               </div>
+              <a th:href="@{/catalogo}" class="btn btn-link p-0 mt-2">Quitar filtros</a>
+              <hr class="my-3">
+              <h5 class="mb-3">Filtrar por precio</h5>
+
+              <div class="mb-2">
+                <label for="minPrecio" class="form-label">Precio mínimo (€)</label>
+                <input type="number" class="form-control" id="minPrecio" name="minPrecio"
+                      th:value="${minPrecio}" min="0" onchange="this.form.submit()">
+              </div>
+
+              <div class="mb-2">
+                <label for="maxPrecio" class="form-label">Precio máximo (€)</label>
+                <input type="number" class="form-control" id="maxPrecio" name="maxPrecio"
+                      th:value="${maxPrecio}" min="0" onchange="this.form.submit()">
+              </div>
             </form>
-            <a th:href="@{/catalogo}" class="btn btn-link p-0 mt-2">Quitar filtros</a>
           </div>
+          
         </div>
 
         <!-- Habitaciones y filtros de orden -->

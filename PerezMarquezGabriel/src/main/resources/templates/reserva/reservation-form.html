@@ -56,12 +56,12 @@
 
             <div class="col-md-6">
                 <label for="fechaEntrada" class="form-label">Fecha de Entrada</label>
-                <input type="date" th:field="*{fechaEntrada}" class="form-control" required />
+                <input type="date" th:field="*{fechaEntrada}" class="form-control" th:min="${today}" required />
             </div>
 
             <div class="col-md-6">
                 <label for="fechaSalida" class="form-label">Fecha de Salida</label>
-                <input type="date" th:field="*{fechaSalida}" class="form-control" required />
+                <input type="date" th:field="*{fechaSalida}" class="form-control" th:min="${today}" required />
             </div>
 
             <div class="col-12 text-center">

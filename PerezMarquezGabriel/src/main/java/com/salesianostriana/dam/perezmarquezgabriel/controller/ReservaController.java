@@ -1,5 +1,6 @@
 package com.salesianostriana.dam.perezmarquezgabriel.controller;
 
+import java.time.LocalDate;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,18 +49,20 @@ public class ReservaController {
 	
 	@GetMapping("/add-new-reservation/{id}")
 	public String agregarReserva(@PathVariable("id") Long idHabitacion, Model model) {
+		String today;
 		Reserva reserva = new Reserva();
 	    Optional<Habitacion> optionalHabitacion = habitacionService.findById(idHabitacion);
 	    if (optionalHabitacion.isPresent()) {
 	    	reserva.setH(optionalHabitacion.get()); 
-
 		    model.addAttribute("reserva", reserva);
 		    model.addAttribute("habitacion", optionalHabitacion.get());
 		    model.addAttribute("categorias", categoriaService.findAll());
+		    today = LocalDate.now().toString();
+	        model.addAttribute("today", today);
 		    return "reserva/reservation-form";
 	    } else {
 	    	return "redirect:/reservas";
-		}
+		}		
 	}
 
 
