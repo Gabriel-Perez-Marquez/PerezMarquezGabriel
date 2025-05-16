@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.salesianostriana.dam.perezmarquezgabriel.model.Habitacion;
 import com.salesianostriana.dam.perezmarquezgabriel.model.Reserva;
@@ -48,7 +49,7 @@ public class ReservaController {
 	
 	
 	@GetMapping("/add-new-reservation/{id}")
-	public String agregarReserva(@PathVariable("id") Long idHabitacion, Model model) {
+	public String agregarReservaCatalogo(@PathVariable("id") Long idHabitacion, Model model) {
 		String today;
 		Reserva reserva = new Reserva();
 	    Optional<Habitacion> optionalHabitacion = habitacionService.findById(idHabitacion);
@@ -64,6 +65,27 @@ public class ReservaController {
 	    	return "redirect:/reservas";
 		}		
 	}
+	
+	
+	@GetMapping("/add-new-reservation")
+	public String agregarReservaParametro(@RequestParam(required = false) int numHabitacion, Model model) {
+		String today;
+		Reserva reserva = new Reserva();
+	    Optional<Habitacion> optionalHabitacion = habitacionService.findByNumHabitacion(numHabitacion);
+	    if (optionalHabitacion.isPresent()) {
+	    	reserva.setH(optionalHabitacion.get()); 
+		    model.addAttribute("reserva", reserva);
+		    model.addAttribute("habitacion", optionalHabitacion.get());
+		    model.addAttribute("categorias", categoriaService.findAll());
+		    today = LocalDate.now().toString();
+	        model.addAttribute("today", today);
+		    return "reserva/reservation-form";
+	    } else {
+	    	return "redirect:/reservas";
+	    }
+	}
+	
+	
 
 
 	@PostMapping("/save")
@@ -87,20 +109,20 @@ public class ReservaController {
 
 	@GetMapping("/edit/{id}")
 	public String editar(@PathVariable("id") Long id, Model model) {
-		Habitacion h = habitacionService.findById(id).orElseThrow();
+		Reserva r = reservaService.findById(id).orElseThrow();
 
-		model.addAttribute("habitacion", h);
+		model.addAttribute("reserva", r);
 		model.addAttribute("categorias", categoriaService.findAll());
 
-		return "new-room-form";
+		return "reservation-form";
 	}
 
 	@GetMapping("/delete/{id}")
 	public String borrar(@PathVariable("id") Long id) {
 
-		habitacionService.delete(habitacionService.findById(id).orElseThrow());
+		reservaService.delete(reservaService.findById(id).get());
 
-		return "redirect:/habitaciones";
+		return "redirect:/reservas";
 	}
 	
 	

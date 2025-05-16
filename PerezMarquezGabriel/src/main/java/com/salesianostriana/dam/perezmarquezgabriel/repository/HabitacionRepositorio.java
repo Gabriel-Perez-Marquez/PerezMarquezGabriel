@@ -1,6 +1,7 @@
 package com.salesianostriana.dam.perezmarquezgabriel.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -14,7 +15,7 @@ public interface HabitacionRepositorio extends JpaRepository<Habitacion, Long> {
 	List<Habitacion> buscarPorNombre(@Param("nombre") String nombre);
 	
 	
-	Habitacion findByNumHabitacion(int numHabitacion);
+	Optional<Habitacion> findByNumHabitacion(int numHabitacion);
 	
 	@Query("SELECT h FROM Habitacion h WHERE h.categoria.id IN (:ids)")
 	List<Habitacion> findByCategoria(@Param("ids")List<Long> idsCategorias);

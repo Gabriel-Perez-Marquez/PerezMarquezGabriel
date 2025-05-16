@@ -1,6 +1,7 @@
 package com.salesianostriana.dam.perezmarquezgabriel.service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +24,8 @@ public class HabitacionService extends BaseServiceImpl<Habitacion, Long, Habitac
 	}
 	
 	
-	public Habitacion buscarPorNumHabitacion(int num){
-		return habitacionRepositorio.findByNumHabitacion(num);
+	public Optional<Habitacion> findByNumHabitacion(int numHabitacion) {
+		return habitacionRepositorio.findByNumHabitacion(numHabitacion);
 	}
 	
 	
