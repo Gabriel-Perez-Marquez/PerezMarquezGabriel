@@ -38,16 +38,18 @@ public class MainController {
 	public String catalogo(@RequestParam(required = false) List<Long> categoria,
 	                       @RequestParam(required = false, defaultValue = "0") Integer minPrecio,
 	                       @RequestParam(required = false) Integer maxPrecio,
+	                       @RequestParam(value = "orden", required = false, defaultValue = "0") int orden,
 	                       Model model) {
 
-	    List<Habitacion> habitaciones = habitacionService.findAll();
+	    List<Habitacion> habitaciones;
 
-	    // Filtrar por categoría
+	    habitaciones=habitacionService.gestionarOrdenar(orden);
+	    
 	    if (categoria != null && !categoria.isEmpty()) {
 	    	habitaciones=habitacionService.filtrarPorCategoria(habitaciones, categoria);
 	    }
 
-	    // Filtrar por precio
+	    
 	    if (minPrecio != null && maxPrecio != null) {    	
 	    		habitaciones=habitacionService.filtrarPorPrecio(habitaciones, minPrecio, maxPrecio);
 	    }
@@ -57,7 +59,8 @@ public class MainController {
 	    model.addAttribute("categoriasSeleccionadas", categoria);
 	    model.addAttribute("minPrecio", minPrecio);
 	    model.addAttribute("maxPrecio", maxPrecio);
-
+	    model.addAttribute("orden", orden);
+	    
 	    return "habitacion/catalogo";
 	}
 

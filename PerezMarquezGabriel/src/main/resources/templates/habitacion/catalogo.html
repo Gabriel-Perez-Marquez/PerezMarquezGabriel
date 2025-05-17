@@ -20,9 +20,7 @@
         </div>
       </div>
 
-      <!-- Filtros (En móviles encima, en escritorio lateral) -->
       <div class="row">
-        <!-- Filtro de categorías: más pequeño en pantallas grandes -->
         <div class="col-12 col-md-2 mb-4">
           <div class="border rounded p-3">
             <h5 class="mb-3">Filtrar por categoría</h5>
@@ -56,20 +54,19 @@
           
         </div>
 
-        <!-- Habitaciones y filtros de orden -->
         <div class="col-12 col-md-10">
-          <!-- Filtro de orden y búsqueda -->
           <div class="row mb-3">
             <div class="col-12 col-md-6">
-              <form method="get" class="w-25">
-                <label for="orden">Ordenar por:</label>
-                <select class="form-select" name="orden" id="orden" onchange="this.form.submit()">
-                  <option value="" disabled selected>Ordenar Por</option>
-                  <option th:selected="1">Ordenar Por Nombre</option>
-                  <option th:selected="2">Ordenar Por Precio</option>
-                  <option th:selected="3">Ordenar Por Fecha</option>
-                </select>
-              </form>
+				<form method="get" class="w-25" th:action="@{/catalogo}">
+				  <label for="orden">Ordenar por:</label>
+				  <select class="form-select" name="orden" id="orden" onchange="this.form.submit()">
+				    <option value="0" th:selected="${orden == null or orden == 0}">Nº de Reservas</option>
+				    <option value="1" th:selected="${orden == 1}">A - Z</option>
+				    <option value="2" th:selected="${orden == 2}">Z - A</option>
+				    <option value="3" th:selected="${orden == 3}">Más barato a más caro</option>
+					<option value="4" th:selected="${orden == 4}">Más caro a más barato</option>
+				  </select>
+				</form>
             </div>
             <div class="col-12 col-md-6 justify-content-md-end d-flex">
               <form th:action="@{/habitaciones/buscar}" class="w-50 mt-4" method="get">
@@ -85,7 +82,7 @@
           <div class="row">
             <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4" th:each="habitacion : ${habitaciones}">
               <div class="card h-100 d-flex flex-column justify-content-between">
-                <img th:src="${habitacion.urlImage}" class="card-img-top" alt="Imagen de la habitación">
+                <img th:src="${habitacion.urlImage}" class="card-img-top" th:alt="${habitacion.textoAlt}">
                 <div class="card-body">
                   <h5 class="card-title" th:text="${habitacion.nombre}">Nombre</h5>
                   <p class="card-text" th:text="${habitacion.descripcion}">Descripción</p>

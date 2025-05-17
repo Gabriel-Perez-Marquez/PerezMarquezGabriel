@@ -44,7 +44,7 @@ public class HabitacionController {
 
 		habitacionService.save(h);
 
-		return "redirect:habitacion/habitaciones";
+		return "redirect:/habitaciones";
 	}
 
 	@GetMapping("/edit/{id}")
@@ -62,7 +62,7 @@ public class HabitacionController {
 		
 		Habitacion h= habitacionService.findById(id).orElseThrow();
 		
-		if (h.getReservas() != null) {
+		if (h.getReservas() != null && !h.getReservas().isEmpty()) {
 	        model.addAttribute("mensajeError", "Esta habitación tiene reserva asignada");
 	        model.addAttribute("categorias", categoriaService.findAll());
 	        model.addAttribute("habitaciones", habitacionService.findAll());
