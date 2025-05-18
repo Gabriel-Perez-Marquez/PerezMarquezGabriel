@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/bootstrap.min.css" th:href="@{/bootstrap.min.css}" />
     <title>Reservar Habitación</title>
+	<link rel="stylesheet" href="../static/bootstrap.min.css" th:href="@{/bootstrap.min.css}" />
+	  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" defer></script>
 </head>
 <body class="d-flex flex-column min-vh-100">
 
@@ -43,17 +44,17 @@
 
             <div class="col-md-4">
                 <label for="numClientes" class="form-label">Número de Clientes</label>
-                <input type="number" th:field="*{numClientes}" class="form-control" required />
+				<input type="number" th:field="*{numClientes}" id="numClientes" class="form-control" th:max="${habitacion.categoria.numPersonas}" required />
             </div>
 
             <div class="col-md-4">
                 <label for="numAdultos" class="form-label">Adultos</label>
-                <input type="number" th:field="*{numAdultos}" class="form-control" required />
+                <input type="number" th:field="*{numAdultos}" id="numAdultos" class="form-control" required />
             </div>
 
             <div class="col-md-4">
                 <label for="numNiños" class="form-label">Niños</label>
-                <input type="number" th:field="*{numNiños}" class="form-control" required />
+                <input type="number" th:field="*{numNiños}" id="numNiños" class="form-control" required />
             </div>
 
             <div class="col-md-6">
@@ -67,7 +68,7 @@
             </div>
 
             <div class="col-12 text-center">
-                <button type="submit" class="btn btn-primary">Guardar Reserva</button>
+                <button type="submit" class="btn btn-primary" onclick="calcularPrecio()">Guardar Reserva</button>
             </div>
         </form>
 

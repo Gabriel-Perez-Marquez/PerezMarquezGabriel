@@ -7,7 +7,7 @@
   <title>Gestión de Habitaciones</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="../static/bootstrap.min.css" th:href="@{/bootstrap.min.css}" />
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" defer></script>
 </head>
 <body>
 
@@ -34,12 +34,13 @@
             <th>Descripción</th>
             <th>Precio</th>
             <th>Categoría</th>
-            <th>Reservada</th>  <!-- Nueva columna -->
+            <th>Reservada</th>
+			<th>Nº Reservas</th>
             <th>Imagen</th>
             <th>Acciones</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody class="text-center">
           <tr th:each="habitacion : ${habitaciones}">
             <td th:text="${habitacion.id}">1</td>
             <td th:text="${habitacion.nombre}">Habitación A</td>
@@ -47,6 +48,7 @@
             <td><span th:text="${habitacion.precio}">100</span> €</td>
             <td th:text="${habitacion.categoria.nombre}">Doble</td>
 			<td th:text="${#lists.isEmpty(habitacion.reservas)} ? 'No' : 'Sí'">No</td>
+			<td th:text="${habitacion.reservas.size}">0</td>
             <td>
               <img th:src="${habitacion.urlImage}" alt="Imagen" style="width: 80px; height: auto;">
             </td>

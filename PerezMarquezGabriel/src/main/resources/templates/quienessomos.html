@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiénes Somos - Oasis del Alba</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="../static/bootstrap.min.css" th:href="@{/bootstrap.min.css}" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" defer></script>
+</head>
+<body>
+
+  <header th:replace="~{/fragmentos/menu :: menu}"></header>
+
+  <section id="galeria" class="container mt-5">
+    <div class="text-center mb-5">
+      <h1 class="text-primary">Quiénes Somos</h1>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div id="carouselExample" class="carousel slide mt-4" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="./Img/oficinas.jpg" th:src="@{/Img/oficinas.jpg}" class="d-block w-100" alt="Habitación doble" />
+            </div>
+            <div class="carousel-item">
+              <img src="./Img/recepcion.png" th:src="@{/Img/recepcion.png}" class="d-block w-100" alt="Recepción del hotel" />
+            </div>
+            <div class="carousel-item">
+              <img th:src="@{/Img/oficina1.png}" class="d-block w-100" alt="recepcion" />
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Siguiente</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="col-md-6 mt-3">
+        <article class="mb-4 p-4 bg-light border rounded shadow-sm">
+          <h2 class="text-primary">Nuestra Historia</h2>
+          <p>
+            Bienvenido a <strong>Oasis del Alba</strong>, un alojamiento moderno y acogedor ubicado en el corazón de la ciudad. Desde nuestra apertura, nos hemos dedicado a ofrecer a nuestros huéspedes una experiencia única basada en la comodidad, la atención al detalle y el trato cercano.
+          </p>
+          <p>
+            Contamos con una amplia variedad de <strong>habitaciones</strong> clasificadas por categorías para adaptarnos a todo tipo de estancias, desde escapadas románticas hasta viajes de trabajo.
+          </p>
+          <p>
+            Nuestro compromiso es garantizar una estancia tranquila, segura y personalizada, con servicios de calidad y una gestión de reservas rápida y eficaz.
+          </p>
+        </article>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <article class="mb-4 p-4 bg-light border rounded shadow-sm">
+          <h2 class="text-primary text-center mb-4">Nuestros Servicios</h2>
+          <ul class="list-group list-group-flush mb-4">
+            <li class="list-group-item">
+              <strong>Habitaciones cómodas y modernas:</strong> Disponemos de habitaciones individuales, dobles, familiares y suites totalmente equipadas.
+            </li>
+            <li class="list-group-item">
+              <strong>Reservas online seguras:</strong> Gestiona tu reserva desde nuestra web de forma rápida y transparente.
+            </li>
+            <li class="list-group-item">
+              <strong>Gestión de categorías:</strong> Filtra nuestras habitaciones por categoría según tus necesidades y presupuesto.
+            </li>
+            <li class="list-group-item">
+              <strong>Recepción 24h:</strong> Siempre disponibles para ayudarte durante tu estancia.
+            </li>
+            <li class="list-group-item">
+              <strong>Desayuno incluido:</strong> Comienza el día con una selección variada de productos frescos.
+            </li>
+            <li class="list-group-item">
+              <strong>Wi-Fi gratuito en todo el hotel</strong> para que estés siempre conectado.
+            </li>
+          </ul>
+          <p class="text-justify">
+            En <strong>Oasis del Alba</strong>, cada detalle importa. Nuestra plataforma digital te permite reservar con antelación y conocer toda la información necesaria antes de tu llegada.
+          </p>
+        </article>
+      </div>
+
+      <div class="col-md-12 mt-4">
+        <article class="mb-4 p-4 bg-light border rounded shadow-sm">
+          <h2 class="text-primary">¿Por Qué Elegirnos?</h2>
+          <p>
+            Porque nos apasiona la hospitalidad y trabajamos cada día para que nuestros huéspedes se sientan como en casa. Combinamos la tecnología para una gestión ágil con un trato humano que nos diferencia.
+          </p>
+          <p>
+            Si buscas un hotel cómodo, bien ubicado, con atención personalizada y reservas fáciles de gestionar, estás en el lugar adecuado.
+          </p>
+          <p>
+            Más que un hotel, <strong>Oasis del Alba</strong> es tu espacio de descanso, conexión y bienestar.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <footer th:replace="~{/fragmentos/footer :: footer}"></footer>
+</body>
+</html>
