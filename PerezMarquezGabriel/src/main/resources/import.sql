@@ -18,3 +18,10 @@ INSERT INTO habitacion (num_habitacion, descripcion, categoria_id, precio, limpi
 INSERT INTO habitacion (num_habitacion, descripcion, categoria_id, precio, limpia, url_image, nombre, texto_alt) VALUES  (105, 'Habitación familiar', 4, 160.0, TRUE, 'https://www.hotelavenida.com/wp-content/uploads/sites/151/2024/06/HOTEL-AVENIDA-HABITACION-FAMILIAR-CUADRUPLE.jpg', 'Habitacion Familiar 105', 'Habitación familiar cuádruple');
 INSERT INTO habitacion (num_habitacion, descripcion, categoria_id, precio, limpia, url_image, nombre, texto_alt) VALUES  (106, 'Suite Royal con terraza privada, vistas panorámicas y servicio exclusivo', 6, 380.0, TRUE, 'https://cdn.aquotic.com/images/noticias/ROYAL-CARIBBEAN-Cruceros_RoyalCaribbean_Suites_1735039000.jpg', 'Habitacion Suite Royal 106', 'Suite Royal con terraza');
 INSERT INTO habitacion (num_habitacion, descripcion, categoria_id, precio, limpia, url_image, nombre, texto_alt) VALUES  (107, 'Suite Deluxe con sala de estar, minibar y camas king size', 7, 300.0, FALSE, 'https://ap-hotelsresorts.com/wp-content/uploads/2021/01/Principal-3-scaled.jpg', 'Habitacion Suite Deluxe 107', 'Suite Deluxe con sala y minibar');
+
+
+
+--Importamos las promociones
+INSERT INTO promocion (titulo, texto, porcentaje_descuento) VALUES ('Reserva Anticipada', '10% de descuento reservando con al menos 30 días de antelación.', 10.0);
+INSERT INTO promocion (titulo, texto, porcentaje_descuento) VALUES ('3 Noches al Precio de 2', 'Quédate 3 noches y paga solo 2. Válido de lunes a jueves.', 33.33);
+INSERT INTO promocion (titulo, texto, porcentaje_descuento) VALUES ('Descuento por Larga Estancia', '15% de descuento en estancias de 7 noches o más.', 15.0);

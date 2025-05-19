@@ -11,6 +11,7 @@ import com.salesianostriana.dam.perezmarquezgabriel.model.Habitacion;
 import com.salesianostriana.dam.perezmarquezgabriel.model.Reserva;
 import com.salesianostriana.dam.perezmarquezgabriel.service.CategoriaService;
 import com.salesianostriana.dam.perezmarquezgabriel.service.HabitacionService;
+import com.salesianostriana.dam.perezmarquezgabriel.service.PromocionService;
 import com.salesianostriana.dam.perezmarquezgabriel.service.ReservaService;
 
 @Controller
@@ -24,6 +25,12 @@ public class MainController {
 
 	@Autowired
 	private ReservaService reservaService;
+
+	@Autowired
+	private PromocionService promocionService;
+
+
+
 
 	@GetMapping("/")
 	public String welcome() {
@@ -54,6 +61,7 @@ public class MainController {
 		model.addAttribute("minPrecio", minPrecio);
 		model.addAttribute("maxPrecio", maxPrecio);
 		model.addAttribute("orden", orden);
+		model.addAttribute("promociones", promocionService.findAll());
 
 		return "habitacion/catalogo";
 	}
@@ -75,6 +83,9 @@ public class MainController {
 		return "categoria/categorias";
 	}
 
+	
+	
+	
 	@GetMapping("/reservas")
 	public String gestionReservas(@RequestParam(required = false) List<Long> categorias,
 			@RequestParam(required = false, defaultValue = "0") Integer minPrecio,
@@ -98,6 +109,17 @@ public class MainController {
 		model.addAttribute("categorias", categoriaService.findAll());
 		return "reserva/reservas";
 	}
+	
+	
+	
+	@GetMapping("/promociones")
+	public String gestionPromociones(Model model) {
+		
+		model.addAttribute("promociones", promocionService.findAll());
+		
+		return "promocion/promociones";
+	}
+	
 
 	@GetMapping("/error")
 	public String error() {

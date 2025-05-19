@@ -110,21 +110,14 @@
         </div>
         <div class="offcanvas-body">
           <ul class="list-group">
-            <li class="list-group-item">
-              <h6><i class="bi bi-clock-history text-primary"></i> Reserva Anticipada</h6>
-              <p>10% de descuento reservando con al menos 30 días de antelación.</p>
-            </li>
-            <li class="list-group-item">
-              <h6><i class="bi bi-moon-stars text-info"></i> 3 Noches al Precio de 2</h6>
-              <p>Quédate 3 noches y paga solo 2. Válido de lunes a jueves.</p>
-            </li>
-            <li class="list-group-item">
-              <h6><i class="bi bi-calendar-check text-success"></i> Descuento por Larga Estancia</h6>
-              <p>15% de descuento en estancias de 7 noches o más.</p>
+            <li class="list-group-item" th:each="promo : ${promociones}">
+              <h6 class="fw-semibold mb-1" th:text="${promo.titulo}">Título promoción</h6>
+              <p class="mb-0" th:text="${promo.texto}">Descripción de la promoción</p>
             </li>
           </ul>
         </div>
       </div>
+
     </section>
 
     <!-- Pie de página -->

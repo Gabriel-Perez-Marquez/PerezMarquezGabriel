@@ -2440,3 +2440,7 @@ INSERT INTO habitacion (num_habitacion, descripcion, categoria_id, precio, limpi
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1362)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1351)
 	at com.salesianostriana.dam.perezmarquezgabriel.PerezMarquezGabrielApplication.main(PerezMarquezGabrielApplication.java:10)
+2025-05-19 18:41:57.161504+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "PROMOCION" no encontrada
+Table "PROMOCION" not found; SQL statement:
+select p1_0.id,p1_0.porcentaje_descuento,p1_0.texto,p1_0.titulo from promocion p1_0 [42102-232]
