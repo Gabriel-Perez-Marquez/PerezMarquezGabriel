@@ -16,6 +16,39 @@
 <main class="container mt-5">
   <h2 class="mb-4">Gestión de Reservas</h2>
 
+  <div class="col-12 col-md-2 mb-4">
+          <div class="border rounded p-3">
+            <h5 class="mb-3">Filtrar por categoría</h5>
+            <form method="get" th:action="@{/catalogo}">
+              <div class="form-check mb-2" th:each="categoria : ${categorias}">
+                <input class="form-check-input" type="checkbox"
+                       name="categoria"
+                       th:id="'categoria-' + ${categoria.id}"
+                       th:value="${categoria.id}"
+                       th:checked="${categoriasSeleccionadas != null and categoriasSeleccionadas.contains(categoria.id)}"
+                       onchange="this.form.submit()" />
+                <label class="form-check-label" th:for="'categoria-' + ${categoria.id}" th:text="${categoria.nombre}">Categoría</label>
+              </div>
+              <a th:href="@{/catalogo}" class="btn btn-link p-0 mt-2">Quitar filtros</a>
+              <hr class="my-3">
+              <h5 class="mb-3">Filtrar por precio</h5>
+
+              <div class="mb-2">
+                <label for="minPrecio" class="form-label">Precio mínimo (€)</label>
+                <input type="number" class="form-control" id="minPrecio" name="minPrecio"
+                      th:value="${minPrecio}" min="0" onchange="this.form.submit()">
+              </div>
+
+              <div class="mb-2">
+                <label for="maxPrecio" class="form-label">Precio máximo (€)</label>
+                <input type="number" class="form-control" id="maxPrecio" name="maxPrecio"
+                      th:value="${maxPrecio}" min="0" onchange="this.form.submit()">
+              </div>
+            </form>
+          </div>
+          
+        </div>
+  
   <div class="col-12 col-md-9 d-flex mb-3">
     
     <button type="button"

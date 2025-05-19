@@ -41,21 +41,6 @@ public class HabitacionService extends BaseServiceImpl<Habitacion, Long, Habitac
 		return habitaciones;
 	}
 
-	public List<Habitacion> ordenarPorNombreAsc() {
-		return habitacionRepositorio.ordenarPorNombreAsc();
-	}
-	
-	public List<Habitacion> ordenarPorNombreDesc() {
-		return habitacionRepositorio.ordenarPorNombreDesc();
-	}
-
-	public List<Habitacion> ordenarPorPrecioAsc() {
-		return habitacionRepositorio.ordenarPorPrecioAsc();
-	} 
-
-	public List<Habitacion> ordenarPorNumeroReservas() {
-		return habitacionRepositorio.ordenarPorNumeroReservas();
-	}
 	
 	
 	public List<Habitacion> gestionarOrdenar (int orden) {

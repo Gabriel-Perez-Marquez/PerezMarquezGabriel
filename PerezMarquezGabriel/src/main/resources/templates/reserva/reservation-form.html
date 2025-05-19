@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reservar Habitación</title>
 	<link rel="stylesheet" href="../static/bootstrap.min.css" th:href="@{/bootstrap.min.css}" />
-	  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" defer></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script defer src="../../static/js/main.js" th:src="@{/js/main.js}"></script>
 </head>
 <body class="d-flex flex-column min-vh-100">
 
@@ -14,7 +15,7 @@
 
     <main class="container my-5">
         <h1 class="text-center mb-4">Reservar Habitación</h1>
-        <form th:action="@{/reservas/save}" th:object="${reserva}" method="post" class="row g-3">
+        <form th:action="@{/reservas/save}" id="formReserva" th:object="${reserva}" method="post" class="row g-3">
 			
             <!-- Mostrar info de la habitación -->
             <div class="col-12">
@@ -39,7 +40,7 @@
 
             <div class="col-md-6">
                 <label for="telefono" class="form-label">Teléfono</label>
-                <input type="number" th:field="*{telefono}" class="form-control" required />
+                <input type="tel" th:field="*{telefono}" class="form-control" pattern="[0-9]{9}" maxlength="9" minlength="9" required/>
             </div>
 
             <div class="col-md-4">
@@ -68,7 +69,7 @@
             </div>
 
             <div class="col-12 text-center">
-                <button type="submit" class="btn btn-primary" onclick="calcularPrecio()">Guardar Reserva</button>
+                <button type="submit" class="btn btn-primary">Guardar Reserva</button>
             </div>
         </form>
 

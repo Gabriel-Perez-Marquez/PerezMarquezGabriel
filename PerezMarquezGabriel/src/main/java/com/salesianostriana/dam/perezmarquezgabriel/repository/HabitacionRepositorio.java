@@ -15,7 +15,7 @@ public interface HabitacionRepositorio extends JpaRepository<Habitacion, Long> {
 	List<Habitacion> buscarPorNombre(@Param("nombre") String nombre);
 
 	Optional<Habitacion> findByNumHabitacion(int numHabitacion);
-
+	
 	@Query("SELECT h FROM Habitacion h WHERE h.categoria.id IN (:ids)")
 	List<Habitacion> findByCategoria(@Param("ids") List<Long> idsCategorias);
 
