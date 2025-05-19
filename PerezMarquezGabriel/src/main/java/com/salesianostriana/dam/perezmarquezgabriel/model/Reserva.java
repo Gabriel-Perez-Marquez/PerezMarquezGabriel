@@ -13,9 +13,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
-
-@Data @NoArgsConstructor @AllArgsConstructor
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Reserva {
 
@@ -33,7 +33,25 @@ public class Reserva {
 	private int numNiños;
 	private LocalDate fechaEntrada;
 	private LocalDate fechaSalida;
-	private int descuento;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "promocion_id")
+	private Promocion promocion;
+
+	
+	
+	
+	
+	// metodos helper
+	public void agregarAPromocion(Promocion p) {
+		this.promocion = p;
+		p.getReservas().add(this);
+	}
+
+	public void eliminarDeCategoria(Promocion p) {
+		p.getReservas().remove(this);
+		this.promocion = null;
+	}
+	
 	
 	
 }

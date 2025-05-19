@@ -1,11 +1,13 @@
 package com.salesianostriana.dam.perezmarquezgabriel.service;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.salesianostriana.dam.perezmarquezgabriel.model.Habitacion;
 import com.salesianostriana.dam.perezmarquezgabriel.repository.HabitacionRepositorio;
 import com.salesianostriana.dam.perezmarquezgabriel.service.base.BaseServiceImpl;
@@ -41,27 +43,36 @@ public class HabitacionService extends BaseServiceImpl<Habitacion, Long, Habitac
 		return habitaciones;
 	}
 
-	
-	
-	public List<Habitacion> gestionarOrdenar (int orden) {
+	public List<Habitacion> gestionarOrdenar(int orden) {
 		List<Habitacion> habitaciones;
 		switch (orden) {
-	        case 1:
-	            habitaciones = habitacionRepositorio.ordenarPorNombreAsc();
-	            break;
-	        case 2:
-	            habitaciones = habitacionRepositorio.ordenarPorNombreDesc();
-	            break;
-	        case 3:
-	            habitaciones = habitacionRepositorio.ordenarPorPrecioAsc();
-	            break;
-	        case 4:
-	            habitaciones = habitacionRepositorio.ordenarPorPrecioDesc();
-	            break;
-	        default:
-	            habitaciones =  habitacionRepositorio.ordenarPorNumeroReservas();
-	    }
-		
+		case 1:
+			habitaciones = habitacionRepositorio.ordenarPorNombreAsc();
+			break;
+		case 2:
+			habitaciones = habitacionRepositorio.ordenarPorNombreDesc();
+			break;
+		case 3:
+			habitaciones = habitacionRepositorio.ordenarPorPrecioAsc();
+			break;
+		case 4:
+			habitaciones = habitacionRepositorio.ordenarPorPrecioDesc();
+			break;
+		default:
+			habitaciones = habitacionRepositorio.ordenarPorNumeroReservas();
+		}
+
 		return habitaciones;
 	}
+
+	public List<Habitacion> buscarHabitacionesPopulares(List<Habitacion> habitaciones) {
+
+		return habitaciones.stream()
+				.filter(h -> h.getReservas().size() >= 5)
+				.sorted(Comparator.comparingInt(h -> h.getReservas().size()))
+				.limit(3)
+				.collect(Collectors.toList());
+
+	}
+
 }

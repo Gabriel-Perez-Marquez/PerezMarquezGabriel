@@ -45,7 +45,7 @@
 
             <div class="col-md-4">
                 <label for="numClientes" class="form-label">Número de Clientes</label>
-				<input type="number" th:field="*{numClientes}" id="numClientes" class="form-control" th:max="${habitacion.categoria.numPersonas}" required />
+				<input type="number" th:field="*{numClientes}" id="numClientes" class="form-control" th:min="0" th:max="${habitacion.categoria.numPersonas}" required />
             </div>
 
             <div class="col-md-4">

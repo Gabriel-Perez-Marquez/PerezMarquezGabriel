@@ -33,7 +33,8 @@ public class MainController {
 
 
 	@GetMapping("/")
-	public String welcome() {
+	public String welcome(Model model) {
+		model.addAttribute("habitacionesPopulares", habitacionService.buscarHabitacionesPopulares(habitacionService.findAll()));
 		return "index";
 	}
 

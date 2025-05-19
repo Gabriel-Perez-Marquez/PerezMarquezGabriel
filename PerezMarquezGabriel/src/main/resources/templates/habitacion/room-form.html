@@ -21,6 +21,7 @@
                 <label for="numHabitacion" class="form-label">Número de Habitación <span class="text-danger">*</span></label>
                 <input type="number" name="numHabitacion" id="numHabitacion" class="form-control" th:value="${habitacion.numHabitacion}" required>
             </div>
+            
             <div class="col-md-6">
                 <label for="descripcion" class="form-label">Descripción <span class="text-danger">*</span></label>
                 <input type="text" name="descripcion" id="descripcion" class="form-control" th:value="${habitacion.descripcion}" required>
@@ -37,14 +38,6 @@
             <div class="col-md-6">
                 <label for="precio" class="form-label">Precio <span class="text-danger">*</span></label>
                 <input type="number" name="precio" id="precio" class="form-control" th:value="${habitacion.precio}" required>
-            </div>
-
-            <div class="col-md-6">
-                <label for="limpia" class="form-label">¿Está limpia? <span class="text-danger">*</span></label>
-                <div class="form-check mt-2">
-                    <input type="checkbox" name="limpia" id="limpia" class="form-check-input" th:checked="${habitacion.limpia}">
-                    <label for="limpia" class="form-check-label">Sí</label>
-                </div>
             </div>
 
             <div class="col-md-6 mb-5">

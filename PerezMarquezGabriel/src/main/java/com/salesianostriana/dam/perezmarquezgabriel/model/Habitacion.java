@@ -22,30 +22,25 @@ public class Habitacion {
 	private Long id;
 	private int numHabitacion;
 	private String nombre;
-	
 	@Lob
 	private String descripcion;
-
 	@ManyToOne
 	@JoinColumn(name = "categoria_id")
 	private Categoria categoria;
 	private double precio;
-	private boolean limpia;
 	private String urlImage;
-	public String textoAlt;
-	
+	public String textoAlt;	
 	@OneToMany(mappedBy = "habitacion")
 	private List<Reserva> reservas;
 	
 	
-	public Habitacion(int numHabitacion, String descripcion, Categoria categoria, double precio, boolean limpia, String urlImage, String textoAlt) {
+	public Habitacion(int numHabitacion, String descripcion, Categoria categoria, double precio, String urlImage, String textoAlt) {
 		super();
 		this.numHabitacion = numHabitacion;
 		this.nombre = "Habitacion" + categoria + ' ' + numHabitacion;
 		this.descripcion = descripcion;
 		this.categoria = categoria;
 		this.precio = precio;
-		this.limpia = limpia;
 		this.urlImage = urlImage;
 		this.textoAlt = textoAlt;
 	}
