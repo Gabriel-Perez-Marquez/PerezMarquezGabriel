@@ -1,12 +1,12 @@
 --Importamos las categorias
 
-INSERT INTO categoria (id, nombre, num_personas) VALUES (1, 'Individual', 1);
-INSERT INTO categoria (id, nombre, num_personas) VALUES (2, 'Doble', 2);
-INSERT INTO categoria (id, nombre, num_personas) VALUES (3, 'Estándar', 4);
-INSERT INTO categoria (id, nombre, num_personas) VALUES (4, 'Familiar', 8);
-INSERT INTO categoria (id, nombre, num_personas) VALUES (5, 'Suite', 3);
-INSERT INTO categoria (id, nombre, num_personas) VALUES (6, 'Suite Royal', 5);
-INSERT INTO categoria (id, nombre, num_personas) VALUES (7, 'Suite Deluxe', 6);
+INSERT INTO categoria (nombre, num_personas) VALUES ('Individual', 1);
+INSERT INTO categoria (nombre, num_personas) VALUES ('Doble', 2);
+INSERT INTO categoria (nombre, num_personas) VALUES ('Estándar', 4);
+INSERT INTO categoria (nombre, num_personas) VALUES ('Familiar', 8);
+INSERT INTO categoria (nombre, num_personas) VALUES ('Suite', 3);
+INSERT INTO categoria (nombre, num_personas) VALUES ('Suite Royal', 5);
+INSERT INTO categoria (nombre, num_personas) VALUES ('Suite Deluxe', 6);
 
 
 

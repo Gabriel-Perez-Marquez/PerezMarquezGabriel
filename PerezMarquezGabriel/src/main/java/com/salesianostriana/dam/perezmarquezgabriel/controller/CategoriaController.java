@@ -33,7 +33,7 @@ public class CategoriaController {
 
 		categoriaService.save(c);
 
-		return "redirect:categoria/categorias";
+		return "redirect:/categorias";
 	}
 
 	@GetMapping("/edit/{id}")

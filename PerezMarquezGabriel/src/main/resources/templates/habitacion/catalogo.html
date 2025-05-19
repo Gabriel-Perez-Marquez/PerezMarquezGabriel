@@ -15,9 +15,15 @@
 
     <section id="catalogo" class="container-fluid mt-5 min-vh-100">
       <div class="row">
-        <div class="col-12 col-md-3 mb-4">
+        <div class="col-12 col-md-3">
           <h2 class="display-5 mb-5">Catálogo</h2>
         </div>
+      </div>
+
+      <div class="mb-4">
+        <button class="btn btn-warning my-3" data-bs-toggle="offcanvas" data-bs-target="#descuentosOffcanvas">
+          <i class="bi bi-percent"></i> Ver Promociones
+        </button>
       </div>
 
       <div class="row">
@@ -27,7 +33,7 @@
             <form method="get" th:action="@{/catalogo}">
               <div class="form-check mb-2" th:each="categoria : ${categorias}">
                 <input class="form-check-input" type="checkbox"
-                       name="categoria"
+                       name="categorias"
                        th:id="'categoria-' + ${categoria.id}"
                        th:value="${categoria.id}"
                        th:checked="${categoriasSeleccionadas != null and categoriasSeleccionadas.contains(categoria.id)}"
@@ -88,12 +94,35 @@
                   <p class="card-text" th:text="${habitacion.descripcion}">Descripción</p>
                   <p class="card-text"><strong th:text="${habitacion.precio}">Precio</strong> €/noche</p>
                   <a th:href="@{/habitaciones/view/{id}(id=${habitacion.id})}" class="btn btn-success">Ver más</a>
-
-
                 </div>
               </div>
             </div>
           </div>
+        </div>
+      </div>
+
+
+      <!-- Offcanvas -->
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="descuentosOffcanvas" aria-labelledby="descuentosOffcanvasLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="descuentosOffcanvasLabel">Promociones Disponibles</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="list-group">
+            <li class="list-group-item">
+              <h6><i class="bi bi-clock-history text-primary"></i> Reserva Anticipada</h6>
+              <p>10% de descuento reservando con al menos 30 días de antelación.</p>
+            </li>
+            <li class="list-group-item">
+              <h6><i class="bi bi-moon-stars text-info"></i> 3 Noches al Precio de 2</h6>
+              <p>Quédate 3 noches y paga solo 2. Válido de lunes a jueves.</p>
+            </li>
+            <li class="list-group-item">
+              <h6><i class="bi bi-calendar-check text-success"></i> Descuento por Larga Estancia</h6>
+              <p>15% de descuento en estancias de 7 noches o más.</p>
+            </li>
+          </ul>
         </div>
       </div>
     </section>
