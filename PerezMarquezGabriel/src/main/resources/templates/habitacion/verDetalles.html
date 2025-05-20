@@ -16,6 +16,7 @@
 
   <main class="container my-5 min-vh-100">
     <h1 class="mb-4">Detalles de la Habitación</h1>
+    <a th:href="@{/catalogo}" class="btn btn-primary"><i class="bi bi-arrow-left"></i> Volver al catalogo</a>
     <div class="row mt-5">
       <div class="col-md-6">
         <img th:src="${habitacion.urlImage}" class="img-fluid rounded" alt="Imagen de la habitación" />
@@ -25,7 +26,8 @@
         <p><strong>Descripción:</strong> <span th:text="${habitacion.descripcion}">Descripción aquí</span></p>
         <p><strong>Categoría:</strong> <span th:text="${habitacion.categoria.nombre}">Categoría</span></p>
         <p><strong>Precio:</strong> <span th:text="${habitacion.precio}">100</span> € por noche</p>
-        <span id="precioPorNoche" th:text="${habitacion.precio}" style="display:none;"></span>
+        <h5 class="fw-bold">Aqui puedes calcular cuanto sera tu reserva</h5> 
+        <span id="precioPorNoche" th:text="${habitacion.precio}" hidden></span>
 
 
         <div class="mb-4">

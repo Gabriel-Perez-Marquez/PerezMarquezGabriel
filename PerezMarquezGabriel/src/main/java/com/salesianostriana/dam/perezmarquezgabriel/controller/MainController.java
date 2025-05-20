@@ -52,10 +52,9 @@ public class MainController {
 			habitaciones = habitacionService.filtrarPorCategoria(habitaciones, categorias);
 		}
 
-		if (minPrecio != null && maxPrecio != null) {
-			habitaciones = habitacionService.filtrarPorPrecio(habitaciones, minPrecio, maxPrecio);
-		}
 
+		habitaciones = habitacionService.filtrarPorPrecio(habitaciones, minPrecio, maxPrecio);
+		
 		model.addAttribute("habitaciones", habitaciones);
 		model.addAttribute("categorias", categoriaService.findAll());
 		model.addAttribute("categoriasSeleccionadas", categorias);
@@ -68,11 +67,27 @@ public class MainController {
 	}
 
 	@GetMapping("/habitaciones")
-	public String gestionHabitaciones(Model model) {
+	public String gestionHabitaciones(@RequestParam(required = false) List<Long> categorias,
+			@RequestParam(required = false, defaultValue = "0") Integer minPrecio,
+			@RequestParam(required = false) Integer maxPrecio,
+			Model model) {
 
-		model.addAttribute("habitaciones", habitacionService.findAll());
+		List<Habitacion> habitaciones= habitacionService.findAll();
+		
+		if(categorias != null && !categorias.isEmpty()) {
+			habitaciones = habitacionService.filtrarPorCategoria(habitaciones, categorias);
+		}
+		
+		if(minPrecio != null) {
+			habitaciones = habitacionService.filtrarPorPrecio(habitaciones, minPrecio, maxPrecio);
+		}
+		
+		model.addAttribute("habitaciones", habitaciones);
 		model.addAttribute("categorias", categoriaService.findAll());
-
+		model.addAttribute("minPrecio", minPrecio);
+		model.addAttribute("maxPrecio", maxPrecio);
+		model.addAttribute("categoriasSeleccionadas", categorias);
+		model.addAttribute("activePage", "habitaciones");
 		return "habitacion/habitaciones";
 	}
 
@@ -80,17 +95,12 @@ public class MainController {
 	public String gestionCategorias(Model model) {
 
 		model.addAttribute("categorias", categoriaService.findAll());
-
+		model.addAttribute("activePage", "categorias");
 		return "categoria/categorias";
 	}
 
-	
-	
-	
 	@GetMapping("/reservas")
 	public String gestionReservas(@RequestParam(required = false) List<Long> categorias,
-			@RequestParam(required = false, defaultValue = "0") Integer minPrecio,
-			@RequestParam(required = false) Integer maxPrecio,
 			Model model) {
 		
 		List<Reserva> reservas= reservaService.findAll();
@@ -99,15 +109,10 @@ public class MainController {
 			reservas = reservaService.filtrarPorCategoria(reservas, categorias);
 		}
 		
-		if(minPrecio != null) {
-			reservas = reservaService.filtrarPorPrecio(reservas, minPrecio, maxPrecio);
-		}
-		
 		model.addAttribute("categoriasSeleccionadas", categorias);
-		model.addAttribute("minPrecio", minPrecio);
-		model.addAttribute("maxPrecio", maxPrecio);
 		model.addAttribute("reservas", reservas);
 		model.addAttribute("categorias", categoriaService.findAll());
+		model.addAttribute("activePage", "reservas");
 		return "reserva/reservas";
 	}
 	

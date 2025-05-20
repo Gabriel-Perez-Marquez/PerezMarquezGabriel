@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <aside th:fragment="menuLateral" class="bg-dark text-white d-flex flex-column min-vh-100 p-0">
+    <div class="px-4 pt-4 pb-2">
+        <h4 class="fw-bold mb-1">Gestión</h4>
+        <hr class="border-light mt-2 mb-0">
+    </div>
+    <nav class="flex-grow-1">
+        <ul class="nav flex-column py-4 gap-2">
+            <li class="nav-item mb-1">
+                <a class="nav-link text-white d-flex align-items-center gap-2 fw-bold"
+                   th:href="@{/habitaciones}"
+                   th:classappend="${activePage} == 'habitaciones' ? 'active bg-secondary text-warning' : ''">
+                    <i class="bi bi-door-closed"></i> Gestionar Habitaciones
+                </a>
+            </li>
+            <li class="nav-item mb-1">
+                <a class="nav-link text-white d-flex align-items-center gap-2 fw-bold"
+                   th:href="@{/categorias}"
+                   th:classappend="${activePage} == 'categorias' ? 'active bg-secondary text-warning' : ''">
+                    <i class="bi bi-tags"></i> Gestionar Categorias
+                </a>
+            </li>
+            <li class="nav-item mb-1">
+                <a class="nav-link text-white d-flex align-items-center gap-2 fw-bold"
+                   th:href="@{/reservas}"
+                   th:classappend="${activePage} == 'reservas' ? 'active bg-secondary text-warning' : ''">
+                    <i class="bi bi-calendar-check"></i> Gestionar Reservas
+                </a>
+            </li>
+        </ul>
+    </nav>
+</aside>
+</body>
+</html>
+
+<!-- Bootstrap Icons CDN (debe estar en el layout principal) -->

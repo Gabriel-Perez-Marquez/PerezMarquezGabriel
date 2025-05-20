@@ -94,20 +94,26 @@ public class ReservaController {
 	public String guardarReserva(@ModelAttribute("reserva") Reserva reserva, Model model) {
 	    Long idHabitacion = reserva.getHabitacion().getId();
 	    Optional<Habitacion> habitacionOpt = habitacionService.findById(idHabitacion);
+
 	    if (!habitacionOpt.isPresent()) {
 	        model.addAttribute("error", "Habitación no válida");
 	        return "reserva/reservation-form";
 	    }
 
-	    reserva.setHabitacion(habitacionOpt.get());
+	    // Verificar solapamientos
+	    if (reservaService.haySolapamiento(idHabitacion, reserva.getFechaEntrada(), reserva.getFechaSalida())) {
+	        model.addAttribute("error", "La habitación ya está reservada en esas fechas.");
+	        model.addAttribute("habitacion", habitacionOpt.get());
+	        model.addAttribute("reserva", reserva);
+	        model.addAttribute("categorias", categoriaService.findAll());
+	        return "reserva/reservation-form";
+	    }
 	    
-	    habitacionOpt.get().getReservas().add(reserva);
-
+	    reserva.setHabitacion(habitacionOpt.get());
 	    reservaService.save(reserva);
 
 	    return "redirect:/reservas";
 	}
-
 
 	@GetMapping("/edit/{id}")
 	public String editar(@PathVariable("id") Long id, Model model) {

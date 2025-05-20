@@ -31,8 +31,15 @@ public class HabitacionService extends BaseServiceImpl<Habitacion, Long, Habitac
 	}
 
 	public List<Habitacion> filtrarPorPrecio(List<Habitacion> habitaciones, Integer minPrecio, Integer maxPrecio) {
-		habitaciones = habitaciones.stream().filter(h -> h.getPrecio() >= minPrecio && h.getPrecio() <= maxPrecio)
-				.collect(Collectors.toList());
+		if (minPrecio != null && maxPrecio != null) {
+			habitaciones = habitaciones.stream()
+					.filter(h -> h.getPrecio() >= minPrecio && h.getPrecio() <= maxPrecio)
+					.collect(Collectors.toList());
+		} else if (minPrecio != null) {
+			habitaciones = habitaciones.stream()
+					.filter(h -> h.getPrecio() >= minPrecio)
+					.collect(Collectors.toList());
+		}
 		return habitaciones;
 	}
 
@@ -67,11 +74,8 @@ public class HabitacionService extends BaseServiceImpl<Habitacion, Long, Habitac
 
 	public List<Habitacion> buscarHabitacionesPopulares(List<Habitacion> habitaciones) {
 
-		return habitaciones.stream()
-				.filter(h -> h.getReservas().size() >= 5)
-				.sorted(Comparator.comparingInt(h -> h.getReservas().size()))
-				.limit(3)
-				.collect(Collectors.toList());
+		return habitaciones.stream().filter(h -> h.getReservas().size() >= 5)
+				.sorted(Comparator.comparingInt(h -> h.getReservas().size())).limit(3).collect(Collectors.toList());
 
 	}
 

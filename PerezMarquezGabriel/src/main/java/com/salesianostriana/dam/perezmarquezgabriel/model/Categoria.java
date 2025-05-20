@@ -22,6 +22,7 @@ public class Categoria {
 	private Long id;
 	private String nombre;
 	private int numPersonas;
+	private int descuento;
 	@OneToMany(mappedBy = "categoria")
 	private List<Habitacion> listHabitaciones;
 }

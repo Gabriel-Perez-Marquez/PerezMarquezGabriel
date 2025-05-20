@@ -15,6 +15,13 @@
 
     <main class="container my-5">
         <h1 class="text-center mb-4">Reservar Habitación</h1>
+        <div
+            th:if="${error}"
+            class="alert alert-danger text-center w-50"
+            role="alert"
+        >
+            <span th:text="${error}">Mensaje de error</span>
+        </div>
         <form th:action="@{/reservas/save}" id="formReserva" th:object="${reserva}" method="post" class="row g-3">
 			
             <!-- Mostrar info de la habitación -->

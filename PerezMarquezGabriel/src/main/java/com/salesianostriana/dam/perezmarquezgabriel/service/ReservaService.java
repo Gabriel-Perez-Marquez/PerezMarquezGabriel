@@ -1,8 +1,10 @@
 package com.salesianostriana.dam.perezmarquezgabriel.service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.salesianostriana.dam.perezmarquezgabriel.model.Reserva;
@@ -13,22 +15,15 @@ import com.salesianostriana.dam.perezmarquezgabriel.service.base.BaseServiceImpl
 public class ReservaService extends BaseServiceImpl<Reserva, Long, ReservaRepositorio> {
 		
 	
+	@Autowired
+	private ReservaRepositorio reservaRepositorio;
 	
-	public List<Reserva> filtrarPorPrecio(List<Reserva> reservas, Integer minPrecio, Integer maxPrecio) {
-		if(minPrecio != null) {
-			if( maxPrecio != null && maxPrecio >= minPrecio) {
-				reservas = reservas.stream()
-						.filter(r -> r.getHabitacion().getPrecio() >= minPrecio && r.getHabitacion().getPrecio() <= maxPrecio)
-						.collect(Collectors.toList());
-			} else {
-				reservas = reservas.stream()
-						.filter(r -> r.getHabitacion().getPrecio()>= minPrecio)
-						.collect(Collectors.toList());
-			}
-		}
-		
-		return reservas;
+	
+	public boolean haySolapamiento(Long idHabitacion, LocalDate fechaEntrada, LocalDate fechaSalida) {
+	    List<Reserva> solapadas = reservaRepositorio.buscarReservasSolapadas(idHabitacion, fechaEntrada, fechaSalida);
+	    return !solapadas.isEmpty();
 	}
+
 
 	public List<Reserva> filtrarPorCategoria(List<Reserva> reservas, List<Long> categorias) {
 		reservas = reservas.stream()

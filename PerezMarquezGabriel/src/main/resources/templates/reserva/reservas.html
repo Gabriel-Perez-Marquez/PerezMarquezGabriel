@@ -25,57 +25,60 @@
   <body class="d-flex flex-column min-vh-100">
     <header th:replace="~{/fragmentos/menu :: menu}" class="ms-2 p-0"></header>
 
-    <main class="container-fluid p-4">
-      <h2 class="mb-4">Gestión de Reservas</h2>      
-
-      <div class="col-12 col-md-9 d-flex mb-4">
-        <button
-          type="button"
-          class="btn btn-primary btn-lg"
-          data-bs-toggle="modal"
-          th:data-bs-target="'#habitacionIdModal'"
-        >
-          <i class="bi bi-plus-circle"></i> Agregar reserva
-        </button>
-      </div>
-      <div
-        th:if="${error}"
-        class="alert alert-danger text-center w-50 mb-4"
-        role="alert"
-      >
-        <span th:text="${error}">Mensaje de error</span>
-      </div>
-      <div class="row g-4">
-        <div class="col-12 col-md-2 mb-4">
-          <div class="border rounded p-3 h-100">
-            <h5 class="mb-3">Filtrar por categoría</h5>
-            <form method="get" th:action="@{/reservas}">
-              <div class="form-check mb-2" th:each="categoria : ${categorias}">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  name="categorias"
-                  th:id="'categoria-' + ${categoria.id}"
-                  th:value="${categoria.id}"
-                  th:checked="${categoriasSeleccionadas != null and categoriasSeleccionadas.contains(categoria.id)}"
-                  onchange="this.form.submit()"
-                />
-                <label
-                  class="form-check-label"
-                  th:for="'categoria-' + ${categoria.id}"
-                  th:text="${categoria.nombre}"
-                  >Categoría</label
-                >
-              </div>
-              <a th:href="@{/catalogo}" class="btn btn-link p-0 mt-2"
-                >Quitar filtros</a
-              >
-              
-            </form>
-          </div>
+    <main class="container-fluid flex-grow-1">
+      <div class="row min-vh-100 flex-nowrap">
+        <div class="col-12 col-md-3 col-lg-2 p-0 bg-dark min-vh-100">
+          <aside th:replace="~{/fragmentos/menuLateral :: menuLateral}"></aside>
         </div>
-
-        <div class="col-12 col-md-10 mb-4">
+        <div class="col-12 col-md-9 col-lg-10 p-4">
+          <h2 class="mb-4">Gestión de Reservas</h2>
+          <div class="d-flex mb-4">
+            <button
+              type="button"
+              class="btn btn-primary btn-lg"
+              data-bs-toggle="modal"
+              th:data-bs-target="'#habitacionIdModal'"
+            >
+              <i class="bi bi-plus-circle"></i> Agregar reserva
+            </button>
+          </div>
+          <div
+            th:if="${error}"
+            class="alert alert-danger text-center w-50 mb-4"
+            role="alert"
+          >
+            <span th:text="${error}">Mensaje de error</span>
+          </div>
+          <div class="row g-4 mb-4">
+            <div class="col-12 col-lg-6 mb-3 mb-lg-0">
+              <div class="border rounded p-3 h-100">
+                <h5 class="mb-3">Filtrar por categoría</h5>
+                <form method="get" th:action="@{/reservas}">
+                  <div class="form-check mb-2" th:each="categoria : ${categorias}">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      name="categorias"
+                      th:id="'categoria-' + ${categoria.id}"
+                      th:value="${categoria.id}"
+                      th:checked="${categoriasSeleccionadas != null and categoriasSeleccionadas.contains(categoria.id)}"
+                      onchange="this.form.submit()"
+                    />
+                    <label
+                      class="form-check-label"
+                      th:for="'categoria-' + ${categoria.id}"
+                      th:text="${categoria.nombre}"
+                      >Categoría</label
+                    >
+                  </div>
+                  <a th:href="@{/reservas}" class="btn btn-link p-0 mt-2"
+                    >Quitar filtros</a
+                  >
+                </form>
+              </div>
+            </div>
+            <!-- Puedes añadir más filtros aquí si lo necesitas -->
+          </div>
           <div class="table-responsive rounded bg-white">
             <table class="table table-hover align-middle mb-0">
               <thead class="table-dark text-center">
@@ -126,104 +129,102 @@
               </tbody>
             </table>
           </div>
-        </div>
-        <!-- Modales de eliminación -->
-        <div th:each="reserva : ${reservas}">
-          <div
-            class="modal fade"
-            th:id="'eliminarReservaModal' + ${reserva.id}"
-            tabindex="-1"
-            aria-labelledby="eliminarReservaModalLabel"
-            aria-hidden="true"
-          >
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header bg-danger text-light">
-                  <h5 class="modal-title" id="reservaModalLabel">
-                    Confirmar eliminación
-                  </h5>
-                  <button
-                    type="button"
-                    class="btn-close"
-                    data-bs-dismiss="modal"
-                    aria-label="Cerrar"
-                  ></button>
-                </div>
-                <div class="modal-body">
-                  ¿Estás seguro de que deseas eliminar la reserva de
-                  <strong
-                    th:text="${reserva.nombreTitular} + ' ' + ${reserva.apellidosTitular}"
-                    >Nombre</strong
-                  >?
-                </div>
-                <div class="modal-footer">
-                  <button
-                    type="button"
-                    class="btn btn-secondary"
-                    data-bs-dismiss="modal"
-                  >
-                    No
-                  </button>
-                  <a
-                    th:href="@{/reservas/delete/}+${reserva.id}"
-                    class="btn btn-danger"
-                    >Sí, eliminar</a
-                  >
+          <!-- Modales de eliminación -->
+          <div th:each="reserva : ${reservas}">
+            <div
+              class="modal fade"
+              th:id="'eliminarReservaModal' + ${reserva.id}"
+              tabindex="-1"
+              aria-labelledby="eliminarReservaModalLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header bg-danger text-light">
+                    <h5 class="modal-title" id="reservaModalLabel">
+                      Confirmar eliminación
+                    </h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Cerrar"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+                    ¿Estás seguro de que deseas eliminar la reserva de
+                    <strong
+                      th:text="${reserva.nombreTitular} + ' ' + ${reserva.apellidosTitular}"
+                      >Nombre</strong
+                    >?
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-bs-dismiss="modal"
+                    >
+                      No
+                    </button>
+                    <a
+                      th:href="@{/reservas/delete/}+${reserva.id}"
+                      class="btn btn-danger"
+                      >Sí, eliminar</a
+                    >
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-
-        <!-- Modal sin JavaScript para introducir ID de habitación -->
-        <div
-          class="modal fade"
-          id="habitacionIdModal"
-          tabindex="-1"
-          aria-labelledby="habitacionIdModalLabel"
-          aria-hidden="true"
-        >
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <!-- Formulario que envía el ID de la habitación por GET -->
-              <form method="get" th:action="@{/reservas/add-new-reservation}">
-                <div class="modal-header bg-primary text-light">
-                  <h5 class="modal-title" id="habitacionIdModalLabel">
-                    Agregar reserva por número de habitación
-                  </h5>
-                  <button
-                    type="button"
-                    class="btn-close"
-                    data-bs-dismiss="modal"
-                    aria-label="Cerrar"
-                  ></button>
-                </div>
-                <div class="modal-body">
-                  <label for="habitacionIdInput" class="form-label"
-                    >Introduce el número de la habitación:</label
-                  >
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="habitacionIdInput"
-                    name="numHabitacion"
-                    placeholder="Ej: 101"
-                    required
-                  />
-                </div>
-                <div class="modal-footer">
-                  <button
-                    type="button"
-                    class="btn btn-secondary"
-                    data-bs-dismiss="modal"
-                  >
-                    Cancelar
-                  </button>
-                  <button type="submit" class="btn btn-primary">
-                    Continuar
-                  </button>
-                </div>
-              </form>
+          <!-- Modal para introducir ID de habitación -->
+          <div
+            class="modal fade"
+            id="habitacionIdModal"
+            tabindex="-1"
+            aria-labelledby="habitacionIdModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <form method="get" th:action="@{/reservas/add-new-reservation}">
+                  <div class="modal-header bg-primary text-light">
+                    <h5 class="modal-title" id="habitacionIdModalLabel">
+                      Agregar reserva por número de habitación
+                    </h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Cerrar"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+                    <label for="habitacionIdInput" class="form-label"
+                      >Introduce el número de la habitación:</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="habitacionIdInput"
+                      name="numHabitacion"
+                      placeholder="Ej: 101"
+                      required
+                    />
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-bs-dismiss="modal"
+                    >
+                      Cancelar
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                      Continuar
+                    </button>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
         </div>
