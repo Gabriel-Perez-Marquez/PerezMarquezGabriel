@@ -1,13 +1,8 @@
 function calcularPrecio() {
-
+	console.log("Hola")
 	const precioPorNoche = parseFloat(document.getElementById('precioPorNoche').textContent);
 	const fechaEntradaInput = document.getElementById('fechaEntrada').value;
 	const fechaSalidaInput = document.getElementById('fechaSalida').value;
-
-	if (!fechaEntradaInput || !fechaSalidaInput) {
-		alert('Por favor, introduce ambas fechas.');
-		return;
-	}
 
 	const fechaEntrada = new Date(fechaEntradaInput);
 	const fechaSalida = new Date(fechaSalidaInput);
@@ -24,12 +19,19 @@ function calcularPrecio() {
 
 	const precioTotal = diffDays * precioPorNoche;
 
-	document.getElementById('resultadoPrecio').textContent =
+
+	if(fechaEntradaInput != '' && fechaSalidaInput != ''){
+		document.getElementById('resultadoPrecio').textContent =
 		`Precio total para ${diffDays} noche(s): ${precioTotal} €`;
+	}
+	
+
+	
 }
 
 
 function validarFormReserva () {
+	console.log("Hola")
 	document.addEventListener("DOMContentLoaded", function () {
 		let form;
 
@@ -41,6 +43,19 @@ function validarFormReserva () {
 		const numClientes = parseInt(document.getElementById("numClientes").value) || 0;
         const numAdultos = parseInt(document.getElementById("numAdultos").value) || 0;
         const numNinos = parseInt(document.getElementById("numNiños").value) || 0;
+		const fechaEntradaInput = document.getElementById('fechaEntrada').value;
+		const fechaSalidaInput = document.getElementById('fechaSalida').value;
+
+
+		const fechaEntrada = new Date(fechaEntradaInput);
+		const fechaSalida = new Date(fechaSalidaInput);
+
+		if (fechaSalida <= fechaEntrada) {
+			event.preventDefault();
+			alert('La fecha de salida debe ser posterior a la fecha de entrada.');
+			return;
+		}
+
 		
         let errores = [];
 		
@@ -62,4 +77,24 @@ function validarFormReserva () {
 	});
 
 }
-validarFormReserva ()
+
+
+function initPrecioAuto() {
+	document.addEventListener("DOMContentLoaded", function () {
+		const entrada = document.getElementById("fechaEntrada");
+		const salida = document.getElementById("fechaSalida");
+
+		console.log(entrada.value)
+		console.log(salida.value)
+
+		
+		entrada.addEventListener("change", calcularPrecio);
+		salida.addEventListener("change", calcularPrecio);
+		
+	});
+}
+
+
+
+initPrecioAuto()
+validarFormReserva()

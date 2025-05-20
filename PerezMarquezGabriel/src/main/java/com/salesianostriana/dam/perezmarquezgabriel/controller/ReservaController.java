@@ -69,7 +69,7 @@ public class ReservaController {
 	
 	@GetMapping("/add-new-reservation")
 	public String agregarReservaParametro(@RequestParam(required = false) int numHabitacion, Model model) {
-		String today;
+		LocalDate today = LocalDate.now();
 		Reserva reserva = new Reserva();
 	    Optional<Habitacion> optionalHabitacion = habitacionService.findByNumHabitacion(numHabitacion);
 	    if (optionalHabitacion.isPresent() && optionalHabitacion.get() != null) {
@@ -77,7 +77,6 @@ public class ReservaController {
 		    model.addAttribute("reserva", reserva);
 		    model.addAttribute("habitacion", optionalHabitacion.get());
 		    model.addAttribute("categorias", categoriaService.findAll());
-		    today = LocalDate.now().toString();
 	        model.addAttribute("today", today);
 		    return "reserva/reservation-form";
 	    } else {
@@ -139,6 +138,11 @@ public class ReservaController {
 		reservaService.delete(reservaService.findById(id).get());
 
 		return "redirect:/reservas";
+	}
+	
+	@GetMapping("/estadistics")
+	public String estadisticasReservas (Model model) {
+		return "";
 	}
 	
 	

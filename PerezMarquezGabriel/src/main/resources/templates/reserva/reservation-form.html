@@ -28,52 +28,67 @@
             <div class="col-12">
                 <p class="fw-bold">Habitación seleccionada:</p>
                 <p th:text="${habitacion.nombre}">Habitación A</p>
+                <!-- Precio por noche (oculto o mostrado según lo necesites) -->
+                <span id="precioPorNoche" hidden th:text="${habitacion.precio}">80</span>
             </div>
 
-            <!-- Campo oculto para enviar el ID de la habitación -->
+            
             <input type="hidden" th:field="*{habitacion.id}" />
             <input type="hidden" th:field="*{id}" />
+            <input th:if="${habitacion.categoria.numPersonas} == 1"
+                type="hidden"
+                th:name="numAdultos"
+                th:value="1" />
+
+
 			
 
             <div class="col-md-6">
-                <label for="nombreTitular" class="form-label">Nombre del Titular</label>
-                <input type="text" th:field="*{nombreTitular}" class="form-control" required />
+                <label for="nombreTitular" class="form-label">Nombre del Titular <span class="text-warning">*</span></label>
+                <input type="text" th:field="*{nombreTitular}" class="form-control" maxlength="20" placeholder="Gabriel" required />
             </div>
 
             <div class="col-md-6">
-                <label for="apellidosTitular" class="form-label">Apellidos</label>
-                <input type="text" th:field="*{apellidosTitular}" class="form-control" required />
+                <label for="apellidosTitular" class="form-label">Apellidos <span class="text-warning">*</span></label>
+                <input type="text" th:field="*{apellidosTitular}" maxlength="40" class="form-control" placeholder="Pérez Márquez" required />
             </div>
 
             <div class="col-md-6">
-                <label for="telefono" class="form-label">Teléfono</label>
-                <input type="tel" th:field="*{telefono}" class="form-control" pattern="[0-9]{9}" maxlength="9" minlength="9" required/>
+                <label for="telefono" class="form-label">Teléfono <span class="text-warning">*</span></label>
+                <input type="tel" th:field="*{telefono}" class="form-control" pattern="[0-9]{9}" maxlength="9" placeholder="693699584" minlength="9" required/>
             </div>
 
             <div class="col-md-4">
-                <label for="numClientes" class="form-label">Número de Clientes</label>
-				<input type="number" th:field="*{numClientes}" id="numClientes" class="form-control" th:min="0" th:max="${habitacion.categoria.numPersonas}" required />
+                <label for="numClientes" class="form-label">Número de Clientes <span class="text-warning">*</span></label>
+				<input type="number" th:name="numClientes" th:id="numClientes" th:value="${habitacion.categoria.numPersonas}" class="form-control" th:min="0" th:max="${habitacion.categoria.numPersonas}" placeholder="0" required />
             </div>
 
-            <div class="col-md-4">
-                <label for="numAdultos" class="form-label">Adultos</label>
-                <input type="number" th:field="*{numAdultos}" id="numAdultos" class="form-control" required />
+            <div th:if="${habitacion.categoria.numPersonas} != 1" class="col-md-4">
+                <label for="numAdultos" class="form-label">Adultos <span class="text-warning">*</span></label>
+                <input type="number" th:field="*{numAdultos}"  id="numAdultos" class="form-control" placeholder="0" required />
             </div>
-
-            <div class="col-md-4">
-                <label for="numNiños" class="form-label">Niños</label>
-                <input type="number" th:field="*{numNiños}" id="numNiños" class="form-control" required />
-            </div>
-
-            <div class="col-md-6">
-                <label for="fechaEntrada" class="form-label">Fecha de Entrada</label>
-                <input type="date" th:field="*{fechaEntrada}" class="form-control" th:min="${today}" required />
+            
+            <div th:if="${habitacion.categoria.numPersonas} != 1" class="col-md-4">
+                <label for="numNiños" class="form-label">Niños <span class="text-warning">*</span></label>
+                <input type="number" th:field="*{numNiños}" id="numNiños" class="form-control" placeholder="0" required />
             </div>
 
             <div class="col-md-6">
-                <label for="fechaSalida" class="form-label">Fecha de Salida</label>
-                <input type="date" th:field="*{fechaSalida}" class="form-control" th:min="${today}" required />
+                <label for="fechaEntrada" class="form-label">Fecha de Entrada <span class="text-warning">*</span></label>
+                <input type="date" id="fechaEntrada" name="fechaEntrada" class="form-control" th:min="${today}" placeholder="2025-05-" required>
             </div>
+
+            <div class="col-md-6">
+                <label for="fechaSalida" class="form-label">Fecha de Salida <span class="text-warning">*</span></label>
+                <input type="date" id="fechaSalida" name="fechaSalida" class="form-control"  th:min="${today}" placeholder="2025-05-23" required>
+            </div>
+
+            <div class="col-12 text-center mb-3">
+                <p class="fs-5">
+                    <span id="resultadoPrecio" class="fw-bold text-success">-- €</span>
+                </p>
+            </div>
+
 
             <div class="col-12 text-center">
                 <button type="submit" class="btn btn-primary">Guardar Reserva</button>

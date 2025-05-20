@@ -11,7 +11,6 @@ import com.salesianostriana.dam.perezmarquezgabriel.model.Habitacion;
 import com.salesianostriana.dam.perezmarquezgabriel.model.Reserva;
 import com.salesianostriana.dam.perezmarquezgabriel.service.CategoriaService;
 import com.salesianostriana.dam.perezmarquezgabriel.service.HabitacionService;
-import com.salesianostriana.dam.perezmarquezgabriel.service.PromocionService;
 import com.salesianostriana.dam.perezmarquezgabriel.service.ReservaService;
 
 @Controller
@@ -25,9 +24,6 @@ public class MainController {
 
 	@Autowired
 	private ReservaService reservaService;
-
-	@Autowired
-	private PromocionService promocionService;
 
 
 
@@ -61,7 +57,6 @@ public class MainController {
 		model.addAttribute("minPrecio", minPrecio);
 		model.addAttribute("maxPrecio", maxPrecio);
 		model.addAttribute("orden", orden);
-		model.addAttribute("promociones", promocionService.findAll());
 
 		return "habitacion/catalogo";
 	}
@@ -116,15 +111,6 @@ public class MainController {
 		return "reserva/reservas";
 	}
 	
-	
-	
-	@GetMapping("/promociones")
-	public String gestionPromociones(Model model) {
-		
-		model.addAttribute("promociones", promocionService.findAll());
-		
-		return "promocion/promociones";
-	}
 	
 
 	@GetMapping("/error")

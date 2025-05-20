@@ -33,24 +33,7 @@ public class Reserva {
 	private int numNiños;
 	private LocalDate fechaEntrada;
 	private LocalDate fechaSalida;
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "promocion_id")
-	private Promocion promocion;
 
-	
-	
-	
-	
-	// metodos helper
-	public void agregarAPromocion(Promocion p) {
-		this.promocion = p;
-		p.getReservas().add(this);
-	}
-
-	public void eliminarDeCategoria(Promocion p) {
-		p.getReservas().remove(this);
-		this.promocion = null;
-	}
 	
 	
 	

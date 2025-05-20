@@ -22,8 +22,10 @@ public class Habitacion {
 	private Long id;
 	private int numHabitacion;
 	private String nombre;
+	
 	@Lob
 	private String descripcion;
+	
 	@ManyToOne
 	@JoinColumn(name = "categoria_id")
 	private Categoria categoria;

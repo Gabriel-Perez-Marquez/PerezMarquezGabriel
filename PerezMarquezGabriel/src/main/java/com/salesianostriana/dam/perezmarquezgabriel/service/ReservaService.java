@@ -1,6 +1,7 @@
 package com.salesianostriana.dam.perezmarquezgabriel.service;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,4 +32,21 @@ public class ReservaService extends BaseServiceImpl<Reserva, Long, ReservaReposi
 				.collect(Collectors.toList());
 		return reservas;
 	}
+	
+	public double calcularRecaudacionTotal(List<Reserva> reservas) {
+	    double total = 0.0;
+
+	    for (Reserva reserva : reservas) {
+	        long dias = ChronoUnit.DAYS.between(reserva.getFechaEntrada(), reserva.getFechaSalida());
+
+	        if (dias > 0) {
+	            double precioPorNoche = reserva.getHabitacion().getPrecio(); 
+	            double precioReserva = dias * precioPorNoche;
+	            total += precioReserva;
+	        }
+	    }
+
+	    return total;
+	}
+
 }

@@ -20,17 +20,21 @@
         </div>
       </div>
 
-      <div class="mb-4">
-        <button class="btn btn-warning my-3" data-bs-toggle="offcanvas" data-bs-target="#descuentosOffcanvas">
-          <i class="bi bi-percent"></i> Ver Promociones
-        </button>
-      </div>
-
       <div class="row">
         <div class="col-12 col-md-2 mb-4">
           <div class="border rounded p-3">
-            <h5 class="mb-3">Filtrar por categoría</h5>
+            
             <form method="get" th:action="@{/catalogo}">
+              <label for="orden">Ordenar por:</label>
+              <select class="form-select" name="orden" id="orden" onchange="this.form.submit()">
+                <option value="0" th:selected="${orden == null or orden == 0}">Nº de Reservas</option>
+                <option value="1" th:selected="${orden == 1}">A - Z</option>
+                <option value="2" th:selected="${orden == 2}">Z - A</option>
+                <option value="3" th:selected="${orden == 3}">Más barato a más caro</option>
+                <option value="4" th:selected="${orden == 4}">Más caro a más barato</option>
+              </select>
+              <hr class="my-4">
+              <h5 class="mb-3">Filtrar por categoría</h5>
               <div class="form-check mb-2" th:each="categoria : ${categorias}">
                 <input class="form-check-input" type="checkbox"
                        name="categorias"
@@ -67,14 +71,7 @@
           <div class="row mb-3">
             <div class="col-12 col-md-6">
 				<form method="get" class="w-25" th:action="@{/catalogo}">
-				  <label for="orden">Ordenar por:</label>
-				  <select class="form-select" name="orden" id="orden" onchange="this.form.submit()">
-				    <option value="0" th:selected="${orden == null or orden == 0}">Nº de Reservas</option>
-				    <option value="1" th:selected="${orden == 1}">A - Z</option>
-				    <option value="2" th:selected="${orden == 2}">Z - A</option>
-				    <option value="3" th:selected="${orden == 3}">Más barato a más caro</option>
-					<option value="4" th:selected="${orden == 4}">Más caro a más barato</option>
-				  </select>
+				  
 				</form>
             </div>
             <div class="col-12 col-md-6 justify-content-md-end d-flex">
@@ -101,23 +98,6 @@
               </div>
             </div>
           </div>
-        </div>
-      </div>
-
-
-      <!-- Offcanvas -->
-      <div class="offcanvas offcanvas-end" tabindex="-1" id="descuentosOffcanvas" aria-labelledby="descuentosOffcanvasLabel">
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="descuentosOffcanvasLabel">Promociones Disponibles</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
-        </div>
-        <div class="offcanvas-body">
-          <ul class="list-group">
-            <li class="list-group-item" th:each="promo : ${promociones}">
-              <h6 class="fw-semibold mb-1" th:text="${promo.titulo}">Título promoción</h6>
-              <p class="mb-0" th:text="${promo.texto}">Descripción de la promoción</p>
-            </li>
-          </ul>
         </div>
       </div>
 
