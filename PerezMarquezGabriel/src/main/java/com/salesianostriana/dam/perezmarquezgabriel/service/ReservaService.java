@@ -43,15 +43,9 @@ public class ReservaService extends BaseServiceImpl<Reserva, Long, ReservaReposi
 	public double calcularRecaudacionTotal(List<Reserva> reservas) {
 	    double total = 0.0;
 
-	    for (Reserva reserva : reservas) {
-	        long dias = ChronoUnit.DAYS.between(reserva.getFechaEntrada(), reserva.getFechaSalida());
-
-	        if (dias > 0) {
-	            double precioPorNoche = reserva.getHabitacion().getPrecio(); 
-	            double precioReserva = dias * precioPorNoche;
-	            total += precioReserva;
-	        }
-	    }
+	    total = reservaRepositorio.findAll().stream()
+		        .mapToDouble(Reserva::getPrecio)
+		        .sum();
 
 	    return total;
 	}
@@ -67,11 +61,5 @@ public class ReservaService extends BaseServiceImpl<Reserva, Long, ReservaReposi
 	        .orElse("-");
 	}
 	
-//	public double calcularTotalRecaudado() {
-//	    return reservaRepositorio.findAll()
-//	        .stream()
-//	        .mapToDouble(Reserva::get)
-//	        .sum();
-//	}
 
 }

@@ -143,6 +143,10 @@ public class ReservaController {
 	
 	@GetMapping("/estadistics")
 	public String estadisticasReservas (Model model) {
+		model.addAttribute("totalRecaudado", reservaService.calcularRecaudacionTotal(reservaService.findAll()));
+		model.addAttribute("numHabitaciones", habitacionService.contarHabitaciones());
+		model.addAttribute("numCategorias", categoriaService.contarCategorias());
+		model.addAttribute("reservaMasLarga", reservaService.calcularRecaudacionTotal(reservaService.findAll()));
 		return "reserva/estadisticas";
 	}
 	
