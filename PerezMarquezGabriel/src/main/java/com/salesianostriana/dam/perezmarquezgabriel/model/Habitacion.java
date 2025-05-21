@@ -34,6 +34,7 @@ public class Habitacion {
 	public String textoAlt;	
 	@OneToMany(mappedBy = "habitacion")
 	private List<Reserva> reservas;
+	private Double totalRecaudado;
 	
 	
 	public Habitacion(int numHabitacion, String descripcion, Categoria categoria, double precio, String urlImage, String textoAlt) {
@@ -45,6 +46,11 @@ public class Habitacion {
 		this.precio = precio;
 		this.urlImage = urlImage;
 		this.textoAlt = textoAlt;
+	}
+	
+	public Habitacion(int numHabitacion) {
+		super();
+		this.numHabitacion = numHabitacion;
 	}
 	
 	

@@ -1,82 +1,95 @@
 function calcularPrecio() {
-	console.log("Hola")
+
 	const precioPorNoche = parseFloat(document.getElementById('precioPorNoche').textContent);
-	const fechaEntradaInput = document.getElementById('fechaEntrada').value;
-	const fechaSalidaInput = document.getElementById('fechaSalida').value;
+	const fechaEntradaInput = document.getElementById('fechaEntrada');
+	const fechaSalidaInput = document.getElementById('fechaSalida');
 
-	const fechaEntrada = new Date(fechaEntradaInput);
-	const fechaSalida = new Date(fechaSalidaInput);
+	const fechaEntrada = new Date(fechaEntradaInput.value);
+	const fechaSalida = new Date(fechaSalidaInput.value);
 
+	// Limpiar errores previos
+	fechaSalidaInput.setCustomValidity('');
+
+	// Validar fechas
 	if (fechaSalida <= fechaEntrada) {
-		alert('La fecha de salida debe ser posterior a la fecha de entrada.');
+		fechaSalidaInput.setCustomValidity('La fecha de salida debe ser posterior a la fecha de entrada.');
+		fechaSalidaInput.reportValidity();
 		return;
 	}
 
-
-
+	// Calcular noches
 	const diffTime = Math.abs(fechaSalida - fechaEntrada);
 	const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
 	const precioTotal = diffDays * precioPorNoche;
 
-
-	if(fechaEntradaInput != '' && fechaSalidaInput != ''){
+	// Mostrar resultado
+	if (fechaEntradaInput.value !== '' && fechaSalidaInput.value !== '') {
 		document.getElementById('resultadoPrecio').textContent =
-		`Precio total para ${diffDays} noche(s): ${precioTotal} €`;
+			`Precio total para ${diffDays} noche(s): ${precioTotal} €`;
 	}
-	
-
-	
 }
+
 
 
 function validarFormReserva () {
-	console.log("Hola")
+	
 	document.addEventListener("DOMContentLoaded", function () {
-		let form;
+		const form = document.getElementById("formReserva");
+		if (!form) return;
 
-		if (document.getElementById("formReserva")) {
-			form = document.getElementById("formReserva");
-		}
+		form.addEventListener("submit", function (event) {
+			const numClientesInput = document.getElementById("numClientes");
+			const numAdultosInput = document.getElementById("numAdultos");
+			const numNinosInput = document.getElementById("numNiños");
+			const fechaEntradaInput = document.getElementById('fechaEntrada');
+			const fechaSalidaInput = document.getElementById('fechaSalida');
 
-    form.addEventListener("submit", function (event) {
-		const numClientes = parseInt(document.getElementById("numClientes").value) || 0;
-        const numAdultos = parseInt(document.getElementById("numAdultos").value) || 0;
-        const numNinos = parseInt(document.getElementById("numNiños").value) || 0;
-		const fechaEntradaInput = document.getElementById('fechaEntrada').value;
-		const fechaSalidaInput = document.getElementById('fechaSalida').value;
+			// Resetear mensajes de error anteriores
+			[numClientesInput, numAdultosInput, numNinosInput, fechaEntradaInput, fechaSalidaInput].forEach(input => {
+				input.setCustomValidity('');
+			});
 
+			const numClientes = parseInt(numClientesInput.value) || 0;
+			const numAdultos = parseInt(numAdultosInput.value) || 0;
+			const numNinos = parseInt(numNinosInput.value) || 0;
+			const fechaEntrada = new Date(fechaEntradaInput.value);
+			const fechaSalida = new Date(fechaSalidaInput.value);
 
-		const fechaEntrada = new Date(fechaEntradaInput);
-		const fechaSalida = new Date(fechaSalidaInput);
+			let tieneErrores = false;
 
-		if (fechaSalida <= fechaEntrada) {
-			event.preventDefault();
-			alert('La fecha de salida debe ser posterior a la fecha de entrada.');
-			return;
-		}
+			// Validar fechas
+			if (fechaSalida <= fechaEntrada) {
+				event.preventDefault();
+				fechaSalidaInput.setCustomValidity('La fecha de salida debe ser posterior a la fecha de entrada.');
+				fechaSalidaInput.reportValidity();
+				tieneErrores = true;
+				return; // Cortar aquí porque no tiene sentido seguir si las fechas están mal
+			}
 
-		
-        let errores = [];
-		
-        if (numAdultos + numNinos !== numClientes) {
-            errores.push("La suma de adultos y niños debe ser igual al número total de clientes.");
-        }
+			// Validar número de clientes
+			if (numAdultos + numNinos !== numClientes) {
+				event.preventDefault();
+				numClientesInput.setCustomValidity("La suma de adultos y niños debe ser igual al número total de clientes.");
+				numClientesInput.reportValidity();
+				tieneErrores = true;
+			}
 
-        if (numNinos > 0 && numAdultos === 0) {
-            errores.push("Debe haber al menos un adulto si hay niños.");
-        }
+			// Validar si hay niños sin adultos
+			if (numNinos > 0 && numAdultos === 0) {
+				event.preventDefault();
+				numAdultosInput.setCustomValidity("Debe haber al menos un adulto si hay niños.");
+				numAdultosInput.reportValidity();
+				tieneErrores = true;
+			}
 
-        if (errores.length > 0) {
-			event.preventDefault();
-            alert(errores.join("\n"));
-        }
-
-    });
-
+			if (tieneErrores) {
+				event.preventDefault(); // Por si acaso
+			}
+		});
 	});
-
 }
+
 
 
 function initPrecioAuto() {
@@ -93,6 +106,7 @@ function initPrecioAuto() {
 		
 	});
 }
+
 
 
 

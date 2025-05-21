@@ -22,13 +22,26 @@ public class ReservaService extends BaseServiceImpl<Reserva, Long, ReservaReposi
 	private ReservaRepositorio reservaRepositorio;
 	
 	
-	public boolean haySolapamiento(Long idHabitacion, LocalDate fechaEntrada, LocalDate fechaSalida) {
+	
+	public boolean comprobarSolapamiento(Long idHabitacion, LocalDate fechaEntrada, LocalDate fechaSalida) {
 	    List<Reserva> solapadas = reservaRepositorio.buscarReservasSolapadas(idHabitacion, fechaEntrada, fechaSalida);
 	    return !solapadas.isEmpty();
 	}
 	
+	
+	public boolean comprobarSolapamientoAlEditar(Long idHabitacion, LocalDate fechaEntrada, LocalDate fechaSalida, Long idReserva) {
+	    List<Reserva> solapadas = reservaRepositorio.buscarReservasSolapadasAlEditar(idHabitacion, fechaEntrada, fechaSalida, idReserva);
+	    return !solapadas.isEmpty();
+	}
+	
+	
 	public double calcularPrecioReserva(Habitacion h, LocalDate fechaEntrada, LocalDate fechaSalida) {
 		long noches = ChronoUnit.DAYS.between(fechaEntrada, fechaSalida);
+		
+		if(h.getCategoria().getDescuento() != 0) {
+			return h.getPrecio()*h.getCategoria().getDescuento() / 100;
+		}
+			
 		return h.getPrecio() * noches;
 	}
 
@@ -39,6 +52,7 @@ public class ReservaService extends BaseServiceImpl<Reserva, Long, ReservaReposi
 				.collect(Collectors.toList());
 		return reservas;
 	}
+	
 	
 	public double calcularRecaudacionTotal(List<Reserva> reservas) {
 	    double total = 0.0;

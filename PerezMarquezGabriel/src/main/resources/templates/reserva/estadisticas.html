@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Estadísticas del hotel, incluyendo total recaudado, número de habitaciones y categorías.">
     <title>Estadísticas Reservas</title>
-    <link rel="stylesheet" href="../static/bootstrap.min.css" th:href="@{/bootstrap.min.css}" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" defer></script>
+    <link rel="stylesheet" href="../../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous" defer></script>
 </head>
 <body class="d-flex flex-column min-vh-100">
     <header th:replace="~{/fragmentos/menu :: menu}"></header>
@@ -17,8 +18,8 @@
             </div>
             <div class="col-12 col-md-9 col-lg-10 p-4">
                 <h2 class="mb-4 text-center">Estadísticas del Hotel</h2>
-                <div class="row g-4 mb-5 justify-content-center">
-                    <div class="col-12 col-md-6 col-lg-4 d-flex">
+                <div class="d-flex flex-row gap-4 justify-content-center flex-wrap mb-5">
+                    <div class="col-12 col-md-6 col-lg-4 d-flex" style="min-width: 250px; max-width: 350px;">
                         <div class="card shadow text-center flex-fill h-100">
                             <div class="card-body">
                                 <h5 class="card-title"><i class="bi bi-cash-coin text-success"></i> Total Recaudado</h5>
@@ -26,7 +27,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-6 col-lg-4 d-flex">
+                    <div class="col-12 col-md-6 col-lg-4 d-flex" style="min-width: 250px; max-width: 350px;">
                         <div class="card shadow text-center flex-fill h-100">
                             <div class="card-body">
                                 <h5 class="card-title"><i class="bi bi-door-closed text-primary"></i> Número de Habitaciones</h5>
@@ -34,7 +35,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-6 col-lg-4 d-flex">
+                    <div class="col-12 col-md-6 col-lg-4 d-flex" style="min-width: 250px; max-width: 350px;">
                         <div class="card shadow text-center flex-fill h-100">
                             <div class="card-body">
                                 <h5 class="card-title"><i class="bi bi-tags text-warning"></i> Número de Categorías</h5>
@@ -42,17 +43,70 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-6 col-lg-4 d-flex">
+                    <div class="col-12 col-md-6 col-lg-4 d-flex" style="min-width: 250px; max-width: 350px;">
                         <div class="card shadow text-center flex-fill h-100">
                             <div class="card-body">
                                 <h5 class="card-title"><i class="bi bi-graph-up-arrow text-info"></i> Reserva más larga</h5>
-                                <p class="fw-bold" th:text="${reservaMasLarga}">-</p>
+                                <p class="fw-bold fs-4" th:text="${reservaMasLarga}">-</p>
                             </div>
                         </div>
                     </div>
-                    
                 </div>
                 <!-- Aquí puedes añadir más estadísticas o gráficos -->
+                <div class="row mt-4">
+                    <div class="col-12 col-lg-6 mb-4">
+                        <div class="card shadow h-100">
+                            <div class="card-header bg-warning text-dark text-center fw-bold">
+                                Recaudado por Categoría
+                            </div>
+                            <div class="card-body">
+                                <table class="table table-striped align-middle mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>Categoría</th>
+                                            <th class="text-end">Recaudado (€)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="cat : ${recaudadoPorCategoria}">
+                                            <td th:text="${cat.nombre}">Categoría</td>
+                                            <td class="text-end" th:text="${cat.totalRecaudado}">0</td>
+                                        </tr>
+                                        <tr th:if="${#lists.isEmpty(recaudadoPorCategoria)}">
+                                            <td colspan="2" class="text-center text-muted">Sin datos</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 mb-4">
+                        <div class="card shadow h-100">
+                            <div class="card-header bg-primary text-white text-center fw-bold">
+                                Recaudado por Habitación
+                            </div>
+                            <div class="card-body">
+                                <table class="table table-striped align-middle mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>Habitación</th>
+                                            <th class="text-end">Recaudado (€)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="hab : ${recaudadoPorHabitacion}">
+                                            <td th:text="${hab.nombre}">Habitación</td>
+                                            <td class="text-end" th:text="${hab.totalRecaudado} + ' €'">0</td>
+                                        </tr>
+                                        <tr th:if="${#lists.isEmpty(recaudadoPorHabitacion)}">
+                                            <td colspan="2" class="text-center text-muted">Sin datos</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </main>

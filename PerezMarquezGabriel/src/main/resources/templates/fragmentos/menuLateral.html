@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="description" content="Menú lateral para la gestión de habitaciones, categorías, reservas y ver estadisticas.">
+    <title>Menú lateral</title>
 </head>
 <body>
     <aside th:fragment="menuLateral" class="bg-dark text-white d-flex flex-column min-vh-100 p-0">
@@ -15,30 +16,30 @@
         <ul class="nav flex-column py-4 gap-2">
             <li class="nav-item mb-1">
                 <a class="nav-link text-white d-flex align-items-center gap-2 fw-bold"
-                   th:href="@{/habitaciones}"
+                   th:href="@{/rooms/manage-rooms}"
                    th:classappend="${activePage} == 'habitaciones' ? 'active bg-secondary text-warning' : ''">
                     <i class="bi bi-door-closed"></i> Gestionar Habitaciones
                 </a>
             </li>
             <li class="nav-item mb-1">
                 <a class="nav-link text-white d-flex align-items-center gap-2 fw-bold"
-                   th:href="@{/categorias}"
+                   th:href="@{/categories/manage-categories}"
                    th:classappend="${activePage} == 'categorias' ? 'active bg-secondary text-warning' : ''">
                     <i class="bi bi-tags"></i> Gestionar Categorias
                 </a>
             </li>
             <li class="nav-item mb-1">
                 <a class="nav-link text-white d-flex align-items-center gap-2 fw-bold"
-                   th:href="@{/reservas}"
+                   th:href="@{/reservations/manage-reservations}"
                    th:classappend="${activePage} == 'reservas' ? 'active bg-secondary text-warning' : ''">
                     <i class="bi bi-calendar-check"></i> Gestionar Reservas
                 </a>
             </li>
             <li class="nav-item mb-1">
                 <a class="nav-link text-white d-flex align-items-center gap-2 fw-bold"
-                   th:href="@{/reservas/estadistics}"
+                   th:href="@{/reservations/estadistics}"
                    th:classappend="${activePage} == 'estadistics' ? 'active bg-secondary text-warning' : ''">
-                    <i class="bi bi-calendar-check"></i> Estadísticas
+                    <i class="bi bi-table"></i> Estadísticas
                 </a>
             </li>
         </ul>
@@ -46,5 +47,3 @@
 </aside>
 </body>
 </html>
-
-<!-- Bootstrap Icons CDN (debe estar en el layout principal) -->

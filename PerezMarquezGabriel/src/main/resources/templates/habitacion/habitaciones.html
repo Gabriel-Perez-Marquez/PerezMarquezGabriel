@@ -6,8 +6,9 @@
   <meta name="description" content="Gestión de habitaciones del hotel. Aquí puedes agregar, editar y eliminar habitaciones disponibles para los huéspedes.">
   <title>Gestión de Habitaciones</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <link rel="stylesheet" href="../static/bootstrap.min.css" th:href="@{/bootstrap.min.css}" />
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" defer></script>
+  <link rel="stylesheet" href="../../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous" defer></script>
+  <script defer src="../../static/js/main.js" th:src="@{/js/main.js}"></script>
 </head>
 <body class="d-flex flex-column min-vh-100">
 
@@ -21,7 +22,7 @@
       <div class="col-12 col-md-9 col-lg-10 p-4">
         <h2 class="mb-4">Gestión de Habitaciones</h2>
         <div class="d-flex mb-3">
-          <a th:href="@{/habitaciones/add-new-room}" class="btn btn-primary btn-lg"><i class="bi bi-plus-circle"></i> Agregar habitación</a>
+          <a th:href="@{/rooms/manage-rooms/add-new-room}" class="btn btn-primary btn-lg"><i class="bi bi-plus-circle"></i> Agregar habitación</a>
         </div>
         <div th:if="${mensajeError}" class="alert alert-danger text-center w-50" role="alert">
           <span th:text="${mensajeError}">Mensaje de error</span>
@@ -31,38 +32,46 @@
           <div class="col-12 col-lg-6 mb-3 mb-lg-0">
             <div class="border rounded p-3 h-100">
               <h5 class="mb-3">Filtrar por categoría</h5>
-              <form method="get" th:action="@{/habitaciones}">
-                <div class="form-check mb-2" th:each="categoria : ${categorias}">
-                  <input class="form-check-input" type="checkbox"
-                         name="categorias"
-                         th:id="'categoria-' + ${categoria.id}"
-                         th:value="${categoria.id}"
-                         th:checked="${categoriasSeleccionadas != null and categoriasSeleccionadas.contains(categoria.id)}"
-                         onchange="this.form.submit()" />
-                  <label class="form-check-label" th:for="'categoria-' + ${categoria.id}" th:text="${categoria.nombre}">Categoría</label>
+              <form method="get" th:action="@{/rooms/manage-rooms}" id="formFiltroPrecios">
+                <div class="row mb-4">
+                  <div class="col-12 col-lg-6 mb-3 mb-lg-0">
+                    <div class="border rounded p-3 h-100">
+                      <h5 class="mb-3">Filtrar por categoría</h5>
+                      <div class="form-check mb-2" th:each="categoria : ${categorias}">
+                        <input class="form-check-input" type="checkbox"
+                              name="categorias"
+                              th:id="'categoria-' + ${categoria.id}"
+                              th:value="${categoria.id}"
+                              th:checked="${categoriasSeleccionadas != null and categoriasSeleccionadas.contains(categoria.id)}"
+                              onchange="this.form.submit()" />
+                        <label class="form-check-label" th:for="'categoria-' + ${categoria.id}" th:text="${categoria.nombre}">Categoría</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-lg-6">
+                    <div class="border rounded p-3 h-100">
+                      <h5 class="mb-3">Filtrar por precio</h5>
+                      <div class="mb-2">
+                        <label for="minPrecio" class="form-label">Precio mínimo (€)</label>
+                        <input type="number" class="form-control" id="minPrecio" name="minPrecio"
+                              th:value="${minPrecio}" min="0" onchange="this.form.submit()" required>
+                      </div>
+                      <div class="mb-2">
+                        <label for="maxPrecio" class="form-label">Precio máximo (€)</label>
+                        <input type="number" class="form-control" id="maxPrecio" name="maxPrecio"
+                          th:value="${maxPrecio}" th:min="${minPrecio}" min="0" required>
+                      </div>
+                      <button type="submit" class="btn btn-primary w-100 mt-3">
+                        <i class="bi bi-funnel"></i> Filtrar
+                      </button>
+                      <a th:href="@{/rooms/manage-rooms}" class="btn btn-link p-0 ms-3">Quitar filtros</a>
+                    </div>
+                  </div>
                 </div>
               </form>
             </div>
           </div>
-          <div class="col-12 col-lg-6">
-            <div class="border rounded p-3 h-100">
-              <h5 class="mb-3">Filtrar por precio</h5>
-              <form th:action="@{/habitaciones}">
-                <div class="mb-2">
-                  <label for="minPrecio" class="form-label">Precio mínimo (€)</label>
-                  <input type="number" class="form-control" id="minPrecio" name="minPrecio"
-                        th:value="${minPrecio}" min="0" onchange="this.form.submit()" required>
-                </div>
-                <div class="mb-2">
-                  <label for="maxPrecio" class="form-label">Precio máximo (€)</label>
-                  <input type="number" class="form-control" id="maxPrecio" name="maxPrecio"
-                    th:value="${maxPrecio}" th:min="${minPrecio}"  required>
-                </div>
-                <button type="submit" class="btn btn-outline-primary">Filtrar</button>
-                <a th:href="@{/habitaciones}" class="btn btn-link p-0 ms-3">Quitar filtros</a>
-              </form>
-            </div>
-          </div>
+          
         </div>
         <!-- Tabla abajo -->
         <div class="table-responsive rounded mb-5">
@@ -93,7 +102,7 @@
                     <img th:src="${habitacion.urlImage}" th:alt="${habitacion.textoAlt}" style="width: 80px; height: auto;">
                 </td>
                 <td>
-                  <a th:href="@{/habitaciones/edit/}+${habitacion.id}" class="btn btn-outline-warning btn-sm me-2"><i class="bi bi-pencil"></i></a>
+                  <a th:href="@{/rooms/manage-rooms/edit/}+${habitacion.id}" class="btn btn-outline-warning btn-sm me-2"><i class="bi bi-pencil"></i></a>
                   <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" th:data-bs-target="@{#habitacionModal} + ${habitacion.id}">
                     <i class="bi bi-trash3"></i>
                   </button>
@@ -116,7 +125,7 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-                  <a th:href="@{/habitaciones/delete/}+${habitacion.id}" class="btn btn-danger">Sí, eliminar</a>
+                  <a th:href="@{/rooms/manage-rooms/delete/}+${habitacion.id}" class="btn btn-danger">Sí, eliminar</a>
                 </div>
               </div>
             </div>

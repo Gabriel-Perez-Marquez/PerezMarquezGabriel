@@ -27,10 +27,10 @@ public interface HabitacionRepositorio extends JpaRepository<Habitacion, Long> {
 	List<Habitacion> ordenarPorNombreDesc();
 
 
-	@Query("SELECT h FROM Habitacion h ORDER BY h.precio ASC")
+	@Query("SELECT h FROM Habitacion h ORDER BY (h.precio - (h.precio * h.categoria.descuento / 100.0)) ASC")
 	List<Habitacion> ordenarPorPrecioAsc();
 	
-	@Query("SELECT h FROM Habitacion h ORDER BY h.precio DESC")
+	@Query("SELECT h FROM Habitacion h ORDER BY (h.precio - (h.precio * h.categoria.descuento / 100.0)) DESC")
 	List<Habitacion> ordenarPorPrecioDesc();
 
 	@Query("""

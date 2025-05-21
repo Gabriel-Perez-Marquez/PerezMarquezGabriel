@@ -1,6 +1,7 @@
 package com.salesianostriana.dam.perezmarquezgabriel.controller;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import com.salesianostriana.dam.perezmarquezgabriel.model.Habitacion;
 import com.salesianostriana.dam.perezmarquezgabriel.model.Reserva;
 import com.salesianostriana.dam.perezmarquezgabriel.service.CategoriaService;
@@ -20,10 +20,10 @@ import com.salesianostriana.dam.perezmarquezgabriel.service.HabitacionService;
 import com.salesianostriana.dam.perezmarquezgabriel.service.ReservaService;
 
 
-
 @Controller
-@RequestMapping("/reservas")
+@RequestMapping("/reservations")
 public class ReservaController {
+
 
 	@Autowired
 	private CategoriaService categoriaService;
@@ -33,7 +33,24 @@ public class ReservaController {
 	
 	@Autowired
 	private ReservaService reservaService;
+
 	
+	@GetMapping("/manage-reservations")
+	public String gestionReservas(@RequestParam(required = false) List<Long> categorias,
+			Model model) {
+		
+		List<Reserva> reservas= reservaService.findAll();
+		
+		if(categorias != null && !categorias.isEmpty()) {
+			reservas = reservaService.filtrarPorCategoria(reservas, categorias);
+		}
+		
+		model.addAttribute("categoriasSeleccionadas", categorias);
+		model.addAttribute("reservas", reservas);
+		model.addAttribute("categorias", categoriaService.findAll());
+		model.addAttribute("activePage", "reservas");
+		return "reserva/reservas";
+	}
 	
 	
 	@GetMapping("/reserve")
@@ -48,7 +65,7 @@ public class ReservaController {
 	}
 	
 	
-	@GetMapping("/add-new-reservation/{id}")
+	@GetMapping("/manage-reservations/add-new-reservation/{id}")
 	public String agregarReservaCatalogo(@PathVariable("id") Long idHabitacion, Model model) {
 		String today;
 		Reserva reserva = new Reserva();
@@ -62,12 +79,12 @@ public class ReservaController {
 	        model.addAttribute("today", today);
 		    return "reserva/reservation-form";
 	    } else {
-	    	return "redirect:/reservas";
+	    	return "redirect:/reservations/manage-reservations";
 		}		
 	}
 	
 	
-	@GetMapping("/add-new-reservation")
+	@GetMapping("/manage-reservations/add-new-reservation")
 	public String agregarReservaParametro(@RequestParam(required = false) int numHabitacion, Model model) {
 		LocalDate today = LocalDate.now();
 		Reserva reserva = new Reserva();
@@ -89,7 +106,7 @@ public class ReservaController {
 	
 
 
-	@PostMapping("/save")
+	@PostMapping("/manage-reservations/save")
 	public String guardarReserva(@ModelAttribute("reserva") Reserva reserva, Model model) {
 	    Long idHabitacion = reserva.getHabitacion().getId();
 	    Optional<Habitacion> habitacionOpt = habitacionService.findById(idHabitacion);
@@ -99,23 +116,44 @@ public class ReservaController {
 	        return "reserva/reservation-form";
 	    }
 
-	    // Verificar solapamientos
-	    if (reservaService.haySolapamiento(idHabitacion, reserva.getFechaEntrada(), reserva.getFechaSalida())) {
-	        model.addAttribute("error", "La habitación ya está reservada en esas fechas.");
-	        model.addAttribute("habitacion", habitacionOpt.get());
-	        model.addAttribute("reserva", reserva);
-	        model.addAttribute("categorias", categoriaService.findAll());
-	        return "reserva/reservation-form";
-	    }
 	    
-	    reserva.setHabitacion(habitacionOpt.get());
-	    reserva.setPrecio(reservaService.calcularPrecioReserva(habitacionOpt.get(), reserva.getFechaEntrada(), reserva.getFechaSalida()));
-	    reservaService.save(reserva);
-
-	    return "redirect:/reservas";
+	    
+	    
+	    // Verificar solapamientos
+	    System.out.println(reserva.getId());
+	    if(reserva.getId() != null ) {
+	    	if (reservaService.comprobarSolapamientoAlEditar(idHabitacion, reserva.getFechaEntrada(), reserva.getFechaSalida(), reserva.getId())) {
+		        model.addAttribute("error", "La habitación ya está reservada en esas fechas.");
+		        model.addAttribute("habitacion", habitacionOpt.get());
+		        model.addAttribute("reserva", reserva);
+		        model.addAttribute("categorias", categoriaService.findAll());
+		        return "reserva/reservation-form";
+		    } else {
+		    	reserva.setHabitacion(habitacionOpt.get());
+			    reserva.setPrecio(reservaService.calcularPrecioReserva(habitacionOpt.get(), reserva.getFechaEntrada(), reserva.getFechaSalida()));
+			    reservaService.save(reserva);
+			}
+	    } else {
+	    	if (reservaService.comprobarSolapamiento(idHabitacion, reserva.getFechaEntrada(), reserva.getFechaSalida())) {
+		        model.addAttribute("error", "La habitación ya está reservada en esas fechas.");
+		        model.addAttribute("habitacion", habitacionOpt.get());
+		        model.addAttribute("reserva", reserva);
+		        model.addAttribute("categorias", categoriaService.findAll());
+		        return "reserva/reservation-form";
+		    } else {
+		    	reserva.setHabitacion(habitacionOpt.get());
+			    reserva.setPrecio(reservaService.calcularPrecioReserva(habitacionOpt.get(), reserva.getFechaEntrada(), reserva.getFechaSalida()));
+			    reservaService.save(reserva);
+			}
+		}
+	    
+	 
+	    
+	    
+	    return "redirect:/reservations/manage-reservations";
 	}
 
-	@GetMapping("/edit/{id}")
+	@GetMapping("/manage-reservations/edit/{id}")
 	public String editar(@PathVariable("id") Long id, Model model) {
 		Reserva r = reservaService.findById(id).orElseThrow();
 		Optional<Habitacion> habitacionOptional = habitacionService.findById(id);
@@ -133,12 +171,12 @@ public class ReservaController {
 		
 	}
 
-	@GetMapping("/delete/{id}")
+	@GetMapping("/manage-reservations/delete/{id}")
 	public String borrar(@PathVariable("id") Long id) {
 		System.out.println(id);
 		reservaService.delete(reservaService.findById(id).get());
 
-		return "redirect:/reservas";
+		return "redirect:/reservations/manage-reservations";
 	}
 	
 	@GetMapping("/estadistics")
@@ -146,7 +184,9 @@ public class ReservaController {
 		model.addAttribute("totalRecaudado", reservaService.calcularRecaudacionTotal(reservaService.findAll()));
 		model.addAttribute("numHabitaciones", habitacionService.contarHabitaciones());
 		model.addAttribute("numCategorias", categoriaService.contarCategorias());
-		model.addAttribute("reservaMasLarga", reservaService.calcularRecaudacionTotal(reservaService.findAll()));
+		model.addAttribute("reservaMasLarga", reservaService.obtenerReservaMasLarga());
+		model.addAttribute("recaudadoPorHabitacion", habitacionService.calcularRecaudacionTodasHabitaciones(habitacionService.findAll()));
+		model.addAttribute("recaudadoPorCategoria", categoriaService.calcularRecaudacionTodasCategorias(categoriaService.findAll()));
 		return "reserva/estadisticas";
 	}
 	

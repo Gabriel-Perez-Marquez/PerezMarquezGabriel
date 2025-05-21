@@ -30,14 +30,26 @@ public class HabitacionService extends BaseServiceImpl<Habitacion, Long, Habitac
 		return habitacionRepositorio.buscarPorNombre(nombre);
 	}
 
+	
+	public double calcularPrecioDescuentoHab(Habitacion h) {
+		if(h.getCategoria().getDescuento() != 0) {
+			return h.getPrecio() * h.getCategoria().getDescuento() / 100;
+		} else {
+			return h.getPrecio();
+		}
+		
+	}
+	
+	
 	public List<Habitacion> filtrarPorPrecio(List<Habitacion> habitaciones, Integer minPrecio, Integer maxPrecio) {
+
 		if (minPrecio != null && maxPrecio != null) {
 			habitaciones = habitaciones.stream()
-					.filter(h -> h.getPrecio() >= minPrecio && h.getPrecio() <= maxPrecio)
+					.filter(h -> calcularPrecioDescuentoHab(h) >= minPrecio && calcularPrecioDescuentoHab(h) <= maxPrecio)
 					.collect(Collectors.toList());
 		} else if (minPrecio != null) {
 			habitaciones = habitaciones.stream()
-					.filter(h -> h.getPrecio() >= minPrecio)
+					.filter(h -> calcularPrecioDescuentoHab(h) >= minPrecio)
 					.collect(Collectors.toList());
 		}
 		return habitaciones;
@@ -83,6 +95,54 @@ public class HabitacionService extends BaseServiceImpl<Habitacion, Long, Habitac
 	public long contarHabitaciones() {
 	    return habitacionRepositorio.count();
 	}
+	
+	
+	public double calcularRecaudacionTotalHab(Habitacion h) {
+		return h.getReservas().stream()
+			.mapToDouble(reserva -> {
+				long numeroNoches = java.time.temporal.ChronoUnit.DAYS.between(
+					reserva.getFechaEntrada(), 
+					reserva.getFechaSalida()
+				);
+				return numeroNoches * h.getPrecio();
+			})
+			.sum();
+	}
+	
+	
+	public List<Habitacion> calcularRecaudacionTodasHabitaciones(List<Habitacion> habitaciones){
+		return habitaciones.stream()
+			.peek(h -> h.setTotalRecaudado(calcularRecaudacionTotalHab(h)))
+			.collect(Collectors.toList());
+	}
+	
+	public boolean comprobarNumHabRepetido(Habitacion h, List<Habitacion> habitaciones) {
+		for (Habitacion h1 : habitaciones) {
+			if(h.getNumHabitacion() == h1.getNumHabitacion()) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public int obtenerSiguienteNumeroHabitacion(List<Habitacion> habitaciones) {
+	    if (habitaciones.isEmpty()) return 100;
+
+
+	    int maxNum = habitaciones.stream()
+	        .mapToInt(Habitacion::getNumHabitacion)
+	        .max()
+	        .orElse(100);
+
+	    int siguiente = maxNum + 1;
+
+	    if (siguiente % 100 == 10) {
+	        siguiente = ((siguiente / 100) + 1) * 100 + 1;
+	    }
+
+	    return siguiente;
+	}
+	
 	
 
 }

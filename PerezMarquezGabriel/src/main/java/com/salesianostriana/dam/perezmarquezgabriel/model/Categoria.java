@@ -25,4 +25,5 @@ public class Categoria {
 	private int descuento;
 	@OneToMany(mappedBy = "categoria")
 	private List<Habitacion> listHabitaciones;
+	private Double totalRecaudado;
 }

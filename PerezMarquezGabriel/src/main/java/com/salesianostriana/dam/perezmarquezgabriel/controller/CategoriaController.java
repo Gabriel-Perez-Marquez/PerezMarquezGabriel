@@ -13,14 +13,23 @@ import com.salesianostriana.dam.perezmarquezgabriel.model.Categoria;
 import com.salesianostriana.dam.perezmarquezgabriel.service.CategoriaService;
 
 @Controller
-@RequestMapping("/categorias")
+@RequestMapping("/categories")
 public class CategoriaController {
 
 	@Autowired
 	private CategoriaService categoriaService;
 	
 	
-	@GetMapping("/add-new-category")
+	@GetMapping("/manage-categories")
+	public String gestionCategorias(Model model) {
+
+		model.addAttribute("categorias", categoriaService.findAll());
+		model.addAttribute("activePage", "categorias");
+		return "categoria/categorias";
+	}
+	
+	
+	@GetMapping("/manage-categories/add-new-category")
 	public String addNewCategory(Model model) {
 		
 		model.addAttribute("categoria", new Categoria());
@@ -28,15 +37,15 @@ public class CategoriaController {
 		return "categoria/category-form";
 	}
 
-	@PostMapping("/save")
+	@PostMapping("/manage-categories/save")
 	public String guardarCategoria(@ModelAttribute Categoria c) {
 
 		categoriaService.save(c);
 
-		return "redirect:/categorias";
+		return "redirect:/categories/manage-categories";
 	}
 
-	@GetMapping("/edit/{id}")
+	@GetMapping("/manage-categories/edit/{id}")
 	public String editar(@PathVariable("id") Long id, Model model) {
 		Categoria c = categoriaService.findById(id).orElseThrow();
 
@@ -45,7 +54,7 @@ public class CategoriaController {
 		return "categoria/category-form";
 	}
 
-	@GetMapping("/delete/{id}")
+	@GetMapping("/manage-categories/delete/{id}")
 	public String borrar(@PathVariable("id") Long id, Model model) {
 
 	    Categoria categoria = categoriaService.findById(id)
@@ -58,7 +67,7 @@ public class CategoriaController {
 	    }
 
 	    categoriaService.delete(categoria);
-	    return "redirect:/categorias";
+	    return "redirect:/categories/manage-categories";
 	}
 
 

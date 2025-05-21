@@ -15,6 +15,16 @@ public interface ReservaRepositorio extends JpaRepository<Reserva, Long> {
 	List<Reserva> buscarReservasSolapadas(@Param("idHabitacion") Long idHabitacion,
 	                                      @Param("fechaEntrada") LocalDate fechaEntrada,
 	                                      @Param("fechaSalida") LocalDate fechaSalida);
+	
+	
+	@Query("SELECT r FROM Reserva r WHERE r.habitacion.id = :idHabitacion " +
+		       "AND r.id <> :idReserva " +
+		       "AND r.fechaEntrada < :fechaSalida " +
+		       "AND r.fechaSalida > :fechaEntrada")
+	List<Reserva> buscarReservasSolapadasAlEditar(@Param("idHabitacion") Long idHabitacion,
+			@Param("fechaEntrada") LocalDate fechaEntrada,
+			@Param("fechaSalida") LocalDate fechaSalida,
+			@Param("idReserva") Long idReserva);
 
 
 }
