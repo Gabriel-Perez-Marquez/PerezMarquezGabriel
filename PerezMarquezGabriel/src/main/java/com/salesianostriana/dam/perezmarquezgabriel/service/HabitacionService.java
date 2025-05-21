@@ -78,5 +78,11 @@ public class HabitacionService extends BaseServiceImpl<Habitacion, Long, Habitac
 				.sorted(Comparator.comparingInt(h -> h.getReservas().size())).limit(3).collect(Collectors.toList());
 
 	}
+	
+	
+	public long contarHabitaciones() {
+	    return habitacionRepositorio.count();
+	}
+	
 
 }

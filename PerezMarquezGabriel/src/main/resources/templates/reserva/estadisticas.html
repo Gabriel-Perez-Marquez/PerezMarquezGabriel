@@ -4,8 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estadísticas Reservas</title>
+    <link rel="stylesheet" href="../static/bootstrap.min.css" th:href="@{/bootstrap.min.css}" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" defer></script>
 </head>
-<body>
-    
+<body class="d-flex flex-column min-vh-100">
+    <header th:replace="~{/fragmentos/menu :: menu}"></header>
+    <main class="container-fluid flex-grow-1">
+        <div class="row min-vh-100 flex-nowrap">
+            <div class="d-none d-md-block col-md-3 col-lg-2 p-0 bg-dark min-vh-100">
+                <aside th:replace="~{/fragmentos/menuLateral :: menuLateral}"></aside>
+            </div>
+            <div class="col-12 col-md-9 col-lg-10 p-4">
+                <h2 class="mb-4 text-center">Estadísticas del Hotel</h2>
+                <div class="row g-4 mb-5 justify-content-center">
+                    <div class="col-12 col-md-6 col-lg-4 d-flex">
+                        <div class="card shadow text-center flex-fill h-100">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="bi bi-cash-coin text-success"></i> Total Recaudado</h5>
+                                <p class="display-6 fw-bold text-success" th:text="${totalRecaudado} + ' €'">0 €</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4 d-flex">
+                        <div class="card shadow text-center flex-fill h-100">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="bi bi-door-closed text-primary"></i> Número de Habitaciones</h5>
+                                <p class="display-6 fw-bold text-primary" th:text="${numHabitaciones}">0</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4 d-flex">
+                        <div class="card shadow text-center flex-fill h-100">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="bi bi-tags text-warning"></i> Número de Categorías</h5>
+                                <p class="display-6 fw-bold text-warning" th:text="${numCategorias}">0</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4 d-flex">
+                        <div class="card shadow text-center flex-fill h-100">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="bi bi-graph-up-arrow text-info"></i> Reserva más larga</h5>
+                                <p class="fw-bold" th:text="${reservaMasLarga}">-</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <!-- Aquí puedes añadir más estadísticas o gráficos -->
+            </div>
+        </div>
+    </main>
+    <footer th:replace="~{/fragmentos/footer :: footer}"></footer>
 </body>
 </html>

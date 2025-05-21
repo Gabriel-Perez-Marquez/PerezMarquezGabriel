@@ -14,20 +14,19 @@
 
     <main class="container my-5">
         <h1 class="text-center mb-4">Datos Categoria</h1>
-        <form th:action="@{/categorias/save}" th:object="${categoria}" method="post" class="row g-3">
-            <div class="col-md-6">
+
+        <form th:action="@{/categorias/save}" th:object="${categoria}" method="post" class="row g-3 justify-content-center">
+            <div class="col-12 col-md-4 mx-auto">
                 <input type="hidden" th:if="${categoria.id  != null}" name="id" id="id" th:value="${categoria.id}">
-                <label for="numHabitacion" class="form-label">Nombre <span class="text-danger">*</span></label>
-                <input type="text" name="nombre" id="nombre" class="form-control" th:value="${categoria.nombre}" required>
-            </div>
-
-            <div class="col-md-6">
-                <label for="descripcion" class="form-label">Número de personas que acepta la habitacion <span class="text-danger">*</span></label>
-                <input type="number" name="numPersonas" id="numPersonas" class="form-control" th:value="${categoria.numPersonas}" required>
-            </div>
-
-            <div class="col-12 text-center">
-                <button type="submit" class="btn btn-primary">Guardar</button>
+                <label for="nombre" class="form-label">Nombre <span class="text-danger">*</span></label>
+                <input type="text" name="nombre" id="nombre" class="form-control form-control-sm mb-2" th:value="${categoria.nombre}" required>
+                <label for="numPersonas" class="form-label">Número de personas que acepta la habitación <span class="text-danger">*</span></label>
+                <input type="number" name="numPersonas" id="numPersonas" class="form-control form-control-sm mb-2" th:value="${categoria.numPersonas}" required>
+                <label for="descuento" class="form-label">Descuento (%)</label>
+                <input type="number" name="descuento" id="descuento" class="form-control form-control-sm mb-3" min="0" max="100" step="1" th:value="${categoria.descuento}" placeholder="0">
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
             </div>
         </form>
     </main>

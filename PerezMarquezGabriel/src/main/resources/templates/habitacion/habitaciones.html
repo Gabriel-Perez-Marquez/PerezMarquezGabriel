@@ -1,269 +1,130 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Gestión de habitaciones del hotel. Aquí puedes agregar, editar y eliminar habitaciones disponibles para los huéspedes."
-    />
-    <title>Gestión de Habitaciones</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="../static/bootstrap.min.css"
-      th:href="@{/bootstrap.min.css}"
-    />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
-      defer
-    ></script>
-  </head>
-  <body class="d-flex flex-column min-vh-100">
-    <header th:replace="~{/fragmentos/menu :: menu}"></header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Gestión de habitaciones del hotel. Aquí puedes agregar, editar y eliminar habitaciones disponibles para los huéspedes.">
+  <title>Gestión de Habitaciones</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="../static/bootstrap.min.css" th:href="@{/bootstrap.min.css}" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" defer></script>
+</head>
+<body class="d-flex flex-column min-vh-100">
 
-    <!-- Botón para abrir el menú lateral en móvil -->
-    <button
-      class="btn btn-primary d-md-none m-2"
-      type="button"
-      data-bs-toggle="offcanvas"
-      data-bs-target="#offcanvasMenuLateral"
-      aria-controls="offcanvasMenuLateral"
-    >
-      <i class="bi bi-list"></i> Menú
-    </button>
+  <header th:replace="~{/fragmentos/menu :: menu}"></header>
 
-    <main class="container-fluid flex-grow-1">
-
-      <div class="row min-vh-100 flex-nowrap">
-        <!-- Sidebar fijo en escritorio -->
-        <div class="d-none d-md-block col-md-3 col-lg-2 p-0 bg-dark min-vh-100">
-          <aside th:replace="~{/fragmentos/menuLateral :: menuLateral}"></aside>
+  <main class="container-fluid flex-grow-1">
+    <div class="row min-vh-100 flex-nowrap">
+      <div class="col-12 col-md-3 col-lg-2 p-0 bg-dark min-vh-100">
+        <aside th:replace="~{/fragmentos/menuLateral :: menuLateral}"></aside>
+      </div>
+      <div class="col-12 col-md-9 col-lg-10 p-4">
+        <h2 class="mb-4">Gestión de Habitaciones</h2>
+        <div class="d-flex mb-3">
+          <a th:href="@{/habitaciones/add-new-room}" class="btn btn-primary btn-lg"><i class="bi bi-plus-circle"></i> Agregar habitación</a>
         </div>
-
-        <!-- Offcanvas para móvil -->
-        <div
-          class="offcanvas offcanvas-start d-md-none"
-          tabindex="-1"
-          id="offcanvasMenuLateral"
-          aria-labelledby="offcanvasMenuLateralLabel"
-        >
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasMenuLateralLabel">Menú</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="offcanvas"
-              aria-label="Cerrar"
-            ></button>
-          </div>
-          <div class="offcanvas-body p-0 bg-dark">
-            <aside
-              th:replace="~{/fragmentos/menuLateral :: menuLateral}"
-            ></aside>
-          </div>
+        <div th:if="${mensajeError}" class="alert alert-danger text-center w-50" role="alert">
+          <span th:text="${mensajeError}">Mensaje de error</span>
         </div>
-
-        <div class="col-12 col-md-9 col-lg-10 p-4">
-          <h2 class="mb-4">Gestión de Habitaciones</h2>
-          <div class="d-flex mb-3">
-            <a
-              th:href="@{/habitaciones/add-new-room}"
-              class="btn btn-primary btn-lg"
-              ><i class="bi bi-plus-circle"></i> Agregar habitación</a
-            >
-          </div>
-          <div
-            th:if="${mensajeError}"
-            class="alert alert-danger text-center w-50"
-            role="alert"
-          >
-            <span th:text="${mensajeError}">Mensaje de error</span>
-          </div>
-
-          <div class="row mb-4">
-
-            <div class="col-12 col-lg-6 mb-3 mb-lg-0">
-              <div class="border rounded p-3 h-100">
-                <h5 class="mb-3">Filtrar por categoría</h5>
-                <form method="get" th:action="@{/habitaciones}">
-                  <div
-                    class="form-check mb-2"
-                    th:each="categoria : ${categorias}"
-                  >
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      name="categorias"
-                      th:id="'categoria-' + ${categoria.id}"
-                      th:value="${categoria.id}"
-                      th:checked="${categoriasSeleccionadas != null and categoriasSeleccionadas.contains(categoria.id)}"
-                      onchange="this.form.submit()"
-                    />
-                    <label
-                      class="form-check-label"
-                      th:for="'categoria-' + ${categoria.id}"
-                      th:text="${categoria.nombre}"
-                      >Categoría</label
-                    >
-                  </div>
-                </form>
-              </div>
+        <!-- Filtros arriba -->
+        <div class="row mb-4">
+          <div class="col-12 col-lg-6 mb-3 mb-lg-0">
+            <div class="border rounded p-3 h-100">
+              <h5 class="mb-3">Filtrar por categoría</h5>
+              <form method="get" th:action="@{/habitaciones}">
+                <div class="form-check mb-2" th:each="categoria : ${categorias}">
+                  <input class="form-check-input" type="checkbox"
+                         name="categorias"
+                         th:id="'categoria-' + ${categoria.id}"
+                         th:value="${categoria.id}"
+                         th:checked="${categoriasSeleccionadas != null and categoriasSeleccionadas.contains(categoria.id)}"
+                         onchange="this.form.submit()" />
+                  <label class="form-check-label" th:for="'categoria-' + ${categoria.id}" th:text="${categoria.nombre}">Categoría</label>
+                </div>
+              </form>
             </div>
-
-            <div class="col-12 col-lg-6">
-              <div class="border rounded p-3 h-100">
-                <h5 class="mb-3">Filtrar por precio</h5>
-                <form method="get" th:action="@{/habitaciones}">
-                  <div class="mb-2">
-                    <label for="minPrecio" class="form-label"
-                      >Precio mínimo (€)</label
-                    >
-                    <input
-                      type="number"
-                      class="form-control"
-                      id="minPrecio"
-                      name="minPrecio"
-                      th:value="${minPrecio}"
-                      min="0"
-                      onchange="this.form.submit()"
-                      required
-                    />
-                  </div>
-                  <div class="mb-2">
-                    <label for="maxPrecio" class="form-label"
-                      >Precio máximo (€)</label
-                    >
-                    <input
-                      type="number"
-                      class="form-control"
-                      id="maxPrecio"
-                      name="maxPrecio"
-                      th:value="${maxPrecio}"
-                      th:min="${minPrecio}"
-                      onchange="this.form.submit()"
-                      required
-                    />
-                  </div>
-                  <button type="submit" class="btn btn-outline-primary">
-                    Filtrar
+          </div>
+          <div class="col-12 col-lg-6">
+            <div class="border rounded p-3 h-100">
+              <h5 class="mb-3">Filtrar por precio</h5>
+              <form th:action="@{/habitaciones}">
+                <div class="mb-2">
+                  <label for="minPrecio" class="form-label">Precio mínimo (€)</label>
+                  <input type="number" class="form-control" id="minPrecio" name="minPrecio"
+                        th:value="${minPrecio}" min="0" onchange="this.form.submit()" required>
+                </div>
+                <div class="mb-2">
+                  <label for="maxPrecio" class="form-label">Precio máximo (€)</label>
+                  <input type="number" class="form-control" id="maxPrecio" name="maxPrecio"
+                    th:value="${maxPrecio}" th:min="${minPrecio}"  required>
+                </div>
+                <button type="submit" class="btn btn-outline-primary">Filtrar</button>
+                <a th:href="@{/habitaciones}" class="btn btn-link p-0 ms-3">Quitar filtros</a>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- Tabla abajo -->
+        <div class="table-responsive rounded mb-5">
+          <table class="table table-hover align-middle">
+            <thead class="table-dark text-center">
+              <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+                <th>Categoría</th>
+                <th>Reservada</th>
+                <th>Nº Reservas</th>
+                <th>Imagen</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody class="text-center">
+              <tr th:each="habitacion : ${habitaciones}">
+                <td th:text="${habitacion.id}">1</td>
+                <td th:text="${habitacion.nombre}">Habitación A</td>
+                <td th:text="${habitacion.descripcion}">Una descripción corta</td>
+                <td><span th:text="${habitacion.precio}">100</span> €</td>
+                <td th:text="${habitacion.categoria.nombre}">Doble</td>
+                <td th:text="${#lists.isEmpty(habitacion.reservas)} ? 'No' : 'Sí'">No</td>
+                <td th:text="${habitacion.reservas.size}">0</td>
+                <td>
+                    <img th:src="${habitacion.urlImage}" th:alt="${habitacion.textoAlt}" style="width: 80px; height: auto;">
+                </td>
+                <td>
+                  <a th:href="@{/habitaciones/edit/}+${habitacion.id}" class="btn btn-outline-warning btn-sm me-2"><i class="bi bi-pencil"></i></a>
+                  <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" th:data-bs-target="@{#habitacionModal} + ${habitacion.id}">
+                    <i class="bi bi-trash3"></i>
                   </button>
-                  <a th:href="@{/habitaciones}" class="btn btn-link p-0 ms-3"
-                    >Quitar filtros</a
-                  >
-                </form>
-              </div>
-            </div>
-          </div>
-          <!-- Tabla abajo -->
-          <div class="table-responsive rounded mb-5">
-            <table class="table table-hover align-middle">
-              <thead class="table-dark text-center">
-                <tr>
-                  <th>ID</th>
-                  <th>Nombre</th>
-                  <th>Descripción</th>
-                  <th>Precio</th>
-                  <th>Categoría</th>
-                  <th>Reservada</th>
-                  <th>Nº Reservas</th>
-                  <th>Imagen</th>
-                  <th>Acciones</th>
-                </tr>
-              </thead>
-              <tbody class="text-center">
-                <tr th:each="habitacion : ${habitaciones}">
-                  <td th:text="${habitacion.id}">1</td>
-                  <td th:text="${habitacion.nombre}">Habitación A</td>
-                  <td th:text="${habitacion.descripcion}">
-                    Una descripción corta
-                  </td>
-                  <td><span th:text="${habitacion.precio}">100</span> €</td>
-                  <td th:text="${habitacion.categoria.nombre}">Doble</td>
-                  <td
-                    th:text="${#lists.isEmpty(habitacion.reservas)} ? 'No' : 'Sí'"
-                  >
-                    No
-                  </td>
-                  <td th:text="${habitacion.reservas.size}">0</td>
-                  <td>
-                    <img
-                      th:src="${habitacion.urlImage}"
-                      alt="Imagen"
-                      style="width: 80px; height: auto"
-                    />
-                  </td>
-                  <td>
-                    <a
-                      th:href="@{/habitaciones/edit/}+${habitacion.id}"
-                      class="btn btn-outline-warning btn-sm me-2"
-                      ><i class="bi bi-pencil"></i
-                    ></a>
-                    <button
-                      type="button"
-                      class="btn btn-outline-danger btn-sm"
-                      data-bs-toggle="modal"
-                      th:data-bs-target="@{#habitacionModal} + ${habitacion.id}"
-                    >
-                      <i class="bi bi-trash3"></i>
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <!-- Modal de eliminación por cada habitación -->
-          <div th:each="habitacion : ${habitaciones}">
-            <div
-              class="modal fade"
-              th:id="'habitacionModal' + ${habitacion.id}"
-              tabindex="-1"
-              aria-labelledby="habitacionModalLabel"
-              aria-hidden="true"
-            >
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header bg-danger text-light">
-                    <h5 class="modal-title" id="habitacionModalLabel">
-                      Confirmar eliminación
-                    </h5>
-                    <button
-                      type="button"
-                      class="btn-close"
-                      data-bs-dismiss="modal"
-                      aria-label="Cerrar"
-                    ></button>
-                  </div>
-                  <div class="modal-body">
-                    ¿Estás seguro de que deseas eliminar la habitación
-                    <strong th:text="${habitacion.nombre}">Nombre</strong>?
-                  </div>
-                  <div class="modal-footer">
-                    <button
-                      type="button"
-                      class="btn btn-secondary"
-                      data-bs-dismiss="modal"
-                    >
-                      No
-                    </button>
-                    <a
-                      th:href="@{/habitaciones/delete/}+${habitacion.id}"
-                      class="btn btn-danger"
-                      >Sí, eliminar</a
-                    >
-                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- Modal de eliminación -->
+        
+        <div th:each="habitacion : ${habitaciones}" class="modal fade" th:id="'habitacionModal' + ${habitacion.id}" tabindex="-1" aria-labelledby="habitacionModalLabel" aria-hidden="true"> 
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header bg-danger text-light">
+                  <h5 class="modal-title" id="habitacionModalLabel">Confirmar eliminación</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                  ¿Estás seguro de que deseas eliminar la habitación <strong th:text="${habitacion.nombre}">Nombre</strong>?
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                  <a th:href="@{/habitaciones/delete/}+${habitacion.id}" class="btn btn-danger">Sí, eliminar</a>
                 </div>
               </div>
             </div>
-          </div>
         </div>
       </div>
-    </main>
+    </div>
+  </main>
 
-    <footer th:replace="~{/fragmentos/footer :: footer}"></footer>
-  </body>
+  <footer th:replace="~{/fragmentos/footer :: footer}"></footer>
+</body>
 </html>

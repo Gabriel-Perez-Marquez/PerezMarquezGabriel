@@ -109,6 +109,7 @@ public class ReservaController {
 	    }
 	    
 	    reserva.setHabitacion(habitacionOpt.get());
+	    reserva.setPrecio(reservaService.calcularPrecioReserva(habitacionOpt.get(), reserva.getFechaEntrada(), reserva.getFechaSalida()));
 	    reservaService.save(reserva);
 
 	    return "redirect:/reservas";
@@ -142,7 +143,7 @@ public class ReservaController {
 	
 	@GetMapping("/estadistics")
 	public String estadisticasReservas (Model model) {
-		return "";
+		return "reserva/estadisticas";
 	}
 	
 	

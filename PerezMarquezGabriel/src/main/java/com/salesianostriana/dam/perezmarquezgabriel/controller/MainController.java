@@ -73,9 +73,7 @@ public class MainController {
 			habitaciones = habitacionService.filtrarPorCategoria(habitaciones, categorias);
 		}
 		
-		if(minPrecio != null) {
-			habitaciones = habitacionService.filtrarPorPrecio(habitaciones, minPrecio, maxPrecio);
-		}
+		habitaciones = habitacionService.filtrarPorPrecio(habitaciones, minPrecio, maxPrecio);
 		
 		model.addAttribute("habitaciones", habitaciones);
 		model.addAttribute("categorias", categoriaService.findAll());

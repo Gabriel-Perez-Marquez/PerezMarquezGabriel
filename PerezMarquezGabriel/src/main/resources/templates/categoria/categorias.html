@@ -69,6 +69,7 @@
                   <th>ID</th>
                   <th>Nombre</th>
                   <th>Nº Personas</th>
+                  <th>Descuento</th>
                   <th>Nº Habitaciones</th>
                   <th>Acciones</th>
                 </tr>
@@ -78,6 +79,7 @@
                   <td class="fw-bold" th:text="${categoria.id}">1</td>
                   <td th:text="${categoria.nombre}">Individual</td>
                   <td th:text="${categoria.numPersonas}">1</td>
+                  <td th:text="${categoria.descuento} +' %'"></td>
                   <td th:text="${categoria.listHabitaciones.size()}">3</td>
                   <td>
                     <a th:href="@{/categorias/edit/}+${categoria.id}" class="btn btn-outline-warning btn-sm me-2">

@@ -33,6 +33,7 @@ public class Reserva {
 	private int numNiños;
 	private LocalDate fechaEntrada;
 	private LocalDate fechaSalida;
+	private double precio;
 
 	
 	

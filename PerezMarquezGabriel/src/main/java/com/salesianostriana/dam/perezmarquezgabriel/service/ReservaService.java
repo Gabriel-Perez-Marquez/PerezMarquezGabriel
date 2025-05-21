@@ -2,12 +2,14 @@ package com.salesianostriana.dam.perezmarquezgabriel.service;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.salesianostriana.dam.perezmarquezgabriel.model.Habitacion;
 import com.salesianostriana.dam.perezmarquezgabriel.model.Reserva;
 import com.salesianostriana.dam.perezmarquezgabriel.repository.ReservaRepositorio;
 import com.salesianostriana.dam.perezmarquezgabriel.service.base.BaseServiceImpl;
@@ -23,6 +25,11 @@ public class ReservaService extends BaseServiceImpl<Reserva, Long, ReservaReposi
 	public boolean haySolapamiento(Long idHabitacion, LocalDate fechaEntrada, LocalDate fechaSalida) {
 	    List<Reserva> solapadas = reservaRepositorio.buscarReservasSolapadas(idHabitacion, fechaEntrada, fechaSalida);
 	    return !solapadas.isEmpty();
+	}
+	
+	public double calcularPrecioReserva(Habitacion h, LocalDate fechaEntrada, LocalDate fechaSalida) {
+		long noches = ChronoUnit.DAYS.between(fechaEntrada, fechaSalida);
+		return h.getPrecio() * noches;
 	}
 
 
@@ -48,5 +55,23 @@ public class ReservaService extends BaseServiceImpl<Reserva, Long, ReservaReposi
 
 	    return total;
 	}
+	
+	
+	public String obtenerReservaMasLarga() {
+	    return reservaRepositorio.findAll()
+	        .stream()
+	        .max(Comparator.comparingLong(reserva ->
+	            ChronoUnit.DAYS.between(reserva.getFechaEntrada(), reserva.getFechaSalida())))
+	        .map(reserva -> reserva.getNombreTitular() + " (" +
+	            ChronoUnit.DAYS.between(reserva.getFechaEntrada(), reserva.getFechaSalida()) + " noches)")
+	        .orElse("-");
+	}
+	
+//	public double calcularTotalRecaudado() {
+//	    return reservaRepositorio.findAll()
+//	        .stream()
+//	        .mapToDouble(Reserva::get)
+//	        .sum();
+//	}
 
 }
