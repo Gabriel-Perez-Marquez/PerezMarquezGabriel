@@ -25,7 +25,7 @@
         <div class="col-12 col-md-2 mb-4">
           <div class="border rounded p-3">
             
-            <form method="get" th:action="@{/rooms/catalog}" id="formFiltroPrecios">
+            <form method="get" th:action="@{/rooms/catalog}" action="./catalogo.html" id="formFiltroPrecios">
               <label for="orden">Ordenar por:</label>
               <select class="form-select" name="orden" id="orden" onchange="this.form.submit()">
                 <option value="0" th:selected="${orden == null or orden == 0}">Nº de Reservas</option>
@@ -65,7 +65,7 @@
               </button>
 
             </form>
-            <a th:href="@{/rooms/catalog}" class="btn btn-link p-0 mt-2">Quitar filtros</a>
+            <a th:href="@{/rooms/catalog}" href="./catalogo.html" class="btn btn-link p-0 mt-2">Quitar filtros</a>
               
             
           </div>
@@ -75,7 +75,7 @@
         <div class="col-12 col-md-10">
           <div class="row mb-3">
             <div class="col-12 col-md-12 justify-content-md-end d-flex">
-              <form th:action="@{/rooms/catalog/search}" class="w-25 mt-4" method="get">
+              <form th:action="@{/rooms/catalog/search}" action="./catalogo.html" class="w-25 mt-4" method="get">
                 <div class="input-group mt-3 mt-md-0">
                   <input type="text" name="nombre" id="buscar" class="form-control" placeholder="Buscar...">
                   <button class="btn btn-primary" type="submit">Buscar</button>
@@ -99,7 +99,7 @@
                     <span class="fw-bold text-danger" th:text="|${#numbers.formatDecimal(habitacion.precio * (1 - (habitacion.categoria.descuento * 1.0) / 100), 1, 'COMMA', 2, 'POINT')} €/noche|"></span>
                     <span class="badge bg-success ms-2" th:text="'-' + ${habitacion.categoria.descuento} + '%'"></span>
                   </div>
-                  <a th:href="@{/rooms/catalog/view/{id}(id=${habitacion.id})}" class="btn btn-success">Ver más</a>
+                  <a th:href="@{/rooms/catalog/view/{id}(id=${habitacion.id})}" href="./catalogo.html" class="btn btn-success">Ver más</a>
                 </div>
               </div>
             </div>

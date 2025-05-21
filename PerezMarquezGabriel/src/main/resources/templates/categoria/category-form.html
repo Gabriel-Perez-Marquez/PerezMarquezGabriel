@@ -17,7 +17,7 @@
     <main class="container my-5">
         <h1 class="text-center mb-4">Datos Categoria</h1>
 
-        <form th:action="@{/categories/manage-categories/save}" th:object="${categoria}" method="post" class="row g-3 justify-content-center">
+        <form th:action="@{/categories/manage-categories/save}" action="./categorias.html" th:object="${categoria}" method="post" class="row g-3 justify-content-center">
             <div class="col-12 col-md-4 mx-auto">
                 <input type="hidden" th:if="${categoria.id  != null}" name="id" id="id" th:value="${categoria.id}">
                 <label for="nombre" class="form-label">Nombre <span class="text-danger">*</span></label>

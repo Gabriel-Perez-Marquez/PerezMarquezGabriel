@@ -18,33 +18,34 @@
             </div>
             <div class="col-12 col-md-9 col-lg-10 p-4">
                 <h2 class="mb-4 text-center">Estadísticas del Hotel</h2>
-                <div class="d-flex flex-row gap-4 justify-content-center flex-wrap mb-5">
-                    <div class="col-12 col-md-6 col-lg-4 d-flex" style="min-width: 250px; max-width: 350px;">
-                        <div class="card shadow text-center flex-fill h-100">
+                <!-- Estadísticas principales en una sola fila -->
+                <div class="row g-4 justify-content-center mb-5">
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <div class="card shadow text-center h-100">
                             <div class="card-body">
                                 <h5 class="card-title"><i class="bi bi-cash-coin text-success"></i> Total Recaudado</h5>
                                 <p class="display-6 fw-bold text-success" th:text="${totalRecaudado} + ' €'">0 €</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-6 col-lg-4 d-flex" style="min-width: 250px; max-width: 350px;">
-                        <div class="card shadow text-center flex-fill h-100">
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <div class="card shadow text-center h-100">
                             <div class="card-body">
                                 <h5 class="card-title"><i class="bi bi-door-closed text-primary"></i> Número de Habitaciones</h5>
                                 <p class="display-6 fw-bold text-primary" th:text="${numHabitaciones}">0</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-6 col-lg-4 d-flex" style="min-width: 250px; max-width: 350px;">
-                        <div class="card shadow text-center flex-fill h-100">
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <div class="card shadow text-center h-100">
                             <div class="card-body">
                                 <h5 class="card-title"><i class="bi bi-tags text-warning"></i> Número de Categorías</h5>
                                 <p class="display-6 fw-bold text-warning" th:text="${numCategorias}">0</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-6 col-lg-4 d-flex" style="min-width: 250px; max-width: 350px;">
-                        <div class="card shadow text-center flex-fill h-100">
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <div class="card shadow text-center h-100">
                             <div class="card-body">
                                 <h5 class="card-title"><i class="bi bi-graph-up-arrow text-info"></i> Reserva más larga</h5>
                                 <p class="fw-bold fs-4" th:text="${reservaMasLarga}">-</p>
@@ -52,11 +53,11 @@
                         </div>
                     </div>
                 </div>
-                <!-- Aquí puedes añadir más estadísticas o gráficos -->
+                <!-- Tablas de recaudado -->
                 <div class="row mt-4">
                     <div class="col-12 col-lg-6 mb-4">
-                        <div class="card shadow h-100">
-                            <div class="card-header bg-warning text-dark text-center fw-bold">
+                        <div class="card shadow h-auto">
+                            <div class="card-header bg-info text-black text-center fw-bold">
                                 Recaudado por Categoría
                             </div>
                             <div class="card-body">
@@ -81,7 +82,7 @@
                         </div>
                     </div>
                     <div class="col-12 col-lg-6 mb-4">
-                        <div class="card shadow h-100">
+                        <div class="card shadow h-auto">
                             <div class="card-header bg-primary text-white text-center fw-bold">
                                 Recaudado por Habitación
                             </div>

@@ -17,6 +17,7 @@
             <li class="nav-item mb-1">
                 <a class="nav-link text-white d-flex align-items-center gap-2 fw-bold"
                    th:href="@{/rooms/manage-rooms}"
+				   href="../habitacion/habitaciones.html"
                    th:classappend="${activePage} == 'habitaciones' ? 'active bg-secondary text-warning' : ''">
                     <i class="bi bi-door-closed"></i> Gestionar Habitaciones
                 </a>
@@ -24,6 +25,7 @@
             <li class="nav-item mb-1">
                 <a class="nav-link text-white d-flex align-items-center gap-2 fw-bold"
                    th:href="@{/categories/manage-categories}"
+				   href="../categoria/categorias.html"
                    th:classappend="${activePage} == 'categorias' ? 'active bg-secondary text-warning' : ''">
                     <i class="bi bi-tags"></i> Gestionar Categorias
                 </a>
@@ -31,6 +33,7 @@
             <li class="nav-item mb-1">
                 <a class="nav-link text-white d-flex align-items-center gap-2 fw-bold"
                    th:href="@{/reservations/manage-reservations}"
+				   href="../reserva/reservas.html"
                    th:classappend="${activePage} == 'reservas' ? 'active bg-secondary text-warning' : ''">
                     <i class="bi bi-calendar-check"></i> Gestionar Reservas
                 </a>
@@ -38,6 +41,7 @@
             <li class="nav-item mb-1">
                 <a class="nav-link text-white d-flex align-items-center gap-2 fw-bold"
                    th:href="@{/reservations/estadistics}"
+				   href="../reserva/estadisticas.html"
                    th:classappend="${activePage} == 'estadistics' ? 'active bg-secondary text-warning' : ''">
                     <i class="bi bi-table"></i> Estadísticas
                 </a>

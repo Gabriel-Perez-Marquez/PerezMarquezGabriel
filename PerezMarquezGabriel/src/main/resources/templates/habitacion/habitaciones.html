@@ -22,7 +22,7 @@
       <div class="col-12 col-md-9 col-lg-10 p-4">
         <h2 class="mb-4">Gestión de Habitaciones</h2>
         <div class="d-flex mb-3">
-          <a th:href="@{/rooms/manage-rooms/add-new-room}" class="btn btn-primary btn-lg"><i class="bi bi-plus-circle"></i> Agregar habitación</a>
+          <a th:href="@{/rooms/manage-rooms/add-new-room}" href="./room-form.html" class="btn btn-primary btn-lg"><i class="bi bi-plus-circle"></i> Agregar habitación</a>
         </div>
         <div th:if="${mensajeError}" class="alert alert-danger text-center w-50" role="alert">
           <span th:text="${mensajeError}">Mensaje de error</span>
@@ -32,7 +32,7 @@
           <div class="col-12 col-lg-6 mb-3 mb-lg-0">
             <div class="border rounded p-3 h-100">
               <h5 class="mb-3">Filtrar por categoría</h5>
-              <form method="get" th:action="@{/rooms/manage-rooms}" id="formFiltroPrecios">
+              <form method="get" th:action="@{/rooms/manage-rooms}" action="./habitaciones.html" id="formFiltroPrecios">
                 <div class="row mb-4">
                   <div class="col-12 col-lg-6 mb-3 mb-lg-0">
                     <div class="border rounded p-3 h-100">
@@ -64,7 +64,7 @@
                       <button type="submit" class="btn btn-primary w-100 mt-3">
                         <i class="bi bi-funnel"></i> Filtrar
                       </button>
-                      <a th:href="@{/rooms/manage-rooms}" class="btn btn-link p-0 ms-3">Quitar filtros</a>
+                      <a th:href="@{/rooms/manage-rooms}" href="./catalogo.html" class="btn btn-link p-0 ms-3">Quitar filtros</a>
                     </div>
                   </div>
                 </div>
@@ -102,7 +102,7 @@
                     <img th:src="${habitacion.urlImage}" th:alt="${habitacion.textoAlt}" style="width: 80px; height: auto;">
                 </td>
                 <td>
-                  <a th:href="@{/rooms/manage-rooms/edit/}+${habitacion.id}" class="btn btn-outline-warning btn-sm me-2"><i class="bi bi-pencil"></i></a>
+                  <a th:href="@{/rooms/manage-rooms/edit/}+${habitacion.id}" href="room-form.html" class="btn btn-outline-warning btn-sm me-2"><i class="bi bi-pencil"></i></a>
                   <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" th:data-bs-target="@{#habitacionModal} + ${habitacion.id}">
                     <i class="bi bi-trash3"></i>
                   </button>
@@ -125,7 +125,7 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-                  <a th:href="@{/rooms/manage-rooms/delete/}+${habitacion.id}" class="btn btn-danger">Sí, eliminar</a>
+                  <a th:href="@{/rooms/manage-rooms/delete/}+${habitacion.id}" href="./habitaciones.html" class="btn btn-danger">Sí, eliminar</a>
                 </div>
               </div>
             </div>

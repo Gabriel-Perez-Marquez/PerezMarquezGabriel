@@ -30,6 +30,7 @@
         <h1 class="text-center mb-4">Datos Habitación</h1>
         <form
           th:action="@{/rooms/manage-rooms/save}"
+		  action="./habitaciones.html"
           th:object="${habitacion}"
           method="POST"
           class="row g-3"
