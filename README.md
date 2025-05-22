@@ -1,4 +1,4 @@
-# 🏨 Sistema de Gestión de Reservas de Habitaciones
+# 🏨 Sistema de Gestión de Hotel
 
 Una aplicación web desarrollada en **Java + Spring Boot** para la administración 
 eficiente de habitaciones, categorías y reservas hoteleras. Incluye estadísticas de 
