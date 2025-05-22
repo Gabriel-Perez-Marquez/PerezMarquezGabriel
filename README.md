@@ -52,7 +52,7 @@ de habitación por planta.
 │       │   ├── 📂 js                        # Scripts JS (validaciones, cálculos, etc.)
 │       │   ├── 📂 css                       # Estilos CSS personalizados
 │       └── 📄 application.properties        # Configuración general (puerto, BBDD, etc.)
-
+```
 ---
 
 ## 📈 Módulo de Estadísticas
