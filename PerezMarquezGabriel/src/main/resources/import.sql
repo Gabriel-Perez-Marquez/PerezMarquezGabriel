@@ -1,12 +1,12 @@
 --Importamos las categorias
 
 INSERT INTO categoria (nombre, num_personas, descuento) VALUES ('Individual', 1, 0);
-INSERT INTO categoria (nombre, num_personas, descuento) VALUES ('Doble', 2, 0);
+INSERT INTO categoria (nombre, num_personas, descuento) VALUES ('Doble', 2, 5);
 INSERT INTO categoria (nombre, num_personas, descuento) VALUES ('Estándar', 4, 0);
-INSERT INTO categoria (nombre, num_personas, descuento) VALUES ('Familiar', 8, 0);
+INSERT INTO categoria (nombre, num_personas, descuento) VALUES ('Familiar', 8, 10);
 INSERT INTO categoria (nombre, num_personas, descuento) VALUES ('Suite', 3, 0);
 INSERT INTO categoria (nombre, num_personas, descuento) VALUES ('Suite Royal', 5, 0);
-INSERT INTO categoria (nombre, num_personas, descuento) VALUES ('Suite Deluxe', 6, 0);
+INSERT INTO categoria (nombre, num_personas, descuento) VALUES ('Suite Deluxe', 6, 20);
 
 
 
@@ -28,3 +28,16 @@ INSERT INTO habitacion (num_habitacion, descripcion, categoria_id, precio, url_i
 INSERT INTO habitacion (num_habitacion, descripcion, categoria_id, precio, url_image, nombre, texto_alt) VALUES (206, 'Habitación doble con decoración moderna', 2, 88.0, 'https://hotelsanmillan.es/wp-content/uploads/2016/02/San-Millan-Habitaciones-dobles-hotel-en-santander.jpg', 'Habitacion Doble 206', 'Habitación doble moderna');
 INSERT INTO habitacion (num_habitacion, descripcion, categoria_id, precio, url_image, nombre, texto_alt) VALUES (207, 'Suite Deluxe con cocina integrada', 7, 310.0, 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/444553066.jpg?k=250d5eb19a4d7f6027c361312da30a7810bc0e03d2900b45928cdbde2f1ac39a&o=&hp=1', 'Habitacion Suite Deluxe 207', 'Suite Deluxe con cocina');
 INSERT INTO habitacion (num_habitacion, descripcion, categoria_id, precio, url_image, nombre, texto_alt) VALUES (208, 'Habitación individual adaptada para personas con movilidad reducida', 1, 55.0, 'https://images.mirai.com/INFOROOMS/100022963/gkaTcvQIbsAgiNhOJR42/gkaTcvQIbsAgiNhOJR42_large.jpg', 'Habitacion Individual 208', 'Habitación adaptada para movilidad reducida');
+
+
+--Importamos las reservas
+INSERT INTO reserva (habitacion_id, nombre_titular, apellidos_titular, telefono, num_clientes, num_adultos, num_niños, fecha_entrada, fecha_salida, precio) VALUES (1, 'Ana', 'López', 600123456, 1, 1, 0, '2025-06-01', '2025-06-03', 100.00);
+INSERT INTO reserva (habitacion_id, nombre_titular, apellidos_titular, telefono, num_clientes, num_adultos, num_niños, fecha_entrada, fecha_salida, precio) VALUES (2, 'Carlos', 'Martínez', 600234567, 2, 2, 0, '2025-07-10', '2025-07-15', 403.75);
+INSERT INTO reserva (habitacion_id, nombre_titular, apellidos_titular, telefono, num_clientes, num_adultos, num_niños, fecha_entrada, fecha_salida, precio) VALUES (4, 'Laura', 'Sánchez', 600345678, 3, 2, 1, '2025-08-05', '2025-08-07', 140.00);
+INSERT INTO reserva (habitacion_id, nombre_titular, apellidos_titular, telefono, num_clientes, num_adultos, num_niños, fecha_entrada, fecha_salida, precio) VALUES (5, 'David', 'Fernández', 600456789, 4, 2, 2, '2025-08-01', '2025-08-06', 720.00);
+INSERT INTO reserva (habitacion_id, nombre_titular, apellidos_titular, telefono, num_clientes, num_adultos, num_niños, fecha_entrada, fecha_salida, precio) VALUES (6, 'Sara', 'Gómez', 600567890, 2, 2, 0, '2025-07-20', '2025-07-23', 1140.00);
+INSERT INTO reserva (habitacion_id, nombre_titular, apellidos_titular, telefono, num_clientes, num_adultos, num_niños, fecha_entrada, fecha_salida, precio) VALUES (7, 'Javier', 'Ruiz', 600678901, 3, 3, 0, '2025-06-15', '2025-06-18', 720);
+INSERT INTO reserva (habitacion_id, nombre_titular, apellidos_titular, telefono, num_clientes, num_adultos, num_niños, fecha_entrada, fecha_salida, precio) VALUES (9, 'Elena', 'Torres', 600789012, 2, 2, 0, '2025-09-01', '2025-09-04', 256.5);
+INSERT INTO reserva (habitacion_id, nombre_titular, apellidos_titular, telefono, num_clientes, num_adultos, num_niños, fecha_entrada, fecha_salida, precio) VALUES (12, 'Manuel', 'Castro', 600890123, 2, 2, 0, '2025-07-05', '2025-07-09', 1040.00);
+INSERT INTO reserva (habitacion_id, nombre_titular, apellidos_titular, telefono, num_clientes, num_adultos, num_niños, fecha_entrada, fecha_salida, precio) VALUES (17, 'Isabel', 'Navarro', 600901234, 1, 1, 0, '2025-07-02', '2025-07-04', 110.00);
+

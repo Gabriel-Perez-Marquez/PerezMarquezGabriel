@@ -65,9 +65,7 @@
               </button>
 
             </form>
-            <a th:href="@{/rooms/catalog}" href="./catalogo.html" class="btn btn-link p-0 mt-2">Quitar filtros</a>
-              
-            
+            <a th:href="@{/rooms/catalog}" href="./catalogo.html" class="btn btn-link p-0 mt-2">Quitar filtros</a>            
           </div>
           
         </div>
@@ -75,7 +73,7 @@
         <div class="col-12 col-md-10">
           <div class="row mb-3">
             <div class="col-12 col-md-12 justify-content-md-end d-flex">
-              <form th:action="@{/rooms/catalog/search}" action="./catalogo.html" class="w-25 mt-4" method="get">
+              <form th:action="@{/rooms/catalog}" action="./catalogo.html" class="w-25 mt-4" method="get">
                 <div class="input-group mt-3 mt-md-0">
                   <input type="text" name="nombre" id="buscar" class="form-control" placeholder="Buscar...">
                   <button class="btn btn-primary" type="submit">Buscar</button>

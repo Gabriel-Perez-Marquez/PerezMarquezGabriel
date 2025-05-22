@@ -39,7 +39,7 @@ public class ReservaService extends BaseServiceImpl<Reserva, Long, ReservaReposi
 		long noches = ChronoUnit.DAYS.between(fechaEntrada, fechaSalida);
 		
 		if(h.getCategoria().getDescuento() != 0) {
-			return h.getPrecio()*h.getCategoria().getDescuento() / 100;
+			return h.getPrecio() + h.getPrecio()*h.getCategoria().getDescuento() / 100;
 		}
 			
 		return h.getPrecio() * noches;

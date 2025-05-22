@@ -23,7 +23,7 @@
                 <label for="nombre" class="form-label">Nombre <span class="text-danger">*</span></label>
                 <input type="text" name="nombre" id="nombre" class="form-control form-control-sm mb-2" th:value="${categoria.nombre}"  maxlength="30" required>
                 <label for="numPersonas" class="form-label">Número de personas que acepta la habitación <span class="text-danger">*</span></label>
-                <input type="number" name="numPersonas" id="numPersonas" class="form-control form-control-sm mb-2" th:value="${categoria.numPersonas}" max="8" required>
+                <input type="number" name="numPersonas" id="numPersonas" class="form-control form-control-sm mb-2" th:value="${categoria.numPersonas}" max="8" min="1" required>
                 <label for="descuento" class="form-label">Descuento (%)</label>
                 <input type="number" name="descuento" id="descuento" class="form-control form-control-sm mb-3" min="0" max="100" step="1" th:value="${categoria.descuento}" placeholder="0">
                 <div class="text-center">

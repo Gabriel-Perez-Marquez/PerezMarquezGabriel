@@ -66,7 +66,9 @@ public class HabitacionController {
 	public String catalogo(@RequestParam(required = false) List<Long> categorias,
 			@RequestParam(required = false, defaultValue = "0") Integer minPrecio,
 			@RequestParam(required = false) Integer maxPrecio,
-			@RequestParam(value = "orden", required = false, defaultValue = "0") int orden, Model model) {
+			@RequestParam(value = "orden", required = false, defaultValue = "0") int orden,
+			@RequestParam(value = "nombre", required = false) String nombre, 
+			Model model) {
 
 		List<Habitacion> habitaciones;
 
@@ -79,6 +81,9 @@ public class HabitacionController {
 
 		habitaciones = habitacionService.filtrarPorPrecio(habitaciones, minPrecio, maxPrecio);
 		
+		if(nombre != null) {
+			habitaciones = habitacionService.buscarPorNombre(nombre);
+		}
 		
 		model.addAttribute("habitaciones", habitaciones);
 		model.addAttribute("categorias", categoriaService.findAll());
@@ -86,7 +91,7 @@ public class HabitacionController {
 		model.addAttribute("minPrecio", minPrecio);
 		model.addAttribute("maxPrecio", maxPrecio);
 		model.addAttribute("orden", orden);
-
+		model.addAttribute("nombre", nombre);
 		return "habitacion/catalogo";
 	}
 	
@@ -133,16 +138,6 @@ public class HabitacionController {
 
 		return "redirect:/rooms/manage-rooms";
 	}
-
-
-	@GetMapping("/catalog/search")
-	public String buscarPorNombre(@RequestParam("nombre") String nombre, Model model) {
-		model.addAttribute("nombre", nombre);
-		model.addAttribute("habitaciones", habitacionService.buscarPorNombre(nombre));
-		model.addAttribute("categorias", categoriaService.findAll());
-		return "habitacion/catalogo";
-	}
-	
 	
 	@GetMapping("/catalog/view/{id}")
 	public String verDetalleHabitacion(@PathVariable Long id, Model model) {

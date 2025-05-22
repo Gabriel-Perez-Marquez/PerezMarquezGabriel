@@ -30,8 +30,8 @@
             <div class="col-12">
                 <p class="fw-bold">Habitación seleccionada:</p>
                 <p th:text="${habitacion.nombre}">Habitación A</p>
-                <!-- Precio por noche (oculto o mostrado según lo necesites) -->
-                <span id="precioPorNoche" hidden th:text="${habitacion.precio}">80</span>
+                <span th:if="habitacion.categoria.descuento == 0" id="precioPorNoche" hidden th:text="${habitacion.precio}">80</span>
+                <span th:if="habitacion.categoria.descuento != 0" id="precioPorNoche" hidden th:text="|${#numbers.formatDecimal(habitacion.precio * (1 - (habitacion.categoria.descuento * 1.0) / 100), 1, 'COMMA', 2, 'POINT')} €/noche|">80</span>
             </div>
 
             
