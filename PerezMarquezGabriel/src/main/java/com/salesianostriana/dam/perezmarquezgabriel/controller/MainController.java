@@ -25,9 +25,9 @@ public class MainController {
 		return "error";
 	}
 
-	@GetMapping("/QuienesSomos")
+	@GetMapping("/whoWeAre")
 	public String quienesSomos() {
-		return "/quienessomos";
+		return "quienessomos";
 	}
 
 }
