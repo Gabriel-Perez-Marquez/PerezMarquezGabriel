@@ -12,11 +12,11 @@ de habitación por planta.
 ✨ Gestión completa:
 - 📈 Cuando una habitación tiene 5 o más reservas se vuelve popular y
   aparece en la página de inicio
-- 📋 CRUD de **habitaciones**, **categorías** y **reservas**
+- 📋 Gestión de **habitaciones**, **categorías** y **reservas**
 - 🧾 Estadísticas: recaudación total, por habitación y por categoría
 - 🛌 Cálculo automático del precio con descuentos por categoría
 - 🧠 Asignación inteligente de número de habitación por planta
-- 📊 Filtrado de habitaciones por rango de precio
+- 📊 Filtrado de habitaciones por categoría y rango de precio
 - ✅ Validaciones en frontend y backend
 
 ---
