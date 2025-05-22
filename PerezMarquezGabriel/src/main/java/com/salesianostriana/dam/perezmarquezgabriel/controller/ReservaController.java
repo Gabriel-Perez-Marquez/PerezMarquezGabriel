@@ -155,6 +155,7 @@ public class ReservaController {
 
 	@GetMapping("/manage-reservations/edit/{id}")
 	public String editar(@PathVariable("id") Long id, Model model) {
+		String today;
 		Reserva r = reservaService.findById(id).orElseThrow();
 		Optional<Habitacion> habitacionOptional = habitacionService.findById(id);
 		
@@ -162,6 +163,8 @@ public class ReservaController {
 			model.addAttribute("reserva", r);
 			model.addAttribute("categorias", categoriaService.findAll());
 			model.addAttribute("habitacion", habitacionOptional.get());
+			today = LocalDate.now().toString();
+	        model.addAttribute("today", today);
 			return "reserva/reservation-form";
 		} else {
 			model.addAttribute("error", "Esa reserva no es válida");
