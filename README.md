@@ -35,20 +35,23 @@ de habitación por planta.
 ---
 
 ## 📁 Estructura del proyecto
-├── 📂 java
-│ ├── 📂 com.salesianostriana.dam.perezmarquezgabriel
-│ ├── 📂 com.salesianostriana.dam.perezmarquezgabriel.controller # Lógica de controladores
-│ ├── 📂 com.salesianostriana.dam.perezmarquezgabriel.model # Entidades JPA (Habitacion, Categoria, Reserva)
-│ ├── 📂 com.salesianostriana.dam.perezmarquezgabriel.repository # Interfaces JpaRepository
-│ ├── 📂 com.salesianostriana.dam.perezmarquezgabriel.service # Lógica de negocio
-│ │ ├── 📁 com.salesianostriana.dam.perezmarquezgabriel.service.servicioBase 
-├── 📂 resources
-│ ├── 📁 templates # Vistas Thymeleaf
-│ ├── 📁 static 
-│ │ ├── 📁 Img
-│ │ ├── 📁 js
-│ │ ├── 📁 css
-│ └── 📄 application.properties
+```plaintext
+📦 src
+├── 📂 main
+│   ├── 📂 java
+│   │   └── 📂 com.salesianostriana.dam.perezmarquezgabriel
+│   │       ├── 📂 controller                # Lógica de controladores (Controladores web)
+│   │       ├── 📂 model                     # Entidades JPA (Habitacion, Categoria, Reserva)
+│   │       ├── 📂 repository                # Interfaces JpaRepository para acceso a datos
+│   │       ├── 📂 service                   # Servicios con lógica de negocio
+│   │       │   └── 📂 servicioBase          # Funcionalidades base reutilizables
+│   └── 📂 resources
+│       ├── 📂 templates                     # Vistas Thymeleaf
+│       ├── 📂 static
+│       │   ├── 📂 img                       # Recursos gráficos
+│       │   ├── 📂 js                        # Scripts JS (validaciones, cálculos, etc.)
+│       │   ├── 📂 css                       # Estilos CSS personalizados
+│       └── 📄 application.properties        # Configuración general (puerto, BBDD, etc.)
 
 ---
 
